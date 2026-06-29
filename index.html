@@ -1,0 +1,3150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ═══ SEO Primaire ════════════════════════════════════════════ -->
+  <title>Swella | Pilates Club Marseille — Ton espace, ta force, ta communauté</title>
+  <meta name="description" content="Swella Pilates Club à Marseille : un cocon lumineux et apaisant pour célébrer le mouvement, la force profonde et la connexion au corps. Sans esprit de compétition — juste toi et ta communauté.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://swella.fr/">
+  <meta name="author" content="Swella Pilates Club">
+  <meta name="theme-color" content="#742e31">
+
+  <!-- ═══ Open Graph ═══════════════════════════════════════════════ -->
+  <meta property="og:title" content="Swella | Pilates Club Marseille">
+  <meta property="og:description" content="Un cocon lumineux pour célébrer le mouvement, la force profonde et la connexion au corps — au cœur de Marseille.">
+  <meta property="og:image" content="https://swella.fr/image/hero.png">
+  <meta property="og:url" content="https://swella.fr/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Swella Pilates Club">
+
+  <!-- ═══ Twitter Card ════════════════════════════════════════════ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Swella | Pilates Club Marseille">
+  <meta name="twitter:description" content="Célébrons le mouvement, la force profonde et la connexion au corps.">
+  <meta name="twitter:image" content="https://swella.fr/image/hero.png">
+
+  <!-- ═══ Structured Data JSON-LD ════════════════════════════════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "Swella Pilates Club",
+    "description": "Studio Pilates à Marseille — un espace lumineux pour célébrer le mouvement, la force profonde et la connexion au corps.",
+    "url": "https://swella.fr",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Marseille",
+      "addressCountry": "FR"
+    },
+    "image": "https://swella.fr/image/hero.png"
+  }
+  </script>
+
+  <!-- ═══ Google Fonts : Anton + Lora + Cormorant Garamond (fallback logo) ═ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Police logo : LAMORIC ROWEN (fichier local) ──────────────
+       Placer le fichier dans /fonts/LamoriRowen.woff2 (ou .ttf)
+       Fallback : Cormorant Garamond (déjà chargé depuis Google Fonts)
+    ─────────────────────────────────────────────────────────────── */
+    @font-face {
+      font-family: 'Lamoric Rowen';
+      src: url('image/police/Lamoric%20Rowen%20TTF.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ─── Variables charte graphique ──────────────────────────────── */
+    :root {
+      --c-black:    #000000;
+      --c-burgundy: #742e31;
+      --c-white:    #FFFFFF;
+      --c-peach:    #ffe7c2;
+      --c-sky:      #b7d3e9;
+      --c-cream:    #fefaf5;
+      --c-sand:     #d4b896;
+
+      --f-logo:   'Lamoric Rowen', 'Cormorant Garamond', serif;
+      --f-title:  'Anton', sans-serif;
+      --f-body:   'Lora', Georgia, serif;
+    }
+
+    /* ─── Reset ───────────────────────────────────────────────────── */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: var(--c-cream);
+      overflow-x: hidden;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 620px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Photo de fond */
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('image/hero.webp');
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+    }
+
+    /* Overlay gradient — sombre à gauche pour lisibilité, transparent à droite */
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          108deg,
+          rgba(0, 0, 0, 0.78)  0%,
+          rgba(0, 0, 0, 0.52)  42%,
+          rgba(0, 0, 0, 0.14)  72%,
+          transparent          100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.18) 0%,
+          transparent          45%,
+          rgba(116, 46, 49, 0.14) 100%
+        );
+      z-index: 1;
+    }
+
+    /* ─── Contenu texte ───────────────────────────────────────────── */
+    .hero__content {
+      position: relative;
+      z-index: 10;
+      padding: 0 clamp(2rem, 6vw, 8rem);
+      max-width: 820px;
+    }
+
+    /* Eyebrow "PILATES CLUB" */
+    .hero__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      margin-bottom: clamp(0.9rem, 1.8vh, 1.6rem);
+
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards;
+    }
+
+    .hero__eyebrow-rule {
+      width: 42px;
+      height: 1px;
+      background: var(--c-burgundy);
+      flex-shrink: 0;
+    }
+
+    .hero__eyebrow-text {
+      font-family: var(--f-title);
+      font-size: clamp(0.62rem, 1vw, 0.82rem);
+      letter-spacing: 0.44em;
+      color: var(--c-peach);
+      text-transform: uppercase;
+    }
+
+    /* Nom principal SWELLA */
+    .hero__name {
+      font-family: var(--f-logo);
+      font-weight: 400;
+      font-size: clamp(5.5rem, 15.5vw, 15rem);
+      line-height: 0.86;
+      letter-spacing: -0.015em;
+
+      background: linear-gradient(
+        138deg,
+        var(--c-cream) 0%,
+        var(--c-peach) 52%,
+        var(--c-sand)  100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+
+      margin-bottom: clamp(1.1rem, 2.2vh, 1.8rem);
+
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 1.05s cubic-bezier(0.22, 1, 0.36, 1) 0.32s forwards;
+    }
+
+    /* Barre d'accent bordeaux */
+    .hero__bar {
+      width: 50px;
+      height: 2px;
+      background: var(--c-burgundy);
+      margin-bottom: clamp(1rem, 2vh, 1.6rem);
+
+      opacity: 0;
+      transform-origin: left center;
+      transform: scaleX(0);
+      animation: barGrow 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.72s forwards;
+    }
+
+    @keyframes barGrow {
+      to { opacity: 1; transform: scaleX(1); }
+    }
+
+    /* Tagline */
+    .hero__tagline {
+      font-family: var(--f-body);
+      font-style: italic;
+      font-size: clamp(1.25rem, 2.4vw, 1.9rem);
+      color: var(--c-peach);
+      line-height: 1.8;
+      letter-spacing: 0.025em;
+
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.88s forwards;
+    }
+
+    /* ─── Indicateur scroll ───────────────────────────────────────── */
+    .hero__scroll-cue {
+      position: absolute;
+      bottom: clamp(1.8rem, 3.5vh, 2.8rem);
+      left: clamp(2rem, 6vw, 8rem);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      opacity: 0;
+      animation: fadeUp 0.6s ease 1.25s forwards;
+    }
+
+    .hero__scroll-label {
+      font-family: var(--f-title);
+      font-size: 0.56rem;
+      letter-spacing: 0.38em;
+      color: var(--c-sand);
+      text-transform: uppercase;
+      opacity: 0.65;
+    }
+
+    .hero__scroll-track {
+      width: 1px;
+      height: 52px;
+      background: linear-gradient(to bottom, var(--c-burgundy), transparent);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero__scroll-dot {
+      position: absolute;
+      top: -6px;
+      left: -2px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--c-burgundy);
+      animation: dotFall 2.2s ease-in-out infinite 1.6s;
+    }
+
+    @keyframes dotFall {
+      0%   { top: -6px;  opacity: 0; }
+      18%  { opacity: 1; }
+      82%  { opacity: 1; }
+      100% { top: 54px;  opacity: 0; }
+    }
+
+    /* ─── Image femme (bas-droite, grossit au scroll) ─────────────── */
+    /* Container fixé à la taille MAXIMALE (90vh).
+       Le JS applique transform: scale() depuis transform-origin: bottom right.
+       Scale initial = 55/90 ≈ 0.6111  → taille de départ ≈ 55vh
+       Scale final  = 1.0              → taille maximale 90vh  */
+    .hero__femme {
+      position: absolute;
+      bottom: 0;
+      right: -14vw;
+      z-index: 5;
+      height: 90vh;
+      transform-origin: bottom right;
+      pointer-events: none;
+      will-change: transform;
+
+      opacity: 0;
+      animation: femmeReveal 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.45s forwards;
+    }
+
+    @keyframes femmeReveal {
+      to { opacity: 1; }
+    }
+
+    .hero__femme img {
+      height: 100%;
+      width: auto;
+      display: block;
+      object-fit: contain;
+      object-position: bottom right;
+      /* Fondu sur le bord gauche pour une intégration naturelle */
+      mask-image: linear-gradient(to right, transparent 0%, black 16%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 16%);
+    }
+
+    /* ─── Keyframes globaux ───────────────────────────────────────── */
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ─── Responsive ──────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero__femme {
+        opacity: 0;
+        animation: femmeRevealMobile 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.45s forwards;
+      }
+      @keyframes femmeRevealMobile {
+        to { opacity: 0.55; }
+      }
+      .hero__femme img {
+        mask-image: linear-gradient(to right, transparent 0%, black 35%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 35%);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero__femme {
+        display: none;
+      }
+      .hero__name {
+        font-size: clamp(4.5rem, 20vw, 6rem);
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SECTION 2 — La Philosophie Swella / Le Manifeste
+    ═══════════════════════════════════════════════════════════════ */
+    .manifeste {
+      display: grid;
+      grid-template-columns: 45fr 55fr;
+      height: 88vh;
+      min-height: 560px;
+      max-height: 960px;
+      background: var(--c-cream);
+      overflow: hidden;
+    }
+
+    /* ─── Côté texte ──────────────────────────────────────────────── */
+    .manifeste__text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(1.5rem, 3vh, 3rem) clamp(2rem, 5vw, 6rem);
+    }
+
+    .manifeste__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: clamp(1.4rem, 2.8vh, 2.2rem);
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    .manifeste__eyebrow.visible {
+      animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .manifeste__eyebrow-rule {
+      width: 36px;
+      height: 1px;
+      background: var(--c-burgundy);
+      flex-shrink: 0;
+    }
+    .manifeste__eyebrow-text {
+      font-family: var(--f-title);
+      font-size: clamp(0.6rem, 0.9vw, 0.75rem);
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--c-burgundy);
+    }
+
+    .manifeste__headline {
+      font-family: var(--f-title);
+      font-size: clamp(2rem, 3.8vw, 4rem);
+      line-height: 1.02;
+      color: var(--c-black);
+      text-transform: uppercase;
+      margin-bottom: clamp(1.2rem, 2.4vh, 2rem);
+      opacity: 0;
+      transform: translateY(22px);
+    }
+    .manifeste__headline.visible {
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+    }
+    .manifeste__headline em {
+      color: var(--c-burgundy);
+      font-style: normal;
+    }
+
+    .manifeste__bar {
+      width: 48px;
+      height: 2px;
+      background: var(--c-burgundy);
+      margin-bottom: clamp(1.4rem, 2.8vh, 2.2rem);
+      opacity: 0;
+      transform-origin: left center;
+      transform: scaleX(0);
+    }
+    .manifeste__bar.visible {
+      animation: barGrow 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.28s forwards;
+    }
+
+    .manifeste__body {
+      font-family: var(--f-body);
+      font-size: clamp(0.92rem, 1.3vw, 1.06rem);
+      line-height: 1.9;
+      color: #2a2a2a;
+      max-width: 460px;
+      margin-bottom: clamp(1.6rem, 3.2vh, 2.6rem);
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    .manifeste__body.visible {
+      animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.32s forwards;
+    }
+
+    .manifeste__quote {
+      font-family: var(--f-body);
+      font-style: italic;
+      font-size: clamp(0.88rem, 1.15vw, 0.98rem);
+      color: var(--c-burgundy);
+      border-left: 2px solid var(--c-burgundy);
+      padding-left: 1.3rem;
+      line-height: 1.75;
+      margin: 0;
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    .manifeste__quote.visible {
+      animation: fadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.48s forwards;
+    }
+
+    /* ─── Carousel ────────────────────────────────────────────────── */
+    /* Le parent donne de l'air autour du carré arrondi */
+    .manifeste__carousel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.6rem 2rem 1.6rem 0.8rem;
+      background: var(--c-cream);
+      overflow: visible;
+    }
+
+    /* Le carré avec bords arrondis */
+    .carousel__box {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-height: 500px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--c-black);
+    }
+
+    .carousel__track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+      will-change: transform;
+    }
+
+    .carousel__slide {
+      min-width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .carousel__slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .carousel__counter {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.4rem;
+      font-family: var(--f-title);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      color: rgba(255, 255, 255, 0.6);
+      z-index: 10;
+    }
+    .carousel__counter span {
+      color: var(--c-white);
+    }
+
+    .carousel__nav {
+      position: absolute;
+      bottom: 1.4rem;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.4rem;
+    }
+
+    .carousel__btn {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: rgba(0, 0, 0, 0.28);
+      color: var(--c-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.22s, border-color 0.22s;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      flex-shrink: 0;
+    }
+    .carousel__btn:hover {
+      background: var(--c-burgundy);
+      border-color: var(--c-burgundy);
+    }
+    .carousel__btn svg {
+      width: 17px;
+      height: 17px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .carousel__dots {
+      display: flex;
+      gap: 0.55rem;
+      align-items: center;
+    }
+    .carousel__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.32);
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.25s;
+      padding: 0;
+    }
+    .carousel__dot.active {
+      background: var(--c-white);
+      transform: scale(1.5);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SECTION 3 — Vidéo + Rejoignez le mouvement
+    ═══════════════════════════════════════════════════════════════ */
+
+    /* ─── Bloc vidéo ──────────────────────────────────────────────── */
+    .video-section {
+      width: 100%;
+      height: 46vh;
+      min-height: 240px;
+      max-height: 520px;
+      position: relative;
+      overflow: hidden;
+      background: var(--c-black);
+      cursor: pointer;
+    }
+
+    .video-section video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+
+    /* Overlay sombre léger pour contraste du bouton */
+    .video-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.22);
+      z-index: 1;
+      transition: opacity 0.3s;
+    }
+    .video-section.playing::before {
+      opacity: 0;
+    }
+
+    .video-play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.42);
+      border: 1.5px solid rgba(255, 255, 255, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--c-white);
+      transition: background 0.22s, transform 0.22s, opacity 0.3s;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .video-play-btn:hover {
+      background: var(--c-burgundy);
+      border-color: var(--c-burgundy);
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+    .video-play-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--c-white);
+      margin-left: 3px;
+    }
+    .video-section.playing .video-play-btn {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .video-section.playing:hover .video-play-btn {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ─── Bloc Rejoindre ──────────────────────────────────────────── */
+    .rejoindre {
+      background: var(--c-burgundy);
+      padding: clamp(4.5rem, 9vh, 10rem) clamp(2rem, 6vw, 8rem) clamp(3rem, 6vh, 6.5rem);
+    }
+
+    /* "Rejoignez le mouvement" — pleine largeur */
+    .rejoindre__headline {
+      font-family: var(--f-title);
+      font-size: clamp(2.4rem, 5.4vw, 7rem);
+      line-height: 0.9;
+      color: var(--c-peach);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0;
+    }
+
+    /* Grille inférieure : texte gauche | SWELLA+image droite */
+    .rejoindre__lower {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 4vw, 4rem);
+      align-items: start;
+    }
+
+    .rejoindre__body {
+      font-family: var(--f-body);
+      font-weight: 700;
+      font-size: clamp(0.88rem, 1.25vw, 1.02rem);
+      line-height: 1.88;
+      color: var(--c-peach);
+      opacity: 0.9;
+      padding-top: 0.8rem;
+    }
+
+    /* Colonne droite : SWELLA d'abord, photo juste en-dessous */
+    .rejoindre__right-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.8rem;
+      margin-top: -0.08em;
+    }
+
+    .rejoindre__right-col .rejoindre__img {
+      align-self: center; /* légèrement vers la droite */
+    }
+
+    /* SWELLA — décalé légèrement à gauche pour effleurer le bout de "mouvement" */
+    .rejoindre__brand {
+      font-family: var(--f-logo);
+      font-size: clamp(3.5rem, 8.5vw, 11rem);
+      line-height: 0.82;
+      color: var(--c-peach);
+      letter-spacing: -0.02em;
+      text-align: right;
+      white-space: nowrap;
+      margin-right: 9vw;
+    }
+
+    /* Image légèrement sous SWELLA */
+    .rejoindre__img img {
+      width: 100%;
+      max-width: 440px;
+      height: clamp(150px, 18vh, 240px);
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+    }
+
+    /* ─── Responsive section 3 ────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .rejoindre__lower {
+        grid-template-columns: 1fr;
+      }
+      .rejoindre__right-col {
+        align-items: flex-start;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SECTION 4 — Séparateur blanc + Nos Prestations
+    ═══════════════════════════════════════════════════════════════ */
+
+    /* ─── Séparateur blanc ────────────────────────────────────────── */
+    .separateur {
+      background: var(--c-cream);
+      padding: clamp(3.5rem, 7vh, 7rem) clamp(2rem, 6vw, 8rem);
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .separateur__rule {
+      flex: 1;
+      height: 1px;
+      background: var(--c-sand);
+      opacity: 0.5;
+    }
+    .separateur__label {
+      font-family: var(--f-title);
+      font-size: 0.65rem;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--c-sand);
+    }
+
+    /* ─── Prestations (layout calqué sur ÉQUIPE Azibi) ───────────── */
+    .prestations {
+      display: grid;
+      grid-template-columns: 28% 1fr;
+      min-height: 80vh;
+      background: var(--c-black);
+      overflow: hidden;
+    }
+
+    /* Panneau gauche fixe */
+    .prestations__panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3rem clamp(1.5rem, 3vw, 3rem) 3rem clamp(2rem, 6vw, 8rem);
+      background: var(--c-black);
+    }
+    .prestations__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+    }
+    .prestations__eyebrow-rule {
+      width: 32px;
+      height: 1px;
+      background: var(--c-burgundy);
+    }
+    .prestations__eyebrow-text {
+      font-family: var(--f-title);
+      font-size: 0.62rem;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--c-burgundy);
+    }
+    .prestations__title {
+      font-family: var(--f-title);
+      font-size: clamp(3rem, 5vw, 6.5rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      color: var(--c-peach);
+      margin-bottom: 1.6rem;
+    }
+    .prestations__title em {
+      color: var(--c-burgundy);
+      font-style: normal;
+    }
+    .prestations__desc {
+      font-family: var(--f-body);
+      font-size: clamp(0.88rem, 1.1vw, 0.98rem);
+      line-height: 1.8;
+      color: var(--c-sand);
+      margin-bottom: 2.2rem;
+      max-width: 320px;
+    }
+    .prestations__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      border: 1px solid var(--c-peach);
+      color: var(--c-peach);
+      padding: 0.75rem 1.6rem;
+      font-family: var(--f-title);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background 0.22s, color 0.22s;
+      width: fit-content;
+    }
+    .prestations__cta:hover {
+      background: var(--c-peach);
+      color: var(--c-black);
+    }
+
+    /* Zone du carousel infini */
+    .prestations__scroll {
+      overflow: hidden;
+      padding: 5rem 0 2.5rem 0;
+      user-select: none;
+    }
+
+    .prestations__track {
+      display: flex;
+      gap: 2.6rem;
+      height: calc(86vh - 8rem);
+      min-height: 320px;
+      max-height: 500px;
+      align-items: stretch;
+      will-change: transform;
+      padding-left: 1.5rem;
+    }
+
+    /* ─── Cartes — proportion fixe pour toutes ───────────────────── */
+    .presta-card {
+      position: relative;
+      flex-shrink: 0;
+      width: 270px;
+      border-radius: 22px;
+      overflow: hidden;
+      cursor: pointer;
+      transform-origin: left center;
+      transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .presta-card.active {
+      transform: scale(1.18);
+      /* compense l'expansion visuelle vers la droite due au scale */
+      margin-right: calc(270px * 0.18);
+    }
+
+    .presta-card__bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: filter 0.4s ease;
+    }
+
+    /* Overlay de base : sombre pour les cartes inactives */
+    .presta-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      transition: background 0.4s ease;
+    }
+
+    /* Carte active : overlay gradient en bas, image plus lumineuse */
+    .presta-card.active .presta-card__overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.0)  0%,
+        rgba(0,0,0,0.45) 45%,
+        rgba(0,0,0,0.88) 100%
+      );
+    }
+
+    /* Label centré — visible en état inactif, fade out à l'activation */
+    .presta-card__idle-label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      font-family: var(--f-title);
+      font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+      text-transform: uppercase;
+      color: var(--c-white);
+      text-align: center;
+      line-height: 1.1;
+      opacity: 1;
+      transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+      pointer-events: none;
+    }
+    .presta-card.active .presta-card__idle-label {
+      opacity: 0;
+    }
+
+    /* Contenu complet ancré en bas — fade in + glisse à l'activation */
+    .presta-card__content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.4rem 1.2rem;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.18s,
+                  transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.18s;
+      pointer-events: none;
+    }
+    .presta-card.active .presta-card__content {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .presta-card__cat {
+      font-family: var(--f-body);
+      font-size: 0.68rem;
+      color: var(--c-sand);
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.05em;
+    }
+    .presta-card__name {
+      font-family: var(--f-title);
+      font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+      text-transform: uppercase;
+      color: var(--c-white);
+      line-height: 1;
+    }
+    .presta-card__desc {
+      font-family: var(--f-body);
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.55;
+      margin-top: 0.6rem;
+    }
+    .presta-card__btn {
+      display: inline-block;
+      margin-top: 0.85rem;
+      font-family: var(--f-title);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--c-peach);
+      text-decoration: none;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--c-peach);
+      padding-bottom: 2px;
+    }
+
+    /* Fonds placeholder par carte (à remplacer par background-image) */
+    .presta-card[data-presta="reformer"]    .presta-card__bg { background-image: url('image/section%205/reformer.webp'); }
+    .presta-card[data-presta="mat"]         .presta-card__bg { background-image: url('image/section%205/mat.webp'); }
+    .presta-card[data-presta="hot"]         .presta-card__bg { background-image: url('image/section%205/hot.webp'); }
+    .presta-card[data-presta="events"]      .presta-card__bg { background-image: url('image/section%205/%C3%89v%C3%A9nements%20%26%20Ateliers.webp'); }
+    .presta-card[data-presta="decouverte"]  .presta-card__bg { background-image: url('image/section%205/Offres%20D%C3%A9couverte.webp'); }
+    .presta-card[data-presta="abonnements"] .presta-card__bg { background-image: url('image/section%205/Abonnements.webp'); }
+    .presta-card[data-presta="etudiant"]    .presta-card__bg { background-image: url('image/section%205/Tarif%20%C3%89tudiant.webp'); }
+
+    /* ─── Responsive section 4 ────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .prestations { grid-template-columns: 1fr; min-height: auto; }
+      .prestations__panel { padding: 3rem clamp(2rem, 6vw, 6rem); }
+      .prestations__track { height: 420px; }
+      .prestations__scroll { margin-bottom: 2.5rem; }
+    }
+
+    /* ─── Responsive section 2 ────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .manifeste {
+        grid-template-columns: 1fr;
+      }
+      .manifeste__carousel {
+        min-height: 65vw;
+        order: -1;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .manifeste__carousel {
+        min-height: 75vw;
+      }
+    }
+
+    /* ─── Section Coachs ──────────────────────────────────────────── */
+    .coachs {
+      background: var(--c-burgundy);
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      min-height: 80vh;
+      align-items: center;
+      padding: clamp(4rem, 8vh, 7rem) clamp(2rem, 6vw, 8rem);
+      gap: clamp(2rem, 5vw, 6rem);
+    }
+
+    .coachs__text {}
+
+    .coachs__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.4rem;
+    }
+    .coachs__eyebrow-rule {
+      display: inline-block;
+      width: 2rem;
+      height: 1.5px;
+      background: var(--c-sand);
+    }
+    .coachs__eyebrow-text {
+      font-family: var(--f-body);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--c-sand);
+    }
+
+    .coachs__title {
+      font-family: var(--f-title);
+      font-size: clamp(3.5rem, 6vw, 7rem);
+      text-transform: uppercase;
+      color: var(--c-sand);
+      line-height: 0.92;
+      margin-bottom: 2.2rem;
+    }
+
+    .coachs__desc {
+      font-family: var(--f-body);
+      font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+      line-height: 1.85;
+      color: var(--c-sand);
+      max-width: 36ch;
+    }
+
+    .coachs__photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(1rem, 2vw, 2rem);
+      align-items: end;
+      margin-left: -3rem;
+    }
+
+    .coachs__photo-wrap {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+      background: rgba(255,255,255,0.08);
+    }
+    .coachs__photo-wrap:first-child {
+      margin-bottom: 2.5rem; /* décalage vertical entre les deux photos */
+    }
+
+    .coachs__photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .coachs__photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.2);
+      font-family: var(--f-body);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .coachs__caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.2rem 1rem 1rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%);
+      font-family: var(--f-title);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--c-sand);
+    }
+
+    @media (max-width: 768px) {
+      .coachs {
+        grid-template-columns: 1fr;
+      }
+      .coachs__photos {
+        grid-template-columns: 1fr 1fr;
+        margin-left: 0;
+      }
+      .coachs__photo-wrap:first-child {
+        margin-bottom: 0;
+      }
+    }
+
+    /* ─── Section Pour qui ────────────────────────────────────────── */
+    .pourqui {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 75vh;
+      background: var(--c-cream);
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .pourqui__visual {
+      position: relative;
+      height: 100%;
+      min-height: 75vh;
+    }
+    .pourqui__visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .pourqui__text {
+      padding: clamp(3rem, 7vh, 6rem) clamp(2.5rem, 6vw, 7rem);
+    }
+
+    .pourqui__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.6rem;
+    }
+    .pourqui__eyebrow-rule {
+      display: inline-block;
+      width: 2rem;
+      height: 1.5px;
+      background: var(--c-burgundy);
+    }
+    .pourqui__eyebrow-text {
+      font-family: var(--f-body);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--c-burgundy);
+    }
+
+    .pourqui__title {
+      font-family: var(--f-title);
+      font-size: clamp(2.8rem, 4.5vw, 5.5rem);
+      text-transform: uppercase;
+      color: var(--c-black);
+      line-height: 0.95;
+      margin-bottom: 1.8rem;
+    }
+    .pourqui__title em {
+      color: var(--c-burgundy);
+      font-style: normal;
+    }
+
+    .pourqui__body {
+      font-family: var(--f-body);
+      font-size: clamp(0.92rem, 1.1vw, 1.05rem);
+      line-height: 1.85;
+      color: #3a3232;
+      margin-bottom: 2rem;
+      max-width: 42ch;
+    }
+
+    .pourqui__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .pourqui__tag {
+      font-family: var(--f-body);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--c-burgundy);
+      border: 1px solid var(--c-burgundy);
+      border-radius: 100px;
+      padding: 0.35rem 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .pourqui {
+        grid-template-columns: 1fr;
+      }
+      .pourqui__visual {
+        min-height: 55vw;
+      }
+    }
+
+    /* ─── Section Workshop ────────────────────────────────────────── */
+    .workshop {
+      background: var(--c-burgundy);
+      padding: clamp(4rem, 8vh, 7rem) clamp(2rem, 6vw, 8rem);
+    }
+
+    .workshop__header {
+      display: flex;
+      align-items: baseline;
+      gap: clamp(2rem, 5vw, 6rem);
+      margin-bottom: clamp(3rem, 6vh, 5rem);
+    }
+
+    .workshop__title {
+      font-family: var(--f-title);
+      font-size: clamp(3rem, 5.5vw, 6.5rem);
+      text-transform: uppercase;
+      color: var(--c-white);
+      line-height: 1;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .workshop__intro {
+      font-family: var(--f-body);
+      font-size: clamp(0.88rem, 1vw, 1rem);
+      line-height: 1.85;
+      color: var(--c-sand);
+      max-width: 52ch;
+    }
+
+    .workshop__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1rem, 2vw, 2rem);
+    }
+
+    .workshop__photo {
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+    }
+
+    .workshop__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .workshop__photo:hover img {
+      transform: scale(1.03);
+    }
+
+    @media (max-width: 768px) {
+      .workshop__header {
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+      .workshop__grid {
+        grid-template-columns: 1fr;
+      }
+      .workshop__photo {
+        aspect-ratio: 4 / 3;
+      }
+    }
+
+    /* ─── Section Planning ────────────────────────────────────────── */
+    .planning {
+      background: var(--c-white);
+      padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 6vw, 8rem) 0;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .planning__header {
+      margin-bottom: clamp(1rem, 2vh, 1.8rem);
+      text-align: left;
+      position: relative;
+      z-index: 4;
+      align-self: flex-start;
+      padding-left: 0;
+    }
+
+    .planning__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+    .planning__eyebrow-rule {
+      display: inline-block;
+      width: 2rem;
+      height: 1.5px;
+      background: var(--c-burgundy);
+    }
+    .planning__eyebrow-text {
+      font-family: var(--f-body);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--c-burgundy);
+    }
+
+    .planning__title {
+      font-family: var(--f-title);
+      font-size: clamp(2.5rem, 4vw, 5rem);
+      text-transform: uppercase;
+      color: var(--c-black);
+      line-height: 0.95;
+    }
+    .planning__title em {
+      color: var(--c-burgundy);
+      font-style: normal;
+    }
+
+    /* Femme positionnée absolument dans la section */
+    .planning__femme {
+      position: absolute;
+      bottom: 0;
+      left: -18vw;
+      width: clamp(520px, 62vw, 940px);
+      object-fit: contain;
+      object-position: bottom;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .planning__visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      flex: 1;
+      z-index: 1;
+      transform: translate(12vw, -5rem);
+    }
+
+    .planning__link {
+      display: block;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      width: 46%;
+      z-index: 3;
+    }
+
+    .planning__link img {
+      width: 100%;
+      display: block;
+      transition: transform 0.45s ease;
+    }
+    .planning__link:hover img {
+      transform: scale(1.015);
+    }
+
+    .planning__overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0);
+      transition: background 0.3s ease;
+    }
+    .planning__link:hover .planning__overlay {
+      background: rgba(0,0,0,0.1);
+    }
+
+    /* Animation Lottie centrée sur l'image */
+    .planning__lottie {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1100px;
+      height: 1100px;
+      pointer-events: none;
+      z-index: 5;
+    }
+    @media (max-width: 768px) {
+      .planning__femme {
+        left: -22vw;
+        width: clamp(380px, 95vw, 680px);
+      }
+      .planning__visual {
+        transform: translate(18vw, -2rem);
+      }
+      .planning__link {
+        width: 62%;
+      }
+      .planning__lottie {
+        width: 420px;
+        height: 420px;
+      }
+    }
+
+    /* ─── Témoignages ─────────────────────────────────────────────── */
+    .avis {
+      background: var(--c-cream);
+      padding: clamp(4rem, 8vh, 7rem) clamp(2rem, 6vw, 8rem);
+    }
+    .avis__header { text-align: center; margin-bottom: clamp(2.5rem, 5vh, 4rem); }
+    .avis__eyebrow {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.8rem; margin-bottom: 1rem;
+    }
+    .avis__eyebrow-rule {
+      display: inline-block; width: 2rem; height: 1.5px; background: var(--c-burgundy);
+    }
+    .avis__eyebrow-text {
+      font-family: var(--f-body); font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--c-burgundy);
+    }
+    .avis__title {
+      font-family: var(--f-title); font-size: clamp(2.2rem, 3.5vw, 4rem);
+      text-transform: uppercase; color: var(--c-black); line-height: 0.95;
+    }
+    .avis__title em { color: var(--c-burgundy); font-style: normal; }
+    .avis__grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1.2rem, 2vw, 2rem);
+    }
+    .avis__card {
+      background: var(--c-white); border-radius: 16px;
+      padding: 2rem 1.8rem; display: flex; flex-direction: column; gap: 1rem;
+    }
+    .avis__stars { color: var(--c-burgundy); font-size: 1rem; letter-spacing: 0.1em; }
+    .avis__text {
+      font-family: var(--f-body); font-size: 0.95rem; line-height: 1.75;
+      color: #3a3232; flex: 1;
+    }
+    .avis__author {
+      font-family: var(--f-title); font-size: 0.7rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--c-burgundy);
+    }
+    @media (max-width: 768px) { .avis__grid { grid-template-columns: 1fr; } }
+
+    /* ─── Tarifs ───────────────────────────────────────────────────── */
+    .tarifs {
+      background: var(--c-black);
+      padding: clamp(4rem, 8vh, 7rem) clamp(2rem, 6vw, 8rem);
+    }
+    .tarifs__header { text-align: center; margin-bottom: clamp(2rem, 4vh, 3rem); }
+    .tarifs__eyebrow {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.8rem; margin-bottom: 1rem;
+    }
+    .tarifs__eyebrow-rule {
+      display: inline-block; width: 2rem; height: 1.5px; background: var(--c-sand);
+    }
+    .tarifs__eyebrow-text {
+      font-family: var(--f-body); font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--c-sand);
+    }
+    .tarifs__title {
+      font-family: var(--f-title); font-size: clamp(2.2rem, 3.5vw, 4rem);
+      text-transform: uppercase; color: var(--c-white); line-height: 0.95;
+    }
+    .tarifs__title em { color: var(--c-burgundy); font-style: normal; }
+
+    /* Tabs */
+    .tarifs__tabs {
+      display: flex; justify-content: center; gap: 0.5rem;
+      margin-bottom: clamp(2rem, 4vh, 3.5rem);
+    }
+    .tarifs__tab {
+      font-family: var(--f-body); font-size: 0.7rem; letter-spacing: 0.18em;
+      text-transform: uppercase; border: 1px solid rgba(255,255,255,0.2);
+      background: none; color: rgba(255,255,255,0.45); padding: 0.6rem 1.6rem;
+      border-radius: 100px; cursor: pointer; transition: all 0.25s;
+    }
+    .tarifs__tab.active {
+      background: var(--c-burgundy); border-color: var(--c-burgundy);
+      color: var(--c-white);
+    }
+    .tarifs__tab:hover:not(.active) { border-color: rgba(255,255,255,0.5); color: var(--c-white); }
+
+    /* Panels */
+    .tarifs__panel { display: none; }
+    .tarifs__panel.active { display: block; }
+
+    /* Grid abonnements : 4 cols sur desktop */
+    .tarifs__grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: clamp(1rem, 1.5vw, 1.5rem); margin-bottom: 2rem;
+    }
+    /* Grid packs : 5 cols */
+    .tarifs__grid--packs {
+      grid-template-columns: repeat(5, 1fr);
+    }
+    .tarifs__group-label {
+      font-family: var(--f-body); font-size: 0.6rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--c-sand);
+      margin: 2rem 0 1rem; border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 0.5rem;
+    }
+
+    .tarifs__card {
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 14px;
+      padding: 1.6rem 1.4rem; display: flex; flex-direction: column; gap: 0.75rem;
+      transition: border-color 0.3s, background 0.3s;
+      background: #181818;
+    }
+    .tarifs__card:hover { border-color: var(--c-burgundy); background: #1f1f1f; }
+    .tarifs__card--featured {
+      border-color: var(--c-burgundy); background: rgba(116,46,49,0.22);
+    }
+    .tarifs__badge {
+      font-family: var(--f-body); font-size: 0.55rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--c-peach);
+      background: var(--c-burgundy); display: inline-block;
+      padding: 0.2rem 0.65rem; border-radius: 100px; width: fit-content;
+    }
+    .tarifs__name {
+      font-family: var(--f-title); font-size: 0.95rem; text-transform: uppercase;
+      color: var(--c-white); letter-spacing: 0.04em; line-height: 1.2;
+    }
+    .tarifs__price {
+      font-family: var(--f-title); font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+      color: var(--c-peach); line-height: 1;
+    }
+    .tarifs__price span {
+      font-family: var(--f-body); font-size: 0.75rem; color: var(--c-sand);
+    }
+    .tarifs__desc {
+      font-family: var(--f-body); font-size: 0.78rem; line-height: 1.6;
+      color: rgba(255,255,255,0.5); flex: 1;
+    }
+    .tarifs__cta {
+      display: inline-block; font-family: var(--f-title); font-size: 0.6rem;
+      letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none;
+      color: var(--c-white); border: 1px solid rgba(255,255,255,0.25);
+      padding: 0.6rem 1rem; border-radius: 4px;
+      transition: background 0.2s, border-color 0.2s; text-align: center;
+    }
+    .tarifs__cta:hover { background: var(--c-burgundy); border-color: var(--c-burgundy); }
+    .tarifs__note {
+      font-family: var(--f-body); font-size: 0.75rem; color: rgba(255,255,255,0.3);
+      text-align: center; margin-top: 0.5rem;
+    }
+    @media (max-width: 1024px) {
+      .tarifs__grid { grid-template-columns: repeat(3, 1fr); }
+      .tarifs__grid--packs { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .tarifs__grid { grid-template-columns: repeat(2, 1fr); }
+      .tarifs__grid--packs { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .tarifs__grid, .tarifs__grid--packs { grid-template-columns: 1fr; }
+    }
+
+    /* ─── FAQ ──────────────────────────────────────────────────────── */
+    .faq {
+      background: var(--c-cream);
+      padding: clamp(4rem, 8vh, 7rem) clamp(2rem, 6vw, 8rem);
+    }
+    .faq__header { margin-bottom: clamp(2.5rem, 5vh, 4rem); }
+    .faq__eyebrow {
+      display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;
+    }
+    .faq__eyebrow-rule {
+      display: inline-block; width: 2rem; height: 1.5px; background: var(--c-burgundy);
+    }
+    .faq__eyebrow-text {
+      font-family: var(--f-body); font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--c-burgundy);
+    }
+    .faq__title {
+      font-family: var(--f-title); font-size: clamp(2.2rem, 3.5vw, 4rem);
+      text-transform: uppercase; color: var(--c-black); line-height: 0.95;
+    }
+    .faq__title em { color: var(--c-burgundy); font-style: normal; }
+    .faq__list { max-width: 780px; display: flex; flex-direction: column; gap: 0; }
+    .faq__item {
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    .faq__question {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 0; gap: 1rem; text-align: left;
+    }
+    .faq__question-text {
+      font-family: var(--f-body); font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+      font-weight: 700; color: var(--c-black); line-height: 1.4;
+    }
+    .faq__icon {
+      font-size: 1.4rem; color: var(--c-burgundy); flex-shrink: 0;
+      transition: transform 0.3s ease; line-height: 1;
+    }
+    .faq__item.open .faq__icon { transform: rotate(45deg); }
+    .faq__answer {
+      font-family: var(--f-body); font-size: 0.92rem; line-height: 1.8;
+      color: #3a3232; max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0 0;
+    }
+    .faq__item.open .faq__answer { max-height: 300px; padding: 0 0 1.4rem; }
+
+    /* ─── Contact / Map ───────────────────────────────────────────── */
+    .contact {
+      background: var(--c-black);
+      padding: clamp(4rem, 8vh, 7rem) clamp(2rem, 6vw, 8rem);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 6vw, 7rem);
+      align-items: center;
+    }
+    .contact__info { display: flex; flex-direction: column; gap: 2.5rem; }
+    .contact__eyebrow {
+      display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;
+    }
+    .contact__eyebrow-rule {
+      display: inline-block; width: 2rem; height: 1.5px; background: var(--c-sand);
+    }
+    .contact__eyebrow-text {
+      font-family: var(--f-body); font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--c-sand);
+    }
+    .contact__title {
+      font-family: var(--f-title); font-size: clamp(2.2rem, 3.5vw, 4rem);
+      text-transform: uppercase; color: var(--c-white); line-height: 0.95;
+      margin-bottom: 0;
+    }
+    .contact__title em { color: var(--c-burgundy); font-style: normal; }
+    .contact__items { display: flex; flex-direction: column; gap: 1.4rem; }
+    .contact__item { display: flex; align-items: flex-start; gap: 1rem; }
+    .contact__icon {
+      font-size: 1.1rem; width: 2rem; flex-shrink: 0;
+      color: var(--c-burgundy); margin-top: 0.05rem;
+    }
+    .contact__item-label {
+      font-family: var(--f-body); font-size: 0.6rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--c-sand); margin-bottom: 0.25rem;
+    }
+    .contact__item-value {
+      font-family: var(--f-body); font-size: 0.95rem; color: var(--c-white);
+      line-height: 1.5;
+    }
+    .contact__item-value a {
+      color: var(--c-white); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact__item-value a:hover { color: var(--c-peach); }
+    .contact__cta {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-family: var(--f-title); font-size: 0.65rem; letter-spacing: 0.18em;
+      text-transform: uppercase; text-decoration: none; color: var(--c-white);
+      border: 1px solid rgba(255,255,255,0.3); padding: 0.8rem 1.6rem;
+      border-radius: 4px; transition: background 0.2s, border-color 0.2s;
+      width: fit-content;
+    }
+    .contact__cta:hover { background: var(--c-burgundy); border-color: var(--c-burgundy); }
+    .contact__map {
+      border-radius: 20px; overflow: hidden;
+      aspect-ratio: 4/3; width: 100%;
+    }
+    .contact__map iframe {
+      width: 100%; height: 100%; border: none; display: block;
+      filter: grayscale(30%) contrast(1.1);
+    }
+    @media (max-width: 768px) {
+      .contact { grid-template-columns: 1fr; }
+      .contact__map { aspect-ratio: 16/9; }
+    }
+
+    /* ─── Instagram ────────────────────────────────────────────────── */
+    .insta {
+      background: var(--c-cream);
+      padding: clamp(4rem, 8vh, 7rem) clamp(2rem, 6vw, 8rem);
+    }
+    .insta__header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: clamp(2rem, 4vh, 3rem);
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .insta__eyebrow {
+      display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem;
+    }
+    .insta__eyebrow-rule {
+      display: inline-block; width: 2rem; height: 1.5px; background: var(--c-burgundy);
+    }
+    .insta__eyebrow-text {
+      font-family: var(--f-body); font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--c-burgundy);
+    }
+    .insta__title {
+      font-family: var(--f-title); font-size: clamp(2.2rem, 3.5vw, 4rem);
+      text-transform: uppercase; color: var(--c-black); line-height: 0.95;
+    }
+    .insta__title em { color: var(--c-burgundy); font-style: normal; }
+    .insta__follow {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-family: var(--f-body); font-size: 0.7rem; letter-spacing: 0.15em;
+      text-transform: uppercase; text-decoration: none; color: var(--c-black);
+      border: 1.5px solid var(--c-black); padding: 0.7rem 1.4rem;
+      border-radius: 100px; transition: background 0.2s, color 0.2s;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .insta__follow:hover { background: var(--c-black); color: var(--c-white); }
+    .insta__grid {
+      display: grid; grid-template-columns: repeat(6, 1fr);
+      gap: 0.5rem;
+    }
+    .insta__cell {
+      aspect-ratio: 1; border-radius: 8px; overflow: hidden;
+      background: var(--c-sand); position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .insta__cell a {
+      display: block; width: 100%; height: 100%;
+      position: absolute; inset: 0;
+    }
+    .insta__cell-overlay {
+      position: absolute; inset: 0; background: rgba(0,0,0,0);
+      transition: background 0.3s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .insta__cell:hover .insta__cell-overlay { background: rgba(116,46,49,0.45); }
+    .insta__cell-icon {
+      font-size: 1.5rem; color: white; opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .insta__cell:hover .insta__cell-icon { opacity: 1; }
+    .insta__cell img { width: 100%; height: 100%; object-fit: cover; }
+    .insta__placeholder {
+      width: 100%; height: 100%; background: linear-gradient(135deg, var(--c-sand) 0%, var(--c-peach) 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .insta__placeholder svg { width: 2rem; height: 2rem; opacity: 0.4; }
+    .insta__note {
+      font-family: var(--f-body); font-size: 0.78rem; color: rgba(0,0,0,0.4);
+      text-align: center; margin-top: 1.5rem;
+    }
+    @media (max-width: 768px) { .insta__grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 480px) { .insta__grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ─── Navbar ───────────────────────────────────────────────────── */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--c-burgundy);
+      padding: 0 clamp(1.5rem, 4vw, 5rem);
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .navbar__logo {
+      height: 40px; width: auto; display: block;
+    }
+    .navbar__links {
+      display: flex; align-items: center; gap: clamp(1.2rem, 2.5vw, 2.5rem);
+      list-style: none;
+      margin-left: auto;
+      margin-right: clamp(1rem, 2vw, 2rem);
+    }
+    .navbar__links a {
+      font-family: var(--f-body); font-size: 0.68rem; letter-spacing: 0.18em;
+      text-transform: uppercase; text-decoration: none; color: rgba(255,255,255,0.8);
+      transition: color 0.2s;
+    }
+    .navbar__links a:hover { color: var(--c-white); }
+    .navbar__cta {
+      font-family: var(--f-body); font-size: 0.65rem; letter-spacing: 0.18em;
+      text-transform: uppercase; text-decoration: none; color: var(--c-white);
+      background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4);
+      padding: 0.5rem 1.2rem; border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .navbar__cta:hover { background: rgba(255,255,255,0.28); }
+    .navbar__burger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      background: none; border: none; padding: 0.4rem;
+    }
+    .navbar__burger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--c-white); border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .navbar__mobile {
+      display: none; position: fixed; top: 64px; left: 0; right: 0;
+      background: var(--c-burgundy); padding: 1.5rem clamp(1.5rem, 4vw, 5rem);
+      flex-direction: column; gap: 1.4rem; z-index: 99;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+    .navbar__mobile.open { display: flex; }
+    .navbar__mobile a {
+      font-family: var(--f-body); font-size: 0.85rem; letter-spacing: 0.15em;
+      text-transform: uppercase; text-decoration: none; color: rgba(255,255,255,0.85);
+      transition: color 0.2s;
+    }
+    .navbar__mobile a:hover { color: var(--c-white); }
+    .navbar__mobile .navbar__cta {
+      text-align: center; padding: 0.8rem;
+    }
+    /* Compense la navbar fixe */
+    body { padding-top: 64px; }
+    @media (max-width: 768px) {
+      .navbar__links { display: none; }
+      .navbar__cta.desktop { display: none; }
+      .navbar__burger { display: flex; }
+    }
+
+    /* ─── Footer ───────────────────────────────────────────────────── */
+    .footer {
+      background: var(--c-black);
+      padding: clamp(3rem, 6vh, 5rem) clamp(2rem, 6vw, 8rem) 1.5rem;
+      color: var(--c-sand);
+    }
+    .footer__grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: clamp(2rem, 4vw, 5rem); margin-bottom: 3rem;
+    }
+    .footer__logo {
+      font-family: var(--f-logo); font-size: 2rem; color: var(--c-white);
+      margin-bottom: 1rem; display: block; letter-spacing: 0.05em;
+    }
+    .footer__tagline {
+      font-family: var(--f-body); font-size: 0.85rem; line-height: 1.7;
+      color: rgba(255,255,255,0.5); max-width: 28ch;
+    }
+    .footer__col-title {
+      font-family: var(--f-title); font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--c-white); margin-bottom: 1.2rem;
+    }
+    .footer__list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer__list li {
+      font-family: var(--f-body); font-size: 0.85rem;
+      color: rgba(255,255,255,0.55); line-height: 1.5;
+    }
+    .footer__list a {
+      color: rgba(255,255,255,0.55); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer__list a:hover { color: var(--c-peach); }
+    .footer__socials { display: flex; gap: 1rem; margin-top: 1.5rem; }
+    .footer__social {
+      font-family: var(--f-body); font-size: 0.72rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.15); padding: 0.4rem 0.9rem;
+      border-radius: 100px; transition: color 0.2s, border-color 0.2s;
+    }
+    .footer__social:hover { color: var(--c-peach); border-color: var(--c-peach); }
+    .footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer__copy {
+      font-family: var(--f-body); font-size: 0.72rem;
+      color: rgba(255,255,255,0.25);
+    }
+    @media (max-width: 768px) {
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .footer__grid { grid-template-columns: 1fr; }
+      .footer__bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+</head>
+<body>
+
+  <header role="banner" aria-label="En-tête Swella Pilates Club">
+    <nav class="navbar" aria-label="Navigation principale">
+      <a href="#">
+        <img class="navbar__logo" src="image/logo.webp" alt="Swella Pilates Club">
+      </a>
+      <ul class="navbar__links">
+        <li><a href="#prestations">Nos cours</a></li>
+        <li><a href="#planning">Planning</a></li>
+        <li><a href="#coachs">Coachs</a></li>
+        <li><a href="#workshop">Workshop</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://www.instagram.com/swella_pilates" target="_blank" rel="noopener" aria-label="Instagram Swella">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,0.8)" stroke="none"/></svg>
+        </a></li>
+      </ul>
+      <a class="navbar__cta desktop" href="https://www.eversports.fr/s/swella" target="_blank" rel="noopener">Réserver</a>
+      <button class="navbar__burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="navbar__mobile" id="navMobile">
+      <a href="#prestations">Nos cours</a>
+      <a href="#planning">Planning</a>
+      <a href="#coachs">Coachs</a>
+      <a href="#workshop">Workshop</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.instagram.com/swella_pilates" target="_blank" rel="noopener">Instagram</a>
+      <a class="navbar__cta" href="https://www.eversports.fr/s/swella" target="_blank" rel="noopener">Réserver →</a>
+    </div>
+  </header>
+
+  <main id="contenu-principal">
+
+    <section
+      class="hero"
+      aria-label="Swella Pilates Club — Bienvenue"
+      itemscope
+      itemtype="https://schema.org/LocalBusiness"
+    >
+      <meta itemprop="name" content="Swella Pilates Club">
+      <meta itemprop="description" content="Studio Pilates à Marseille">
+
+      <!-- Fond photo -->
+      <div class="hero__bg" role="img" aria-label="Studio lumineux Swella Pilates Marseille"></div>
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <!-- Texte principal -->
+      <div class="hero__content">
+        <div class="hero__eyebrow" aria-hidden="true">
+          <span class="hero__eyebrow-rule"></span>
+          <span class="hero__eyebrow-text">Pilates Club</span>
+        </div>
+
+        <h1 class="hero__name">Swella</h1>
+
+        <div class="hero__bar" aria-hidden="true"></div>
+
+        <p class="hero__tagline">
+          Ton espace. Ta force.<br>Ta communauté.
+        </p>
+      </div>
+
+      <!-- Indicateur de scroll -->
+      <div class="hero__scroll-cue" aria-hidden="true">
+        <span class="hero__scroll-label">Scroll</span>
+        <div class="hero__scroll-track">
+          <div class="hero__scroll-dot"></div>
+        </div>
+      </div>
+
+      <!-- Image femme — animée au scroll -->
+      <div
+        class="hero__femme"
+        id="femmeHero"
+        aria-hidden="true"
+        style="transform: scale(0.6111);"
+      >
+        <img
+          src="image/femmepourhero.webp"
+          alt=""
+          role="presentation"
+          loading="eager"
+          decoding="async"
+        >
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 2 — La Philosophie Swella / Le Manifeste
+    ════════════════════════════════════════════════════════════════ -->
+    <section class="manifeste" aria-label="La Philosophie Swella" id="philosophie">
+
+      <!-- Texte manifeste -->
+      <div class="manifeste__text">
+
+        <div class="manifeste__eyebrow">
+          <span class="manifeste__eyebrow-rule"></span>
+          <span class="manifeste__eyebrow-text">Notre Philosophie</span>
+        </div>
+
+        <h2 class="manifeste__headline">
+          Plus qu'une salle,<br>
+          <em>un collectif.</em>
+        </h2>
+
+        <div class="manifeste__bar"></div>
+
+        <p class="manifeste__body">
+          Ici, la seule compétition, c'est avec toi-même —
+          et c'est déjà beaucoup.<br><br>
+          Chez Swella, on transpire, on pousse, on rit.
+          Et surtout, on progresse ensemble, dans un espace
+          pensé pour le ressenti — pas pour la performance.<br><br>
+          La salle, c'est le point de départ.
+          L'énergie du groupe, c'est ce qui fait revenir.
+        </p>
+
+        <blockquote class="manifeste__quote">
+          "Un cocon lumineux pour célébrer<br>
+          le mouvement et la connexion au corps."
+        </blockquote>
+
+      </div>
+
+      <!-- Carousel photos -->
+      <div class="manifeste__carousel" role="region" aria-label="Photos du studio Swella">
+        <div class="carousel__box">
+
+        <div class="carousel__counter" aria-hidden="true">
+          <span id="carouselCurrent">1</span> / 5
+        </div>
+
+        <div class="carousel__track" id="carouselTrack">
+          <div class="carousel__slide">
+            <img src="image/section2/couverture.webp" alt="Studio Swella Pilates Marseille" loading="lazy">
+          </div>
+          <div class="carousel__slide">
+            <img src="image/section2/im1.webp" alt="Cours de Pilates Swella" loading="lazy">
+          </div>
+          <div class="carousel__slide">
+            <img src="image/section2/im2.webp" alt="Séance Pilates en groupe Swella" loading="lazy">
+          </div>
+          <div class="carousel__slide">
+            <img src="image/section2/im3.webp" alt="Espace studio Swella Marseille" loading="lazy">
+          </div>
+          <div class="carousel__slide">
+            <img src="image/section2/im4.webp" alt="Ambiance Swella Pilates Club" loading="lazy">
+          </div>
+        </div>
+
+        <nav class="carousel__nav" aria-label="Navigation carousel">
+          <button class="carousel__btn" id="carouselPrev" aria-label="Image précédente">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+
+          <div class="carousel__dots" role="tablist" id="carouselDots">
+            <button class="carousel__dot active" role="tab" aria-selected="true"  aria-label="Image 1"></button>
+            <button class="carousel__dot"        role="tab" aria-selected="false" aria-label="Image 2"></button>
+            <button class="carousel__dot"        role="tab" aria-selected="false" aria-label="Image 3"></button>
+            <button class="carousel__dot"        role="tab" aria-selected="false" aria-label="Image 4"></button>
+            <button class="carousel__dot"        role="tab" aria-selected="false" aria-label="Image 5"></button>
+          </div>
+
+          <button class="carousel__btn" id="carouselNext" aria-label="Image suivante">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </nav>
+
+        </div><!-- /.carousel__box -->
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 3 — Vidéo + Rejoignez le mouvement
+    ════════════════════════════════════════════════════════════════ -->
+
+    <!-- Vidéo croppée -->
+    <div class="video-section" id="videoSection" role="region" aria-label="Vidéo de présentation Swella">
+      <video
+        id="sectionVideo"
+        src="image/section3/video.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        aria-label="Vidéo studio Swella Pilates Marseille"
+      ></video>
+      <button class="video-play-btn" id="videoPlay" aria-label="Lire la vidéo">
+        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+      </button>
+    </div>
+
+    <!-- Bloc bordeaux -->
+    <section class="rejoindre" aria-label="Rejoignez le mouvement Swella" id="rejoindre">
+
+      <h2 class="rejoindre__headline">Rejoignez le mouvement</h2>
+
+      <div class="rejoindre__lower">
+
+        <p class="rejoindre__body">
+          Installée au cœur de Marseille, Swella est une salle de Pilates
+          nouvelle génération dédié à la connexion au corps et à l'énergie
+          collective.<br><br>
+          En petit groupe, profitez de nos sessions de Pilates Reformer, Mat
+          et Hot au sein d'un espace lumineux conçu comme un cocon. Ici,
+          on renforce sa posture, on repousse ses limites, mais surtout :
+          on partage une dynamique ultra-positive. Que vous poussiez la porte
+          pour la première fois ou que vous soyez un habitué du tapis,
+          vous faites déjà partie du club.
+        </p>
+
+        <div class="rejoindre__right-col">
+          <span class="rejoindre__brand" aria-hidden="true">Swella</span>
+          <div class="rejoindre__img">
+            <img
+              src="image/section3/courpilate.webp"
+              alt="Cours collectif Pilates Swella Marseille"
+              loading="lazy"
+            >
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 4A — Séparateur blanc
+    ════════════════════════════════════════════════════════════════ -->
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 4B — Nos Prestations
+    ════════════════════════════════════════════════════════════════ -->
+    <!-- ══════════════════════════════════════════════════════════
+         Section — Pour qui ?
+    ══════════════════════════════════════════════════════════ -->
+    <section class="pourqui" id="pour-qui" aria-label="Le Pilates est pour tout le monde">
+
+      <div class="pourqui__visual">
+        <img
+          src="image/toutlesniveau.webp"
+          alt="Femmes de tous âges pratiquant le Pilates à Swella Marseille — cours ouverts à tous les niveaux"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="pourqui__text">
+        <div class="pourqui__eyebrow">
+          <span class="pourqui__eyebrow-rule"></span>
+          <span class="pourqui__eyebrow-text">Pour qui ?</span>
+        </div>
+
+        <h2 class="pourqui__title">
+          Pour<br><em>toutes.</em>
+        </h2>
+
+        <p class="pourqui__body">
+          Chez Swella, pas besoin d'être sportive confirmée pour commencer.
+          Nos cours de Pilates à Marseille sont conçus pour accueillir
+          <strong>tous les niveaux</strong> — débutantes complètes, pratiquantes
+          régulières ou athlètes en quête d'un travail de fond.
+          Peu importe ton âge, ton corps, ton rythme : tu as ta place ici.
+        </p>
+
+        <ul class="pourqui__tags" aria-label="Profils accueillis">
+          <li class="pourqui__tag">Débutantes</li>
+          <li class="pourqui__tag">Intermédiaires</li>
+          <li class="pourqui__tag">Confirmées</li>
+          <li class="pourqui__tag">Post-partum</li>
+          <li class="pourqui__tag">Seniors actives</li>
+          <li class="pourqui__tag">Remise en forme</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <section class="prestations" aria-label="Nos cours et prestations" id="prestations">
+
+      <!-- Panneau gauche -->
+      <div class="prestations__panel">
+        <div class="prestations__eyebrow">
+          <span class="prestations__eyebrow-rule"></span>
+          <span class="prestations__eyebrow-text">Ce qu'on propose</span>
+        </div>
+        <h2 class="prestations__title">Nos<br><em>cours.</em></h2>
+        <p class="prestations__desc">
+          Pilates Reformer, Mat, Hot et bien plus —
+          chaque format est pensé pour progresser
+          à ton rythme, dans une énergie collective.
+        </p>
+        <a href="https://www.eversports.fr/s/swella" target="_blank" rel="noopener" class="prestations__cta">Réserver →</a>
+      </div>
+
+      <!-- Cartes défilantes -->
+      <div class="prestations__scroll" id="prestationsScroll" role="list">
+        <div class="prestations__track">
+
+          <article class="presta-card" data-presta="reformer" role="listitem">
+            <div class="presta-card__bg"></div>
+            <div class="presta-card__overlay"></div>
+            <div class="presta-card__idle-label">Reformer</div>
+            <div class="presta-card__content">
+              <p class="presta-card__cat">Le classique</p>
+              <h3 class="presta-card__name">Reformer</h3>
+              <p class="presta-card__desc">
+                Le reformer est une machine unique qui combine résistance et mobilité.
+                Idéal pour sculpter, renforcer et s'allonger en profondeur.
+              </p>
+              <a href="#" class="presta-card__btn">Réserver →</a>
+            </div>
+          </article>
+
+          <article class="presta-card" data-presta="mat" role="listitem">
+            <div class="presta-card__bg"></div>
+            <div class="presta-card__overlay"></div>
+            <div class="presta-card__idle-label">Mat Pilates</div>
+            <div class="presta-card__content">
+              <p class="presta-card__cat">Au sol</p>
+              <h3 class="presta-card__name">Mat Pilates</h3>
+              <p class="presta-card__desc">
+                Retour aux bases. Le Mat Pilates travaille le gainage, la posture
+                et la connexion corps-esprit — sans machine, juste toi.
+              </p>
+              <a href="#" class="presta-card__btn">Réserver →</a>
+            </div>
+          </article>
+
+          <article class="presta-card" data-presta="hot" role="listitem">
+            <div class="presta-card__bg"></div>
+            <div class="presta-card__overlay"></div>
+            <div class="presta-card__idle-label">Hot Pilates</div>
+            <div class="presta-card__content">
+              <p class="presta-card__cat">Intensité</p>
+              <h3 class="presta-card__name">Hot Pilates</h3>
+              <p class="presta-card__desc">
+                La chaleur amplifie chaque mouvement. Transpire, libère,
+                détoxifie — un cours qui pousse les limites.
+              </p>
+              <a href="#" class="presta-card__btn">Réserver →</a>
+            </div>
+          </article>
+
+          <article class="presta-card" data-presta="events" role="listitem">
+            <div class="presta-card__bg"></div>
+            <div class="presta-card__overlay"></div>
+            <div class="presta-card__idle-label">Événements & Ateliers</div>
+            <div class="presta-card__content">
+              <p class="presta-card__cat">Ensemble</p>
+              <h3 class="presta-card__name">Événements & Ateliers</h3>
+              <p class="presta-card__desc">
+                Masterclasses, workshops, journées spéciales —
+                des moments forts pour la communauté Swella.
+              </p>
+              <a href="#" class="presta-card__btn">En savoir plus →</a>
+            </div>
+          </article>
+
+          <article class="presta-card" data-presta="decouverte" role="listitem">
+            <div class="presta-card__bg"></div>
+            <div class="presta-card__overlay"></div>
+            <div class="presta-card__idle-label">Offres Découverte</div>
+            <div class="presta-card__content">
+              <p class="presta-card__cat">Nouveau ici ?</p>
+              <h3 class="presta-card__name">Offres Découverte</h3>
+              <p class="presta-card__desc">
+                Tu viens pour la première fois ? On a pensé à toi.
+                Des offres spéciales pour commencer en douceur.
+              </p>
+              <a href="#" class="presta-card__btn">Découvrir →</a>
+            </div>
+          </article>
+
+          <article class="presta-card" data-presta="abonnements" role="listitem">
+            <div class="presta-card__bg"></div>
+            <div class="presta-card__overlay"></div>
+            <div class="presta-card__idle-label">Abonnements</div>
+            <div class="presta-card__content">
+              <p class="presta-card__cat">Flexibilité</p>
+              <h3 class="presta-card__name">Abonnements</h3>
+              <p class="presta-card__desc">
+                Cours illimités ou packs — choisis la formule qui
+                correspond à ton rythme et à ta pratique.
+              </p>
+              <a href="#" class="presta-card__btn">Voir les formules →</a>
+            </div>
+          </article>
+
+          <article class="presta-card" data-presta="etudiant" role="listitem">
+            <div class="presta-card__bg"></div>
+            <div class="presta-card__overlay"></div>
+            <div class="presta-card__idle-label">Tarif Étudiant</div>
+            <div class="presta-card__content">
+              <p class="presta-card__cat">Pour les étudiants</p>
+              <h3 class="presta-card__name">Tarif Étudiant</h3>
+              <p class="presta-card__desc">
+                Le Pilates pour toutes. Un tarif préférentiel
+                pour que la pratique reste accessible.
+              </p>
+              <a href="#" class="presta-card__btn">En profiter →</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         Section 5 — Coachs
+    ══════════════════════════════════════════════════════════ -->
+    <section class="coachs" id="coachs" aria-label="Nos coachs Swella">
+
+      <div class="coachs__text">
+        <div class="coachs__eyebrow">
+          <span class="coachs__eyebrow-rule"></span>
+          <span class="coachs__eyebrow-text">L'équipe</span>
+        </div>
+        <h2 class="coachs__title">Coachs</h2>
+        <p class="coachs__desc">
+          Swella, salle de Pilates, située à Marseille, dédiée au mouvement,
+          au bien-être et à la connexion au corps. Nous proposons des cours de
+          Pilates Réformer et Mat — guidés par des coachs passionnés, pour
+          tous les niveaux.
+        </p>
+      </div>
+
+      <div class="coachs__photos">
+
+        <div class="coachs__photo-wrap">
+          <img src="image/coach1.webp" alt="Coach Swella Pilates Marseille">
+          <span class="coachs__caption">Ta coach</span>
+        </div>
+
+        <div class="coachs__photo-wrap">
+          <img src="image/coach2.webp" alt="Rémy, coach Swella Pilates Marseille">
+          <span class="coachs__caption">Ton coach, Rémy</span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         Section Planning
+    ══════════════════════════════════════════════════════════ -->
+    <section class="planning" id="planning" aria-label="Planning des cours Swella Pilates Marseille">
+
+      <div class="planning__header">
+        <div class="planning__eyebrow">
+          <span class="planning__eyebrow-rule"></span>
+          <span class="planning__eyebrow-text">Réserve ta place</span>
+        </div>
+        <h2 class="planning__title">Notre <em>planning.</em></h2>
+      </div>
+
+      <img
+        class="planning__femme"
+        src="image/femme%20qui%20montre.webp"
+        alt="Coach Swella montrant le planning"
+        aria-hidden="true"
+      >
+
+      <div class="planning__visual">
+        <a
+          class="planning__link"
+          href="https://www.eversports.fr/scl/swella"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Voir le planning complet et réserver sur Eversports"
+        >
+          <img
+            src="image/planing.webp"
+            alt="Planning des cours Swella Pilates Marseille — réservation en ligne sur Eversports"
+            loading="lazy"
+          >
+          <div class="planning__overlay"></div>
+        </a>
+
+        <div class="planning__lottie" id="lottieCallToAction"></div>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         Section Workshop
+    ══════════════════════════════════════════════════════════ -->
+    <section class="workshop" id="workshop" aria-label="Workshops et événements Swella Pilates Marseille">
+
+      <div class="workshop__header">
+        <h2 class="workshop__title">Workshop</h2>
+      </div>
+
+      <div class="workshop__grid">
+        <div class="workshop__photo">
+          <img src="image/workshop/workshop1.webp" alt="Workshop Pilates Swella Marseille — matériel et ambiance" loading="lazy">
+        </div>
+        <div class="workshop__photo">
+          <img src="image/workshop/workshop2.webp" alt="Cours workshop Swella Pilates Marseille" loading="lazy">
+        </div>
+        <div class="workshop__photo">
+          <img src="image/workshop/workshop3.webp" alt="Participantes workshop Swella Pilates Marseille" loading="lazy">
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ─── Instagram ────────────────────────────────────────────── -->
+    <section class="insta" aria-label="Swella sur Instagram">
+      <div class="insta__header">
+        <div>
+          <div class="insta__eyebrow">
+            <span class="insta__eyebrow-rule"></span>
+            <span class="insta__eyebrow-text">@swella_pilates</span>
+          </div>
+          <h2 class="insta__title">Suis-nous sur<br><em>Instagram.</em></h2>
+        </div>
+        <a class="insta__follow" href="https://www.instagram.com/swella_pilates" target="_blank" rel="noopener">
+          ↗ Suivre
+        </a>
+      </div>
+      <script src="https://elfsightcdn.com/platform.js" async></script>
+      <div class="elfsight-app-789233c7-9837-432e-82e7-890d7346d775" data-elfsight-app-lazy></div>
+    </section>
+
+    <!-- ─── Témoignages ─────────────────────────────────────────── -->
+    <section class="avis" aria-label="Témoignages">
+      <div class="avis__header">
+        <div class="avis__eyebrow">
+          <span class="avis__eyebrow-rule"></span>
+          <span class="avis__eyebrow-text">Elles l'ont vécu</span>
+          <span class="avis__eyebrow-rule"></span>
+        </div>
+        <h2 class="avis__title">Ce qu'elles<br>en <em>disent.</em></h2>
+      </div>
+      <div class="avis__grid">
+        <div class="avis__card" itemscope itemtype="https://schema.org/Review">
+          <div class="avis__stars">★★★★★</div>
+          <p class="avis__text" itemprop="reviewBody">"Je cherchais un endroit bienveillant pour débuter le Pilates et j'ai trouvé bien plus que ça. L'ambiance est incroyable, les coachs sont à l'écoute et les cours Reformer m'ont complètement transformée. Je recommande les yeux fermés."</p>
+          <span class="avis__author" itemprop="author">Camille L. — Marseille</span>
+        </div>
+        <div class="avis__card" itemscope itemtype="https://schema.org/Review">
+          <div class="avis__stars">★★★★★</div>
+          <p class="avis__text" itemprop="reviewBody">"Swella c'est vraiment à part. On se sent dans un cocon dès qu'on entre. J'ai commencé pour des douleurs de dos et après deux mois je n'ai plus rien. Le Hot Pilates le vendredi soir est devenu mon rituel de la semaine."</p>
+          <span class="avis__author" itemprop="author">Sofia M. — Marseille 13e</span>
+        </div>
+        <div class="avis__card" itemscope itemtype="https://schema.org/Review">
+          <div class="avis__stars">★★★★★</div>
+          <p class="avis__text" itemprop="reviewBody">"J'ai essayé beaucoup de salles à Marseille, Swella est dans une autre catégorie. Le matériel est top, les profs sont passionnées et il y a un vrai esprit de communauté. On revient autant pour les cours que pour l'énergie de l'endroit."</p>
+          <span class="avis__author" itemprop="author">Inès R. — Marseille</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Tarifs ───────────────────────────────────────────────── -->
+    <section class="tarifs" aria-label="Tarifs">
+      <div class="tarifs__header">
+        <div class="tarifs__eyebrow">
+          <span class="tarifs__eyebrow-rule"></span>
+          <span class="tarifs__eyebrow-text">Investis en toi</span>
+          <span class="tarifs__eyebrow-rule"></span>
+        </div>
+        <h2 class="tarifs__title">Nos <em>formules.</em></h2>
+      </div>
+
+      <div class="tarifs__tabs">
+        <button class="tarifs__tab active" data-tab="abonnements">Abonnements</button>
+        <button class="tarifs__tab" data-tab="packs">Packs & Cours</button>
+      </div>
+
+      <!-- Panel Abonnements -->
+      <div class="tarifs__panel active" id="tab-abonnements">
+        <div class="tarifs__grid">
+
+          <div class="tarifs__card">
+            <span class="tarifs__name">Étudiant</span>
+            <div class="tarifs__price">39 €<span> / mois</span></div>
+            <p class="tarifs__desc">2 cours / semaine · Engagement 12 mois</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Commencer</a>
+          </div>
+
+          <div class="tarifs__card">
+            <span class="tarifs__name">Reformer 2 / mois</span>
+            <div class="tarifs__price">48 €<span> / mois</span></div>
+            <p class="tarifs__desc">2 cours Reformer par mois · Engagement 6 mois</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Commencer</a>
+          </div>
+
+          <div class="tarifs__card">
+            <span class="tarifs__name">2 Réf + 2 Mat</span>
+            <div class="tarifs__price">70 €<span> / mois</span></div>
+            <p class="tarifs__desc">4 cours / mois (2 Reformer + 2 Mat) · 1 / semaine · Engagement 6 mois</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Commencer</a>
+          </div>
+
+          <div class="tarifs__card">
+            <span class="tarifs__name">Reformer 4 / mois</span>
+            <div class="tarifs__price">80 €<span> / mois</span></div>
+            <p class="tarifs__desc">4 cours Reformer par mois · Engagement 6 mois</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Commencer</a>
+          </div>
+
+          <div class="tarifs__card">
+            <span class="tarifs__name">Reformer 7 / mois</span>
+            <div class="tarifs__price">130 €<span> / mois</span></div>
+            <p class="tarifs__desc">7 cours Reformer par mois · Engagement 6 mois</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Commencer</a>
+          </div>
+
+          <div class="tarifs__card">
+            <span class="tarifs__name">Reformer 9 / mois</span>
+            <div class="tarifs__price">155 €<span> / mois</span></div>
+            <p class="tarifs__desc">9 cours Reformer par mois · Engagement 6 mois</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Commencer</a>
+          </div>
+
+          <div class="tarifs__card tarifs__card--featured">
+            <span class="tarifs__badge">Illimité</span>
+            <span class="tarifs__name">Reformer Illimité</span>
+            <div class="tarifs__price">175 €<span> / mois</span></div>
+            <p class="tarifs__desc">Cours illimités · 1 / jour · Engagement 6 mois</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Commencer</a>
+          </div>
+
+        </div>
+        <p class="tarifs__note">Engagement minimum indiqué sur chaque formule. Résiliation à tout moment après la période d'engagement.</p>
+      </div>
+
+      <!-- Panel Packs & Cours -->
+      <div class="tarifs__panel" id="tab-packs">
+
+        <p class="tarifs__group-label">À l'unité</p>
+        <div class="tarifs__grid tarifs__grid--packs">
+
+          <div class="tarifs__card">
+            <span class="tarifs__name">Run Pilates Club</span>
+            <div class="tarifs__price">10 €<span> / cours</span></div>
+            <p class="tarifs__desc">Cours collectifs · Valable 1 mois (1ère réservation)</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Réserver</a>
+          </div>
+
+          <div class="tarifs__card">
+            <span class="tarifs__name">Cours Collectifs</span>
+            <div class="tarifs__price">10 €<span> / cours</span></div>
+            <p class="tarifs__desc">1 unité</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Réserver</a>
+          </div>
+
+          <div class="tarifs__card">
+            <span class="tarifs__name">Hot Pilates</span>
+            <div class="tarifs__price">10 €<span> / cours</span></div>
+            <p class="tarifs__desc">1 unité</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Réserver</a>
+          </div>
+
+          <div class="tarifs__card">
+            <span class="tarifs__name">Cours Mat</span>
+            <div class="tarifs__price">13 €<span> / cours</span></div>
+            <p class="tarifs__desc">Valable 1 mois dès achat</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Réserver</a>
+          </div>
+
+          <div class="tarifs__card">
+            <span class="tarifs__name">Cours Reformer</span>
+            <div class="tarifs__price">35 €<span> / cours</span></div>
+            <p class="tarifs__desc">Valable 1 mois dès achat</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Réserver</a>
+          </div>
+
+        </div>
+
+        <p class="tarifs__group-label">Packs Mat</p>
+        <div class="tarifs__grid tarifs__grid--packs">
+
+          <div class="tarifs__card">
+            <span class="tarifs__name">Découverte — 3 Mat</span>
+            <div class="tarifs__price">35 €<span> / 3 cours</span></div>
+            <p class="tarifs__desc">≈ 11,67 € / cours</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Acheter</a>
+          </div>
+
+          <div class="tarifs__card">
+            <span class="tarifs__name">5 cours Mat</span>
+            <div class="tarifs__price">60 €<span> / 5 cours</span></div>
+            <p class="tarifs__desc">≈ 12 € / cours · Valable 2 mois (1ère réservation)</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Acheter</a>
+          </div>
+
+          <div class="tarifs__card">
+            <span class="tarifs__name">10 cours Mat</span>
+            <div class="tarifs__price">110 €<span> / 10 cours</span></div>
+            <p class="tarifs__desc">≈ 11 € / cours · Valable 6 mois (1ère réservation)</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Acheter</a>
+          </div>
+
+          <div class="tarifs__card">
+            <span class="tarifs__name">20 cours Mat</span>
+            <div class="tarifs__price">200 €<span> / 20 cours</span></div>
+            <p class="tarifs__desc">≈ 10 € / cours · Valable 10 mois (1ère réservation)</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Acheter</a>
+          </div>
+
+        </div>
+
+        <p class="tarifs__group-label">Packs Reformer</p>
+        <div class="tarifs__grid tarifs__grid--packs">
+
+          <div class="tarifs__card">
+            <span class="tarifs__name">Starter Swella</span>
+            <div class="tarifs__price">79 €<span> / 4 cours</span></div>
+            <p class="tarifs__desc">≈ 19,75 € / cours · Valable 2 mois (1ère réservation)</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Acheter</a>
+          </div>
+
+          <div class="tarifs__card">
+            <span class="tarifs__name">Découverte — 3 Reformer</span>
+            <div class="tarifs__price">60 €<span> / 3 cours</span></div>
+            <p class="tarifs__desc">≈ 20 € / cours · Valable 2 mois dès achat</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Acheter</a>
+          </div>
+
+          <div class="tarifs__card">
+            <span class="tarifs__name">Swella Duo</span>
+            <div class="tarifs__price">60 €<span> / cours duo</span></div>
+            <p class="tarifs__desc">Reformer à deux · Valable 1 mois dès achat</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Réserver</a>
+          </div>
+
+          <div class="tarifs__card tarifs__card--featured">
+            <span class="tarifs__badge">Populaire</span>
+            <span class="tarifs__name">5 cours Reformer</span>
+            <div class="tarifs__price">140 €<span> / 5 cours</span></div>
+            <p class="tarifs__desc">≈ 28 € / cours · Valable 2 mois dès achat</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Acheter</a>
+          </div>
+
+          <div class="tarifs__card">
+            <span class="tarifs__name">10 cours Reformer</span>
+            <div class="tarifs__price">260 €<span> / 10 cours</span></div>
+            <p class="tarifs__desc">≈ 26 € / cours · Valable 6 mois (1ère réservation)</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Acheter</a>
+          </div>
+
+          <div class="tarifs__card">
+            <span class="tarifs__name">20 cours Reformer</span>
+            <div class="tarifs__price">480 €<span> / 20 cours</span></div>
+            <p class="tarifs__desc">≈ 24 € / cours · Valable 10 mois (1ère réservation)</p>
+            <a class="tarifs__cta" href="https://www.eversports.fr/scl/swella" target="_blank">Acheter</a>
+          </div>
+
+        </div>
+        <p class="tarifs__note">Les cartes s'achètent en ligne. Valable uniquement chez Swella Pilates Club, Marseille.</p>
+      </div>
+
+    </section>
+
+    <!-- ─── FAQ ──────────────────────────────────────────────────── -->
+    <section class="faq" aria-label="FAQ">
+      <div class="faq__header">
+        <div class="faq__eyebrow">
+          <span class="faq__eyebrow-rule"></span>
+          <span class="faq__eyebrow-text">Tes questions</span>
+        </div>
+        <h2 class="faq__title">On <em>répond.</em></h2>
+      </div>
+      <ul class="faq__list" itemscope itemtype="https://schema.org/FAQPage">
+        <li class="faq__item" itemscope itemtype="https://schema.org/Question">
+          <button class="faq__question" aria-expanded="false">
+            <span class="faq__question-text" itemprop="name">Le Pilates est-il adapté aux débutantes ?</span>
+            <span class="faq__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq__answer" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <span itemprop="text">Absolument. Chez Swella, toutes nos séances sont accessibles peu importe ton niveau. Nos coachs adaptent chaque exercice à ton corps et à ta progression. Que tu n'aies jamais fait de Pilates ou que tu sois pratiquante confirmée, tu trouveras ta place ici.</span>
+          </div>
+        </li>
+        <li class="faq__item" itemscope itemtype="https://schema.org/Question">
+          <button class="faq__question" aria-expanded="false">
+            <span class="faq__question-text" itemprop="name">Où se situe Swella à Marseille ?</span>
+            <span class="faq__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq__answer" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <span itemprop="text">Swella Pilates Club est situé au 4 Rue Louis Leprince Ringuet, 13013 Marseille. Accès facile en transports en commun.</span>
+          </div>
+        </li>
+        <li class="faq__item" itemscope itemtype="https://schema.org/Question">
+          <button class="faq__question" aria-expanded="false">
+            <span class="faq__question-text" itemprop="name">Quelle est la différence entre le Reformer et le Mat Pilates ?</span>
+            <span class="faq__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq__answer" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <span itemprop="text">Le Mat Pilates se pratique au sol et travaille principalement le gainage et la mobilité. Le Reformer est une machine à ressorts qui offre une résistance ajustable et permet un travail plus précis, plus profond — idéal pour le renforcement musculaire ciblé et la rééducation.</span>
+          </div>
+        </li>
+        <li class="faq__item" itemscope itemtype="https://schema.org/Question">
+          <button class="faq__question" aria-expanded="false">
+            <span class="faq__question-text" itemprop="name">Comment réserver un cours chez Swella ?</span>
+            <span class="faq__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq__answer" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <span itemprop="text">Tu peux réserver directement en ligne via notre planning sur Eversports. Sélectionne la séance qui te convient, choisis ton format et confirme ta réservation en quelques clics. Simple, rapide, flexible.</span>
+          </div>
+        </li>
+        <li class="faq__item" itemscope itemtype="https://schema.org/Question">
+          <button class="faq__question" aria-expanded="false">
+            <span class="faq__question-text" itemprop="name">Quels sont les horaires de la salle ?</span>
+            <span class="faq__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq__answer" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <span itemprop="text">Swella est ouvert du lundi au vendredi de 09h à 20h, le samedi de 08h à 13h, et le dimanche de 10h à 12h.</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ─── Contact / Map ───────────────────────────────────────── -->
+    <section class="contact" id="contact" aria-label="Nous trouver">
+      <div class="contact__info">
+        <div>
+          <div class="contact__eyebrow">
+            <span class="contact__eyebrow-rule"></span>
+            <span class="contact__eyebrow-text">Viens nous voir</span>
+          </div>
+          <h2 class="contact__title">Nous <em>trouver.</em></h2>
+        </div>
+        <div class="contact__items">
+          <div class="contact__item">
+            <span class="contact__icon">📍</span>
+            <div>
+              <p class="contact__item-label">Adresse</p>
+              <p class="contact__item-value">4 Rue Louis Leprince Ringuet<br>13013 Marseille</p>
+            </div>
+          </div>
+          <div class="contact__item">
+            <span class="contact__icon">📞</span>
+            <div>
+              <p class="contact__item-label">Téléphone</p>
+              <p class="contact__item-value">
+                <a href="tel:+33661755464">06 61 75 54 64</a>
+              </p>
+            </div>
+          </div>
+          <div class="contact__item">
+            <span class="contact__icon">📧</span>
+            <div>
+              <p class="contact__item-label">Email</p>
+              <p class="contact__item-value">
+                <a href="mailto:<!-- contact@swella.fr -->"><!-- contact@swella.fr --></a>
+              </p>
+            </div>
+          </div>
+          <div class="contact__item">
+            <span class="contact__icon">🕐</span>
+            <div>
+              <p class="contact__item-label">Horaires</p>
+              <p class="contact__item-value">Lun–Ven : 09h – 20h<br>Samedi : 08h – 13h<br>Dimanche : 10h – 12h</p>
+            </div>
+          </div>
+        </div>
+        <a class="contact__cta" href="https://maps.google.com/?q=4+Rue+Louis+Leprince+Ringuet+13013+Marseille" target="_blank" rel="noopener">
+          ↗ Obtenir l'itinéraire
+        </a>
+      </div>
+      <div class="contact__map">
+        <iframe
+          src="https://maps.google.com/maps?q=4+Rue+Louis+Leprince+Ringuet+13013+Marseille&output=embed&z=16"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Localisation Swella Pilates Club Marseille"
+        ></iframe>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── Footer ─────────────────────────────────────────────────── -->
+  <footer class="footer" itemscope itemtype="https://schema.org/SportsActivityLocation">
+    <div class="footer__grid">
+      <div>
+        <span class="footer__logo" itemprop="name">Swella</span>
+        <p class="footer__tagline">Pilates Club à Marseille.<br>Un espace pour célébrer le mouvement, la force et la connexion au corps.</p>
+        <div class="footer__socials">
+          <a class="footer__social" href="<!-- Lien Instagram -->" target="_blank" rel="noopener">Instagram</a>
+          <a class="footer__social" href="<!-- Lien TikTok -->" target="_blank" rel="noopener">TikTok</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer__col-title">Nous trouver</p>
+        <ul class="footer__list" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+          <li itemprop="streetAddress">4 Rue Louis Leprince Ringuet</li>
+          <li><span itemprop="postalCode">13013</span> <span itemprop="addressLocality">Marseille</span></li>
+          <li itemprop="telephone"><a href="tel:+33661755464">06 61 75 54 64</a></li>
+          <li><a href="mailto:<!-- contact@swella.fr -->"><!-- contact@swella.fr --></a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__col-title">Horaires</p>
+        <ul class="footer__list">
+          <li>Lun–Ven : 09h – 20h</li>
+          <li>Samedi : 08h – 13h</li>
+          <li>Dimanche : 10h – 12h</li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__col-title">Navigation</p>
+        <ul class="footer__list">
+          <li><a href="#prestations">Nos cours</a></li>
+          <li><a href="#planning">Planning</a></li>
+          <li><a href="#coachs">Coachs</a></li>
+          <li><a href="https://www.eversports.fr/scl/swella" target="_blank" rel="noopener">Réserver</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2026 Swella — Tous droits réservés</span>
+      <span class="footer__copy">Marseille, France</span>
+    </div>
+  </footer>
+
+  <script>
+    // Burger menu
+    const burger = document.getElementById('navBurger');
+    const mobileNav = document.getElementById('navMobile');
+    burger.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open);
+    });
+    document.querySelectorAll('.navbar__mobile a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Tarifs tabs
+    document.querySelectorAll('.tarifs__tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+        document.querySelectorAll('.tarifs__tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tarifs__panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('tab-' + target).classList.add('active');
+      });
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq__question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq__item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq__item.open').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq__question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+
+  <script>
+    /* ═══════════════════════════════════════════════════════════════
+       ANIMATION SCROLL — Image femme bas-droite
+       Principe : transform: scale() sur le container (GPU, sans reflow)
+       transform-origin: bottom right → grandit vers le haut/gauche
+       MIN_SCALE = 55vh / 90vh ≈ 0.6111 (taille initiale)
+       MAX_SCALE = 1.0                  (taille maximale)
+       Déclenchement sur les premiers 40vh de scroll
+    ═══════════════════════════════════════════════════════════════ */
+    (function () {
+      const femme = document.getElementById('femmeHero');
+      if (!femme) return;
+
+      const MIN  = 55 / 90;   // ~0.6111
+      const MAX  = 1.0;
+      const RANGE_VH = 0.4;   // progression sur les 40 premiers vh de scroll
+
+      let rafPending = false;
+
+      function easeInOut(t) {
+        return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+      }
+
+      function applyScale() {
+        const scrollTop  = window.scrollY || 0;
+        const scrollRange = window.innerHeight * RANGE_VH;
+        const raw      = Math.min(Math.max(scrollTop / scrollRange, 0), 1);
+        const eased    = easeInOut(raw);
+        const scale    = MIN + (MAX - MIN) * eased;
+
+        femme.style.transform = 'scale(' + scale.toFixed(5) + ')';
+        rafPending = false;
+      }
+
+      function onScroll() {
+        if (!rafPending) {
+          rafPending = true;
+          requestAnimationFrame(applyScale);
+        }
+      }
+
+      /* État initial — gère le cas d'un refresh sur une page scrollée */
+      applyScale();
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+
+    /* ═══════════════════════════════════════════════════════════════
+       VIDÉO — Section 3
+    ═══════════════════════════════════════════════════════════════ */
+    (function () {
+      const video   = document.getElementById('sectionVideo');
+      const playBtn = document.getElementById('videoPlay');
+      const section = document.getElementById('videoSection');
+      if (!video) return;
+
+      /* La vidéo démarre en autoplay — on cache le bouton immédiatement */
+      section.classList.add('playing');
+
+      function toggle() {
+        if (video.paused) {
+          video.play();
+          section.classList.add('playing');
+        } else {
+          video.pause();
+          section.classList.remove('playing');
+        }
+      }
+
+      playBtn.addEventListener('click', e => { e.stopPropagation(); toggle(); });
+      video.addEventListener('click', toggle);
+      /* loop est activé donc ended ne se déclenche pas, mais sécurité */
+      video.addEventListener('ended', () => section.classList.remove('playing'));
+    })();
+
+    /* ═══════════════════════════════════════════════════════════════
+       CAROUSEL — Section 2
+    ═══════════════════════════════════════════════════════════════ */
+    (function () {
+      const track   = document.getElementById('carouselTrack');
+      const dots    = document.querySelectorAll('#carouselDots .carousel__dot');
+      const prevBtn = document.getElementById('carouselPrev');
+      const nextBtn = document.getElementById('carouselNext');
+      const counter = document.getElementById('carouselCurrent');
+      if (!track) return;
+
+      const total = track.children.length;
+      let current = 0;
+      let timer;
+
+      function goTo(index) {
+        current = (index + total) % total;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dots.forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+          d.setAttribute('aria-selected', String(i === current));
+        });
+        counter.textContent = current + 1;
+      }
+
+      function play()  { timer = setInterval(() => goTo(current + 1), 2200); }
+      function pause() { clearInterval(timer); }
+
+      prevBtn.addEventListener('click', () => { pause(); goTo(current - 1); play(); });
+      nextBtn.addEventListener('click', () => { pause(); goTo(current + 1); play(); });
+      dots.forEach((dot, i) => dot.addEventListener('click', () => { pause(); goTo(i); play(); }));
+
+      const carousel = track.closest('.carousel__box');
+      carousel.addEventListener('mouseenter', pause);
+      carousel.addEventListener('mouseleave', play);
+
+      /* Swipe tactile */
+      let touchStartX = null;
+      track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener('touchend',   e => {
+        if (touchStartX === null) return;
+        const delta = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(delta) > 40) { pause(); goTo(current + (delta > 0 ? 1 : -1)); play(); }
+        touchStartX = null;
+      }, { passive: true });
+
+      play();
+    })();
+
+    /* ═══════════════════════════════════════════════════════════════
+       PRESTATIONS — Carousel snap infini (molette / touch)
+       Une carte avance à la fois, animation éasing vers le slot suivant
+    ═══════════════════════════════════════════════════════════════ */
+    (function () {
+      const section = document.getElementById('prestations');
+      if (!section) return;
+      const scroll = document.getElementById('prestationsScroll');
+      if (!scroll) return;
+      const track = scroll.querySelector('.prestations__track');
+      if (!track) return;
+
+      const CARD_W = 270;
+      const GAP    = Math.round(2.6 * parseFloat(getComputedStyle(document.documentElement).fontSize));
+      const STEP   = CARD_W + GAP;  /* distance entre deux slots */
+      const EASE   = 0.08;
+
+      let cur = 0;
+      let tgt = 0;
+      let animId = null;
+      let $active = null; /* référence directe à la carte active */
+
+      function applyOffset() {
+        track.style.transform = 'translateX(' + (-cur) + 'px)';
+      }
+
+      /* Active une carte précise immédiatement (scale + texte partent en même temps) */
+      function setActive(card) {
+        if (!card || card === $active) return;
+        track.querySelectorAll('.presta-card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        $active = card;
+      }
+
+      /* Recycle basé sur le bord du SCROLL CONTAINER */
+      function recycle() {
+        const sr = scroll.getBoundingClientRect();
+        const first = track.firstElementChild;
+        if (first && first.getBoundingClientRect().right < sr.left - 2) {
+          track.appendChild(first);
+          cur -= STEP; tgt -= STEP;
+          applyOffset();
+        }
+        const last = track.lastElementChild;
+        if (last && last.getBoundingClientRect().left > sr.right + 2) {
+          track.prepend(last);
+          cur += STEP; tgt += STEP;
+          applyOffset();
+        }
+      }
+
+      /* Boucle d'animation — aucun changement d'état active pendant le glissement */
+      function animate() {
+        const diff = tgt - cur;
+        if (Math.abs(diff) < 0.25) {
+          cur = tgt;
+          applyOffset();
+          recycle();
+          animId = null;
+          return;
+        }
+        cur += diff * EASE;
+        applyOffset();
+        recycle();
+        animId = requestAnimationFrame(animate);
+      }
+
+      function startAnim() {
+        if (!animId) animId = requestAnimationFrame(animate);
+      }
+
+      /* Avance d'un cran dans la direction indiquée, active la carte cible immédiatement */
+      function advance(dir) {
+        tgt += dir * STEP;
+        /* La carte qui sera en slot 0 = sibling suivant/précédent de l'active actuelle */
+        const next = dir > 0
+          ? ($active && $active.nextElementSibling ? $active.nextElementSibling : track.firstElementChild)
+          : ($active && $active.previousElementSibling ? $active.previousElementSibling : track.lastElementChild);
+        setActive(next);
+        startAnim();
+      }
+
+      /* ── Molette : un avancement par geste, cooldown pour éviter les doublons ── */
+      let lastAdvance = 0;
+      const COOLDOWN = 750; /* ms — temps minimum entre deux avancements */
+      scroll.addEventListener('wheel', e => {
+        e.preventDefault();
+        const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+        if (Math.abs(d) < 3) return;
+        const now = performance.now();
+        if (now - lastAdvance < COOLDOWN) return;
+        advance(Math.sign(d));
+        lastAdvance = now;
+        resetAutoplay();
+      }, { passive: false });
+
+      /* ── Clic sur une carte → l'amener en position principale ── */
+      track.addEventListener('click', e => {
+        const card = e.target.closest('.presta-card');
+        if (!card || card === $active) return;
+        const all = [...track.querySelectorAll('.presta-card')];
+        const n    = all.length;
+        const from = all.indexOf($active);
+        const to   = all.indexOf(card);
+        if (to === -1) return;
+        let steps = to - from;
+        if (steps >  n / 2) steps -= n;
+        if (steps < -n / 2) steps += n;
+        const dir = Math.sign(steps);
+        for (let i = 0; i < Math.abs(steps); i++) advance(dir);
+        resetAutoplay();
+      });
+
+      /* ── Touch : drag direct + snap au relâcher ── */
+      let txStart = 0, tgtStart = 0;
+      scroll.addEventListener('touchstart', e => {
+        txStart  = e.touches[0].clientX;
+        tgtStart = tgt;
+        if (animId) { cancelAnimationFrame(animId); animId = null; }
+        cur = tgt;
+      }, { passive: true });
+      scroll.addEventListener('touchmove', e => {
+        const dx = txStart - e.touches[0].clientX;
+        cur = tgtStart + dx;
+        applyOffset();
+        recycle();
+      }, { passive: true });
+      scroll.addEventListener('touchend', e => {
+        const dx = txStart - e.changedTouches[0].clientX;
+        if (Math.abs(dx) > STEP * 0.25) {
+          advance(Math.sign(dx));
+          cur = tgtStart + dx;
+        } else {
+          tgt = tgtStart;
+          cur = tgtStart + dx;
+        }
+        startAnim();
+        resetAutoplay();
+      });
+
+      /* Activation initiale */
+      setActive(track.firstElementChild);
+    })();
+
+    /* ═══════════════════════════════════════════════════════════════
+       INTERSECTION OBSERVER — Reveal animations section 2
+    ═══════════════════════════════════════════════════════════════ */
+    (function () {
+      const targets = document.querySelectorAll(
+        '.manifeste__eyebrow, .manifeste__headline, .manifeste__bar, .manifeste__body, .manifeste__quote'
+      );
+      if (!targets.length) return;
+
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18 });
+
+      targets.forEach(el => obs.observe(el));
+    })();
+
+    /* ── Lottie call-to-action planning (JSON inliné pour éviter les restrictions file://) ── */
+    (function () {
+      var el = document.getElementById('lottieCallToAction');
+      if (!el || typeof lottie === 'undefined') return;
+      var animData = {"v":"5.7.5","fr":100,"ip":0,"op":800,"w":800,"h":800,"ddd":0,"layers":[{"ddd":0,"ind":12345679,"ty":4,"nm":"Group Layer 8","sr":1,"ks":{"p":{"a":0,"k":[584,743.016393442623,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[81.9672131147541,81.9672131147541,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"gr","it":[{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[220.741,37.184],[225.501,35.896],[228.749,32.36800000000001],[229.981,27.216000000000008],[228.749,22.12],[225.501,18.592],[220.741,17.304],[215.981,18.592],[212.677,22.12],[211.501,27.216000000000008],[212.677,32.36800000000001],[215.981,35.896],[220.741,37.184],[220.741,37.184],[220.741,37.184]],"i":[[0,0],[-1.380999999999972,0.8586999999999989],[-0.7839999999999918,1.493299999999991],[0,1.903999999999996],[0.8220000000000027,1.493299999999991],[1.382000000000062,0.8586999999999989],[1.79200000000003,0],[1.418999999999983,-0.8586999999999989],[0.8220000000000027,-1.493300000000005],[0,-1.904000000000011],[-0.7839999999999918,-1.5307000000000102],[-1.380999999999972,-0.8586999999999989],[-1.754000000000019,0],[0,0],[0,0]],"o":[[1.79200000000003,0],[1.382000000000062,-0.8586999999999989],[0.8220000000000027,-1.5307000000000102],[0,-1.904000000000011],[-0.7839999999999918,-1.493300000000005],[-1.380999999999972,-0.8586999999999989],[-1.754000000000019,0],[-1.380999999999972,0.8586999999999989],[-0.7839999999999918,1.493299999999991],[0,1.903999999999996],[0.8220000000000027,1.493299999999991],[1.418999999999983,0.8586999999999989],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[221.357,43.06400000000001],[214.917,41.608],[210.49300000000005,37.408],[211.221,36.232],[211.221,42.392],[205.173,42.392],[205.173,0],[211.501,0],[211.501,18.36800000000001],[210.49300000000005,16.912000000000006],[214.973,12.88],[221.357,11.424000000000007],[229.085,13.49600000000001],[234.51700000000005,19.152],[236.533,27.216000000000008],[234.51700000000005,35.28],[229.141,40.992],[221.357,43.06400000000001],[221.357,43.06400000000001],[221.357,43.06400000000001]],"i":[[0,0],[1.942000000000007,0.9706999999999937],[1.045999999999935,1.829300000000003],[-0.2426666666666506,0.3919999999999959],[0,-2.053333333333327],[2.015999999999963,0],[0,14.13066666666667],[-2.109333333333325,0],[0,-6.122666666666674],[0.3360000000000127,0.4853333333333296],[-1.865999999999985,0.9707000000000079],[-2.38900000000001,0],[-2.277000000000044,-1.3813000000000102],[-1.30600000000004,-2.389300000000006],[0,-2.986699999999999],[1.343999999999937,-2.389300000000006],[2.27800000000002,-1.4187000000000012],[2.912000000000035,0],[0,0],[0,0]],"o":[[-2.351999999999975,0],[-1.903999999999996,-0.9707000000000079],[0.2426666666666506,-0.3919999999999959],[0,2.053333333333327],[-2.015999999999963,0],[0,-14.13066666666667],[2.109333333333325,0],[0,6.122666666666667],[-0.3360000000000127,-0.4853333333333296],[1.120000000000005,-1.717300000000009],[1.867000000000075,-0.9706999999999937],[2.875,0],[2.314999999999941,1.381299999999996],[1.343999999999937,2.389300000000006],[0,2.986699999999999],[-1.30600000000004,2.389300000000006],[-2.27699999999993,1.381299999999996],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[181.87,43.06400000000001],[176.438,42],[172.854,38.976],[171.566,34.384],[172.63,29.960000000000008],[176.046,26.656000000000006],[181.814,24.752],[192.342,23.016000000000005],[192.342,28],[183.046,29.624],[179.35,31.248],[178.174,34.16],[179.462,37.016000000000005],[182.878,38.08],[187.35799999999995,36.96000000000001],[190.38199999999995,33.992],[191.446,29.792],[191.446,22.008],[189.766,18.36800000000001],[185.398,16.912000000000006],[180.974,18.256],[178.23,21.616],[172.966,18.98400000000001],[175.71,15.064000000000007],[180.134,12.376],[185.566,11.424000000000007],[191.894,12.768],[196.206,16.52],[197.774,22.008],[197.774,42.392],[191.726,42.392],[191.726,36.904],[193.014,37.072],[190.27,40.264],[186.518,42.336],[181.87,43.06400000000001],[181.87,43.06400000000001],[181.87,43.06400000000001]],"i":[[0,0],[1.567999999999984,0.7092999999999989],[0.8589999999999236,1.2693000000000012],[0,1.7547],[-0.7089999999999463,1.306699999999992],[-1.530000000000086,0.8960000000000008],[-2.313999999999965,0.3733000000000004],[-3.509333333333302,0.5786666666666633],[0,-1.661333333333332],[3.098666666666645,-0.541333333333327],[0.7839999999999918,-0.784000000000006],[0,-1.194699999999997],[-0.8579999999999472,-0.7467000000000041],[-1.381000000000085,0],[-1.268999999999892,0.7466999999999899],[-0.7089999999999463,1.2319999999999993],[0,1.530699999999996],[0,2.594666666666669],[1.120000000000005,0.9332999999999885],[1.829999999999927,0],[1.269999999999982,-0.8960000000000008],[0.5979999999999563,-1.381299999999996],[1.754666666666708,0.8773333333333255],[-1.269000000000005,1.11999999999999],[-1.680000000000064,0.6346999999999952],[-1.903999999999996,0],[-1.828999999999951,-0.8960000000000008],[-1.008000000000038,-1.6053],[0,-2.090699999999998],[0,-6.794666666666672],[2.015999999999963,0],[0,1.829333333333338],[-0.4293333333333749,-0.05599999999999739],[1.120000000000005,-0.8959999999999866],[1.418999999999983,-0.4852999999999952],[1.717999999999961,0],[0,0],[0,0]],"o":[[-2.052999999999997,0],[-1.529999999999973,-0.7467000000000041],[-0.8580000000000609,-1.306699999999992],[0,-1.642700000000005],[0.7469999999999573,-1.306700000000006],[1.530999999999949,-0.8960000000000008],[3.509333333333302,-0.5786666666666633],[0,1.661333333333332],[-3.098666666666645,0.541333333333327],[-1.680000000000064,0.2987000000000108],[-0.7839999999999918,0.7467000000000041],[0,1.157300000000006],[0.8959999999999582,0.7092999999999989],[1.717999999999961,0],[1.307000000000016,-0.7467000000000041],[0.7100000000000364,-1.2693000000000012],[0,-2.594666666666669],[0,-1.493299999999991],[-1.081999999999994,-0.9707000000000079],[-1.680000000000064,0],[-1.232000000000085,0.8586999999999989],[-1.754666666666708,-0.8773333333333255],[0.5599999999999454,-1.493300000000005],[1.269999999999982,-1.157300000000006],[1.717999999999961,-0.6347000000000094],[2.389999999999986,0],[1.866999999999962,0.8960000000000008],[1.045999999999935,1.568000000000012],[0,6.794666666666672],[-2.015999999999963,0],[0,-1.829333333333338],[0.4293333333333749,0.05599999999999739],[-0.70900000000006,1.2319999999999993],[-1.081999999999994,0.8960000000000008],[-1.380999999999972,0.4853000000000094],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[159.072,42.392],[159.072,0],[165.4,0],[165.4,42.392],[159.072,42.392],[159.072,42.392],[159.072,42.392]],"i":[[0,0],[0,14.13066666666667],[-2.109333333333325,0],[0,-14.13066666666667],[2.109333333333325,0],[0,0],[0,0]],"o":[[0,-14.13066666666667],[2.109333333333325,0],[0,14.13066666666667],[-2.109333333333325,0],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[138.952,43.06400000000001],[130.888,40.992],[125.456,35.28],[123.496,27.16],[125.456,19.040000000000006],[130.832,13.49600000000001],[138.448,11.424000000000007],[144.552,12.600000000000009],[149.088,15.848],[151.888,20.49600000000001],[152.896,26.096],[152.84,27.608],[152.616,29.064000000000007],[128.48,29.064000000000007],[128.48,24.024],[149.032,24.024],[146.008,26.320000000000007],[145.616,21.448000000000008],[142.816,18.032],[138.448,16.744],[133.968,18.032],[130.944,21.616],[130.104,27.216000000000008],[130.944,32.592],[134.192,36.176],[139.008,37.464],[143.65599999999995,36.232],[146.736,33.040000000000006],[151.888,35.56],[149.088,39.42400000000001],[144.60799999999995,42.11200000000001],[138.952,43.06400000000001],[138.952,43.06400000000001],[138.952,43.06400000000001]],"i":[[0,0],[2.351999999999975,1.381299999999996],[1.307000000000016,2.389300000000006],[0,2.986699999999999],[-1.307000000000016,2.35199999999999],[-2.240000000000009,1.343999999999994],[-2.836999999999989,0],[-1.79200000000003,-0.784000000000006],[-1.231999999999971,-1.381299999999996],[-0.6349999999999909,-1.754700000000014],[0,-1.978700000000003],[0.03699999999992087,-0.5227000000000004],[0.1119999999999663,-0.4480000000000075],[8.04533333333336,0],[0,1.680000000000007],[-6.850666666666712,0],[1.008000000000038,-0.7653333333333308],[0.6349999999999909,1.4187000000000012],[1.269000000000005,0.8213000000000079],[1.680000000000064,0],[1.307000000000016,-0.8586999999999989],[0.70900000000006,-1.567999999999998],[-0.1490000000000009,-2.202700000000007],[-0.7469999999999573,-1.530699999999996],[-1.380999999999972,-0.8586999999999989],[-1.79200000000003,0],[-1.268999999999892,0.8213000000000079],[-0.7469999999999573,1.306699999999992],[-1.717333333333386,-0.8400000000000034],[1.269000000000005,-1.157300000000006],[1.755000000000109,-0.6720000000000113],[2.052999999999997,0],[0,0],[0,0]],"o":[[-3.024000000000001,0],[-2.315000000000055,-1.4187000000000012],[-1.307000000000016,-2.426699999999997],[0,-3.061299999999989],[1.343999999999937,-2.352000000000004],[2.240000000000009,-1.3813000000000102],[2.277000000000044,0],[1.79200000000003,0.7839999999999918],[1.232000000000085,1.344000000000008],[0.6720000000000255,1.7547],[0,0.4852999999999952],[-0.03700000000003456,0.5227000000000004],[-8.04533333333336,0],[0,-1.680000000000007],[6.850666666666712,0],[-1.008000000000038,0.7653333333333308],[0.3729999999999336,-1.829300000000003],[-0.59699999999998,-1.456000000000003],[-1.232000000000085,-0.8586999999999989],[-1.67999999999995,0],[-1.306999999999903,0.8213000000000079],[-0.7089999999999463,1.530699999999996],[-0.1870000000000118,2.053299999999993],[0.7839999999999918,1.53070000000001],[1.418999999999983,0.8586999999999989],[1.828999999999951,0],[1.307000000000016,-0.8212999999999937],[1.717333333333386,0.8400000000000034],[-0.59699999999998,1.4187000000000012],[-1.231999999999971,1.11999999999999],[-1.716999999999985,0.6346999999999952],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[111.001,7.951999999999998],[111.001,0.6720000000000041],[117.329,0.6720000000000041],[117.329,7.951999999999998],[111.001,7.951999999999998],[111.001,7.951999999999998],[111.001,7.951999999999998]],"i":[[0,0],[0,2.426666666666662],[-2.109333333333325,0],[0,-2.426666666666662],[2.109333333333325,0],[0,0],[0,0]],"o":[[0,-2.426666666666662],[2.109333333333325,0],[0,2.426666666666662],[-2.109333333333325,0],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[111.001,42.392],[111.001,12.096],[117.329,12.096],[117.329,42.392],[111.001,42.392],[111.001,42.392],[111.001,42.392]],"i":[[0,0],[0,10.09866666666667],[-2.109333333333325,0],[0,-10.09866666666667],[2.109333333333325,0],[0,0],[0,0]],"o":[[0,-10.09866666666666],[2.109333333333325,0],[0,10.09866666666666],[-2.109333333333325,0],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[101.41,42.72800000000001],[94.01800000000003,40.040000000000006],[91.38599999999997,32.48],[91.38599999999997,17.808000000000007],[86.06600000000003,17.808000000000007],[86.06600000000003,12.096],[86.90599999999995,12.096],[90.21000000000004,10.864],[91.38599999999997,7.504000000000005],[91.38599999999997,5.152000000000001],[97.71400000000006,5.152000000000001],[97.71400000000006,12.096],[104.602,12.096],[104.602,17.808000000000007],[97.71400000000006,17.808000000000007],[97.71400000000006,32.2],[98.21799999999996,34.888000000000005],[99.84199999999998,36.568],[102.754,37.128],[103.76200000000006,37.072],[104.826,36.96000000000001],[104.826,42.392],[103.09,42.616],[101.41,42.72800000000001],[101.41,42.72800000000001],[101.41,42.72800000000001]],"i":[[0,0],[1.754999999999995,1.792000000000002],[0,3.248000000000005],[0,4.890666666666661],[1.773333333333312,0],[0,1.903999999999996],[-0.2799999999999727,0],[-0.7839999999999918,0.8212999999999937],[0,1.4187000000000012],[0,0.7839999999999989],[-2.109333333333325,0],[0,-2.314666666666668],[-2.295999999999935,0],[0,-1.903999999999996],[2.295999999999935,0],[0,-4.797333333333327],[-0.3360000000000127,-0.7467000000000041],[-0.7469999999999573,-0.4106999999999914],[-1.19500000000005,0],[-0.3730000000000473,0.03730000000000189],[-0.3360000000000127,0.03729999999998768],[0,-1.810666666666663],[0.6349999999999909,-0.07469999999999288],[0.4850000000000136,0],[0,0],[0,0]],"o":[[-3.173000000000002,0],[-1.754999999999995,-1.792000000000002],[0,-4.890666666666661],[-1.773333333333312,0],[0,-1.903999999999996],[0.2799999999999727,0],[1.419000000000096,0],[0.7839999999999918,-0.8213000000000079],[0,-0.7839999999999989],[2.109333333333325,0],[0,2.314666666666668],[2.295999999999935,0],[0,1.903999999999996],[-2.295999999999935,0],[0,4.797333333333327],[0,1.045299999999997],[0.3360000000000127,0.7092999999999989],[0.7470000000000709,0.3733000000000004],[0.2989999999999782,0],[0.3729999999999336,-0.03730000000000189],[0,1.810666666666663],[-0.5230000000000246,0.0747000000000071],[-0.6349999999999909,0.0747000000000071],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[78.71499999999997,42.72800000000001],[71.32299999999998,40.040000000000006],[68.69100000000003,32.48],[68.69100000000003,17.808000000000007],[63.37099999999998,17.808000000000007],[63.37099999999998,12.096],[64.21100000000001,12.096],[67.51499999999999,10.864],[68.69100000000003,7.504000000000005],[68.69100000000003,5.152000000000001],[75.019,5.152000000000001],[75.019,12.096],[81.90700000000004,12.096],[81.90700000000004,17.808000000000007],[75.019,17.808000000000007],[75.019,32.2],[75.52300000000002,34.888000000000005],[77.14699999999999,36.568],[80.05900000000003,37.128],[81.06700000000001,37.072],[82.13099999999997,36.96000000000001],[82.13099999999997,42.392],[80.39499999999998,42.616],[78.71499999999997,42.72800000000001],[78.71499999999997,42.72800000000001],[78.71499999999997,42.72800000000001]],"i":[[0,0],[1.754000000000019,1.792000000000002],[0,3.248000000000005],[0,4.890666666666661],[1.773333333333369,0],[0,1.903999999999996],[-0.2800000000000296,0],[-0.7839999999999918,0.8212999999999937],[0,1.4187000000000012],[0,0.7839999999999989],[-2.109333333333325,0],[0,-2.314666666666668],[-2.295999999999992,0],[0,-1.903999999999996],[2.295999999999992,0],[0,-4.797333333333327],[-0.3360000000000127,-0.7467000000000041],[-0.7470000000000141,-0.4106999999999914],[-1.19500000000005,0],[-0.3740000000000236,0.03730000000000189],[-0.3360000000000127,0.03729999999998768],[0,-1.810666666666663],[0.6340000000000146,-0.07469999999999288],[0.4850000000000136,0],[0,0],[0,0]],"o":[[-3.173999999999978,0],[-1.754999999999995,-1.792000000000002],[0,-4.890666666666661],[-1.773333333333369,0],[0,-1.903999999999996],[0.2800000000000296,0],[1.418000000000006,0],[0.7839999999999918,-0.8213000000000079],[0,-0.7839999999999989],[2.109333333333325,0],[0,2.314666666666668],[2.295999999999992,0],[0,1.903999999999996],[-2.295999999999992,0],[0,4.797333333333327],[0,1.045299999999997],[0.3359999999999559,0.7092999999999989],[0.7460000000000377,0.3733000000000004],[0.297999999999945,0],[0.3730000000000473,-0.03730000000000189],[0,1.810666666666663],[-0.5230000000000246,0.0747000000000071],[-0.6349999999999909,0.0747000000000071],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[44.18799999999999,37.184],[48.94799999999998,35.896],[52.19600000000003,32.36800000000001],[53.428,27.216000000000008],[52.19600000000003,22.12],[48.94799999999998,18.592],[44.18799999999999,17.304],[39.428,18.592],[36.12400000000002,22.12],[34.94799999999998,27.216000000000008],[36.12400000000002,32.36800000000001],[39.428,35.896],[44.18799999999999,37.184],[44.18799999999999,37.184],[44.18799999999999,37.184]],"i":[[0,0],[-1.381999999999948,0.8586999999999989],[-0.7840000000000487,1.493299999999991],[0,1.903999999999996],[0.8209999999999695,1.493299999999991],[1.381000000000029,0.8586999999999989],[1.79200000000003,0],[1.418000000000006,-0.8586999999999989],[0.8209999999999695,-1.493300000000005],[0,-1.904000000000011],[-0.7840000000000487,-1.5307000000000102],[-1.382000000000005,-0.8586999999999989],[-1.754999999999995,0],[0,0],[0,0]],"o":[[1.79200000000003,0],[1.381000000000029,-0.8586999999999989],[0.8209999999999695,-1.5307000000000102],[0,-1.904000000000011],[-0.7840000000000487,-1.493300000000005],[-1.381999999999948,-0.8586999999999989],[-1.754999999999995,0],[-1.382000000000005,0.8586999999999989],[-0.7840000000000487,1.493299999999991],[0,1.903999999999996],[0.8209999999999695,1.493299999999991],[1.418000000000006,0.8586999999999989],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[44.18799999999999,43.06400000000001],[36.18000000000001,40.992],[30.46800000000002,35.336],[28.33999999999997,27.216000000000008],[30.46800000000002,19.096],[36.18000000000001,13.49600000000001],[44.18799999999999,11.424000000000007],[52.19600000000003,13.49600000000001],[57.85199999999998,19.096],[59.98000000000002,27.216000000000008],[57.85199999999998,35.392],[52.139999999999986,41.048],[44.18799999999999,43.06400000000001],[44.18799999999999,43.06400000000001],[44.18799999999999,43.06400000000001]],"i":[[0,0],[2.425999999999988,1.381299999999996],[1.418000000000006,2.389300000000006],[0,3.024000000000001],[-1.41900000000004,2.352000000000004],[-2.389999999999986,1.343999999999994],[-2.949999999999989,0],[-2.352000000000032,-1.3813000000000102],[-1.381999999999948,-2.389300000000006],[0,-3.061300000000003],[1.418000000000006,-2.389299999999992],[2.38900000000001,-1.381299999999996],[2.912000000000035,0],[0,0],[0,0]],"o":[[-2.911999999999978,0],[-2.389999999999986,-1.381299999999996],[-1.41900000000004,-2.389299999999992],[0,-3.061300000000003],[1.418000000000006,-2.389300000000006],[2.38900000000001,-1.3813000000000102],[2.98599999999999,0],[2.388999999999953,1.343999999999994],[1.418000000000006,2.352000000000004],[0,3.061299999999989],[-1.418999999999983,2.389300000000006],[-2.389999999999986,1.343999999999994],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[0,42.392],[0,0.6720000000000041],[6.608000000000004,0.6720000000000041],[6.608000000000004,36.512],[24.639999999999986,36.512],[24.639999999999986,42.392],[0,42.392],[0,42.392],[0,42.392]],"i":[[0,0],[0,13.90666666666666],[-2.202666666666687,0],[0,-11.94666666666666],[-6.01066666666668,0],[0,-1.959999999999994],[8.21333333333331,0],[0,0],[0,0]],"o":[[0,-13.90666666666667],[2.202666666666687,0],[0,11.94666666666667],[6.01066666666668,0],[0,1.959999999999994],[-8.21333333333331,0],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[0,0],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"fl","c":{"a":0,"k":[1,1,1],"ix":2},"o":{"a":0,"k":100,"ix":2},"r":1,"bm":0},{"ty":"tr","p":{"a":0,"k":[98.08047485351562,-21.67217254638672],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[99.99999403953552,99.99999403953552],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[246.681,42.392],[246.681,0],[253.009,0],[253.009,18.032],[252.001,17.248],[255.585,12.936000000000007],[261.297,11.424000000000007],[267.23299999999995,12.88],[271.265,16.912000000000006],[272.721,22.792],[272.721,42.392],[266.449,42.392],[266.449,24.528000000000006],[265.553,20.664],[263.201,18.2],[259.729,17.304],[256.25699999999995,18.2],[253.849,20.664],[253.009,24.528000000000006],[253.009,42.392],[246.681,42.392],[246.681,42.392],[246.681,42.392]],"i":[[0,0],[0,14.13066666666667],[-2.109333333333325,0],[0,-6.010666666666665],[0.3360000000000127,0.2613333333333259],[-1.643000000000029,0.9706999999999937],[-2.166000000000054,0],[-1.717999999999961,-0.9706999999999937],[-0.9710000000000036,-1.717300000000009],[0,-2.202699999999993],[0,-6.533333333333331],[2.090666666666721,0],[0,5.954666666666668],[0.59699999999998,1.045299999999997],[1.007999999999925,0.5600000000000023],[1.305999999999926,0],[1.045000000000073,-0.5973000000000042],[0.59699999999998,-1.082700000000003],[0,-1.493300000000005],[0,-5.954666666666668],[2.109333333333325,0],[0,0],[0,0]],"o":[[0,-14.13066666666667],[2.109333333333325,0],[0,6.010666666666665],[-0.3360000000000127,-0.2613333333333259],[0.7459999999999809,-1.903999999999996],[1.641999999999967,-1.0080000000000098],[2.240000000000009,0],[1.717000000000098,0.9707000000000079],[0.9700000000000273,1.717299999999994],[0,6.533333333333331],[-2.090666666666721,0],[0,-5.954666666666668],[0,-1.5307000000000102],[-0.5599999999999454,-1.082700000000003],[-1.008000000000038,-0.5973000000000042],[-1.270000000000095,0],[-1.007999999999953,0.5600000000000023],[-0.5600000000000023,1.082700000000003],[0,5.954666666666668],[-2.109333333333325,0],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[-354.5325317382812,-77.50520324707031],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[237.089,42.72800000000001],[229.697,40.040000000000006],[227.065,32.48],[227.065,17.808000000000007],[221.745,17.808000000000007],[221.745,12.096],[222.585,12.096],[225.889,10.864],[227.065,7.504000000000005],[227.065,5.152000000000001],[233.393,5.152000000000001],[233.393,12.096],[240.281,12.096],[240.281,17.808000000000007],[233.393,17.808000000000007],[233.393,32.2],[233.897,34.888000000000005],[235.521,36.568],[238.433,37.128],[239.441,37.072],[240.505,36.96000000000001],[240.505,42.392],[238.769,42.616],[237.089,42.72800000000001],[237.089,42.72800000000001],[237.089,42.72800000000001]],"i":[[0,0],[1.755000000000052,1.792000000000002],[0,3.248000000000005],[0,4.890666666666661],[1.773333333333369,0],[0,1.903999999999996],[-0.2800000000000296,0],[-0.7839999999999918,0.8212999999999937],[0,1.4187000000000012],[0,0.7839999999999989],[-2.109333333333325,0],[0,-2.314666666666668],[-2.295999999999992,0],[0,-1.903999999999996],[2.295999999999992,0],[0,-4.797333333333327],[-0.3360000000000127,-0.7467000000000041],[-0.7459999999999809,-0.4106999999999914],[-1.194000000000017,0],[-0.3729999999999905,0.03730000000000189],[-0.3360000000000127,0.03729999999998768],[0,-1.810666666666663],[0.6350000000000477,-0.07469999999999288],[0.48599999999999,0],[0,0],[0,0]],"o":[[-3.173000000000002,0],[-1.753999999999962,-1.792000000000002],[0,-4.890666666666661],[-1.773333333333369,0],[0,-1.903999999999996],[0.2800000000000296,0],[1.418999999999983,0],[0.7839999999999918,-0.8213000000000079],[0,-0.7839999999999989],[2.109333333333325,0],[0,2.314666666666668],[2.295999999999992,0],[0,1.903999999999996],[-2.295999999999992,0],[0,4.797333333333327],[0,1.045299999999997],[0.3359999999999559,0.7092999999999989],[0.7470000000000141,0.3733000000000004],[0.2989999999999782,0],[0.3740000000000236,-0.03730000000000189],[0,1.810666666666663],[-0.5220000000000482,0.0747000000000071],[-0.6339999999999577,0.0747000000000071],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[-354.5325317382812,-77.50520324707031],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[210.259,7.951999999999998],[210.259,0.6720000000000041],[216.587,0.6720000000000041],[216.587,7.951999999999998],[210.259,7.951999999999998],[210.259,7.951999999999998],[210.259,7.951999999999998]],"i":[[0,0],[0,2.426666666666662],[-2.109333333333325,0],[0,-2.426666666666662],[2.109333333333325,0],[0,0],[0,0]],"o":[[0,-2.426666666666662],[2.109333333333325,0],[0,2.426666666666662],[-2.109333333333325,0],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[-354.5325317382812,-77.50520324707031],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[210.259,42.392],[210.259,12.096],[216.587,12.096],[216.587,42.392],[210.259,42.392],[210.259,42.392],[210.259,42.392]],"i":[[0,0],[0,10.09866666666667],[-2.109333333333325,0],[0,-10.09866666666667],[2.109333333333325,0],[0,0],[0,0]],"o":[[0,-10.09866666666666],[2.109333333333325,0],[0,10.09866666666666],[-2.109333333333325,0],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[-354.5325317382812,-77.50520324707031],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[169.688,42.392],[159.272,12.096],[165.992,12.096],[173.944,36.232],[171.592,36.232],[179.712,12.096],[185.48,12.096],[193.544,36.232],[191.192,36.232],[199.2,12.096],[205.92,12.096],[195.448,42.392],[189.736,42.392],[181.56,17.696],[183.632,17.696],[175.456,42.392],[169.688,42.392],[169.688,42.392],[169.688,42.392]],"i":[[0,0],[3.47199999999998,10.09866666666667],[-2.240000000000009,0],[-2.650666666666666,-8.045333333333332],[0.7839999999999918,0],[-2.706666666666649,8.045333333333332],[-1.922666666666657,0],[-2.687999999999988,-8.045333333333332],[0.7839999999999918,0],[-2.669333333333327,8.045333333333332],[-2.240000000000009,0],[3.490666666666641,-10.09866666666667],[1.903999999999996,0],[2.725333333333367,8.232],[-0.6906666666666865,0],[2.72533333333331,-8.232],[1.922666666666657,0],[0,0],[0,0]],"o":[[-3.47199999999998,-10.09866666666666],[2.240000000000009,0],[2.650666666666666,8.045333333333332],[-0.7839999999999918,0],[2.706666666666649,-8.045333333333332],[1.922666666666657,0],[2.687999999999988,8.045333333333332],[-0.7839999999999918,0],[2.669333333333327,-8.045333333333332],[2.240000000000009,0],[-3.490666666666641,10.09866666666666],[-1.903999999999996,0],[-2.725333333333367,-8.232],[0.6906666666666865,0],[-2.72533333333331,8.232],[-1.922666666666657,0],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[-354.5325317382812,-77.50520324707031],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"fl","c":{"a":0,"k":[1,1,1],"ix":2},"o":{"a":0,"k":100,"ix":2},"r":1,"bm":0},{"ty":"tr","p":{"a":0,"k":[155.86146545410156,56.001014709472656],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[99.99999403953552,99.99999403953552],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[132.444,43.06400000000001],[124.38,40.992],[118.948,35.28],[116.988,27.16],[118.948,19.040000000000006],[124.324,13.49600000000001],[131.94,11.424000000000007],[138.044,12.600000000000009],[142.58,15.848],[145.38,20.49600000000001],[146.388,26.096],[146.332,27.608],[146.108,29.064000000000007],[121.972,29.064000000000007],[121.972,24.024],[142.524,24.024],[139.5,26.320000000000007],[139.108,21.448000000000008],[136.308,18.032],[131.94,16.744],[127.46,18.032],[124.436,21.616],[123.596,27.216000000000008],[124.436,32.592],[127.684,36.176],[132.5,37.464],[137.148,36.232],[140.228,33.040000000000006],[145.38,35.56],[142.58,39.42400000000001],[138.1,42.11200000000001],[132.444,43.06400000000001],[132.444,43.06400000000001],[132.444,43.06400000000001]],"i":[[0,0],[2.351999999999975,1.381299999999996],[1.305999999999983,2.389300000000006],[0,2.986699999999999],[-1.307000000000016,2.35199999999999],[-2.240000000000009,1.343999999999994],[-2.838000000000022,0],[-1.79200000000003,-0.784000000000006],[-1.232000000000028,-1.381299999999996],[-0.6350000000000477,-1.754700000000014],[0,-1.978700000000003],[0.03699999999997772,-0.5227000000000004],[0.1120000000000232,-0.4480000000000075],[8.045333333333303,0],[0,1.680000000000007],[-6.850666666666655,0],[1.007999999999981,-0.7653333333333308],[0.6340000000000146,1.4187000000000012],[1.269000000000005,0.8213000000000079],[1.67999999999995,0],[1.305999999999983,-0.8586999999999989],[0.7090000000000032,-1.567999999999998],[-0.1499999999999773,-2.202700000000007],[-0.7470000000000141,-1.530699999999996],[-1.382000000000005,-0.8586999999999989],[-1.791999999999973,0],[-1.269999999999982,0.8213000000000079],[-0.7469999999999573,1.306699999999992],[-1.717333333333329,-0.8400000000000034],[1.269000000000005,-1.157300000000006],[1.754000000000019,-0.6720000000000113],[2.052999999999997,0],[0,0],[0,0]],"o":[[-3.024000000000001,0],[-2.314999999999998,-1.4187000000000012],[-1.307000000000016,-2.426699999999997],[0,-3.061299999999989],[1.343999999999994,-2.352000000000004],[2.240000000000009,-1.3813000000000102],[2.276999999999987,0],[1.791999999999973,0.7839999999999918],[1.231999999999971,1.344000000000008],[0.6719999999999686,1.7547],[0,0.4852999999999952],[-0.03800000000001091,0.5227000000000004],[-8.045333333333303,0],[0,-1.680000000000007],[6.850666666666655,0],[-1.007999999999981,0.7653333333333308],[0.3730000000000473,-1.829300000000003],[-0.5979999999999563,-1.456000000000003],[-1.232000000000028,-0.8586999999999989],[-1.680000000000007,0],[-1.307000000000016,0.8213000000000079],[-0.7100000000000364,1.530699999999996],[-0.186999999999955,2.053299999999993],[0.7839999999999918,1.53070000000001],[1.418000000000006,0.8586999999999989],[1.829000000000008,0],[1.305999999999983,-0.8212999999999937],[1.717333333333329,0.8400000000000034],[-0.5980000000000132,1.4187000000000012],[-1.232000000000028,1.11999999999999],[-1.718000000000018,0.6346999999999952],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[-211.7300415039062,-77.67320251464844],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[95.32,37.184],[100.024,35.896],[103.328,32.36800000000001],[104.56,27.216000000000008],[103.328,22.12],[100.024,18.592],[95.32,17.304],[90.56,18.592],[87.256,22.12],[86.08000000000001,27.216000000000008],[87.256,32.36800000000001],[90.50399999999999,35.896],[95.32,37.184],[95.32,37.184],[95.32,37.184]],"i":[[0,0],[-1.381,0.8586999999999989],[-0.7839999999999918,1.493299999999991],[0,1.903999999999996],[0.820999999999998,1.493299999999991],[1.419000000000011,0.8586999999999989],[1.754999999999995,0],[1.418999999999983,-0.8586999999999989],[0.7839999999999918,-1.493300000000005],[0,-1.904000000000011],[-0.7839999999999918,-1.5307000000000102],[-1.381,-0.8586999999999989],[-1.792000000000002,0],[0,0],[0,0]],"o":[[1.754999999999995,0],[1.419000000000011,-0.8586999999999989],[0.820999999999998,-1.5307000000000102],[0,-1.904000000000011],[-0.7839999999999918,-1.493300000000005],[-1.381,-0.8586999999999989],[-1.754999999999995,0],[-1.419000000000011,0.8586999999999989],[-0.7839999999999918,1.493299999999991],[0,1.903999999999996],[0.7839999999999918,1.493299999999991],[1.419000000000011,0.8586999999999989],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[-211.7300415039062,-77.67320251464844],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[94.70400000000001,43.06400000000001],[86.864,40.992],[81.43199999999999,35.28],[79.47200000000001,27.216000000000008],[81.488,19.152],[86.91999999999999,13.49600000000001],[94.648,11.424000000000007],[101.088,12.88],[105.512,16.912000000000006],[104.56,18.36800000000001],[104.56,0],[110.832,0],[110.832,42.392],[104.84,42.392],[104.84,36.232],[105.568,37.408],[101.088,41.608],[94.70400000000001,43.06400000000001],[94.70400000000001,43.06400000000001],[94.70400000000001,43.06400000000001]],"i":[[0,0],[2.314999999999998,1.381299999999996],[1.344000000000023,2.389300000000006],[0,2.986699999999999],[-1.343999999999994,2.389300000000006],[-2.276999999999987,1.381299999999996],[-2.875,0],[-1.8669999999999902,-0.9706999999999937],[-1.082999999999998,-1.717300000000009],[0.3173333333333233,-0.4853333333333296],[0,6.122666666666674],[-2.090666666666664,0],[0,-14.13066666666667],[1.99733333333333,0],[0,2.053333333333327],[-0.242666666666679,-0.3919999999999959],[1.941000000000003,-0.9707000000000079],[2.314999999999998,0],[0,0],[0,0]],"o":[[-2.912000000000006,0],[-2.277000000000015,-1.4187000000000012],[-1.306999999999988,-2.389300000000006],[0,-2.986699999999999],[1.343999999999994,-2.389300000000006],[2.277000000000015,-1.3813000000000102],[2.426999999999992,0],[1.867000000000019,0.9707000000000079],[-0.3173333333333233,0.4853333333333296],[0,-6.122666666666674],[2.090666666666664,0],[0,14.13066666666667],[-1.99733333333333,0],[0,-2.053333333333327],[0.242666666666679,0.3919999999999959],[-1.045000000000016,1.829300000000003],[-1.941000000000003,0.9706999999999937],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[-211.7300415039062,-77.67320251464844],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[57.40100000000001,43.06400000000001],[51.968999999999994,42],[48.38499999999999,38.976],[47.09700000000001,34.384],[48.161,29.960000000000008],[51.577,26.656000000000006],[57.345,24.752],[67.87299999999999,23.016000000000005],[67.87299999999999,28],[58.577,29.624],[54.881,31.248],[53.70500000000001,34.16],[54.992999999999995,37.016000000000005],[58.40899999999999,38.08],[62.88900000000001,36.96000000000001],[65.91300000000001,33.992],[66.977,29.792],[66.977,22.008],[65.297,18.36800000000001],[60.929,16.912000000000006],[56.505,18.256],[53.761,21.616],[48.496999999999986,18.98400000000001],[51.240999999999985,15.064000000000007],[55.66499999999999,12.376],[61.09700000000001,11.424000000000007],[67.42500000000001,12.768],[71.737,16.52],[73.305,22.008],[73.305,42.392],[67.257,42.392],[67.257,36.904],[68.54499999999999,37.072],[65.80099999999999,40.264],[62.04900000000001,42.336],[57.40100000000001,43.06400000000001],[57.40100000000001,43.06400000000001],[57.40100000000001,43.06400000000001]],"i":[[0,0],[1.568000000000012,0.7092999999999989],[0.8590000000000089,1.2693000000000012],[0,1.7547],[-0.7090000000000032,1.306699999999992],[-1.531000000000006,0.8960000000000008],[-2.314999999999998,0.3733000000000004],[-3.509333333333331,0.5786666666666633],[0,-1.661333333333332],[3.098666666666674,-0.541333333333327],[0.7839999999999918,-0.784000000000006],[0,-1.194699999999997],[-0.8590000000000089,-0.7467000000000041],[-1.381,0],[-1.269000000000005,0.7466999999999899],[-0.7090000000000032,1.2319999999999993],[0,1.530699999999996],[0,2.594666666666669],[1.120000000000005,0.9332999999999885],[1.829000000000008,0],[1.269000000000005,-0.8960000000000008],[0.5970000000000084,-1.381299999999996],[1.754666666666679,0.8773333333333255],[-1.268999999999977,1.11999999999999],[-1.680000000000007,0.6346999999999952],[-1.903999999999996,0],[-1.829000000000008,-0.8960000000000008],[-1.0080000000000098,-1.6053],[0,-2.090699999999998],[0,-6.794666666666672],[2.015999999999991,0],[0,1.829333333333338],[-0.429333333333318,-0.05599999999999739],[1.120000000000005,-0.8959999999999866],[1.418999999999983,-0.4852999999999952],[1.716999999999985,0],[0,0],[0,0]],"o":[[-2.053000000000026,0],[-1.531000000000006,-0.7467000000000041],[-0.8589999999999804,-1.306699999999992],[0,-1.642700000000005],[0.7469999999999857,-1.306700000000006],[1.531000000000006,-0.8960000000000008],[3.509333333333331,-0.5786666666666633],[0,1.661333333333332],[-3.098666666666674,0.541333333333327],[-1.680000000000007,0.2987000000000108],[-0.7839999999999918,0.7467000000000041],[0,1.157300000000006],[0.896000000000015,0.7092999999999989],[1.717000000000013,0],[1.306999999999988,-0.7467000000000041],[0.7089999999999748,-1.2693000000000012],[0,-2.594666666666669],[0,-1.493299999999991],[-1.082999999999998,-0.9707000000000079],[-1.680000000000007,0],[-1.2319999999999993,0.8586999999999989],[-1.754666666666679,-0.8773333333333255],[0.5600000000000023,-1.493300000000005],[1.269000000000005,-1.157300000000006],[1.717000000000013,-0.6347000000000094],[2.388999999999982,0],[1.86699999999999,0.8960000000000008],[1.045000000000016,1.568000000000012],[0,6.794666666666672],[-2.015999999999991,0],[0,-1.829333333333338],[0.429333333333318,0.05599999999999739],[-0.7089999999999748,1.2319999999999993],[-1.082999999999998,0.8960000000000008],[-1.381,0.4853000000000094],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[-211.7300415039062,-77.67320251464844],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":true,"v":[[0,42.392],[0,0.6720000000000041],[6.159999999999997,0.6720000000000041],[21.84,22.400000000000006],[18.75999999999999,22.400000000000006],[34.16,0.6720000000000041],[40.31999999999999,0.6720000000000041],[40.31999999999999,42.392],[33.768,42.392],[33.768,8.456000000000003],[36.232,9.128],[20.49600000000001,30.632000000000005],[19.824000000000012,30.632000000000005],[4.424000000000007,9.128],[6.608000000000004,8.456000000000003],[6.608000000000004,42.392],[0,42.392],[0,42.392],[0,42.392]],"i":[[0,0],[0,13.90666666666666],[-2.053333333333342,0],[-5.226666666666659,-7.242666666666665],[1.026666666666671,0],[-5.133333333333326,7.242666666666672],[-2.053333333333342,0],[0,-13.90666666666667],[2.183999999999997,0],[0,11.312],[-0.8213333333333424,-0.2240000000000038],[5.245333333333321,-7.168000000000006],[0.2239999999999895,0],[5.133333333333326,7.168000000000006],[-0.7280000000000086,0.2240000000000038],[0,-11.312],[2.202666666666659,0],[0,0],[0,0]],"o":[[0,-13.90666666666667],[2.053333333333342,0],[5.226666666666659,7.242666666666672],[-1.026666666666671,0],[5.133333333333326,-7.242666666666665],[2.053333333333342,0],[0,13.90666666666666],[-2.183999999999997,0],[0,-11.312],[0.8213333333333424,0.2240000000000038],[-5.245333333333321,7.168000000000006],[-0.2239999999999895,0],[-5.133333333333326,-7.168000000000006],[0.7280000000000086,-0.2240000000000038],[0,11.312],[-2.202666666666659,0],[0,0],[0,0],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[-211.7300415039062,-77.67320251464844],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"fl","c":{"a":0,"k":[1,1,1],"ix":2},"o":{"a":0,"k":100,"ix":2},"r":1,"bm":0},{"ty":"tr","p":{"a":0,"k":[2.91259765625,56.001014709472656],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[99.99999403953552,99.99999403953552],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"gr","it":[{"ty":"rc","d":1,"s":{"a":0,"k":[702.6863719370097,144],"ix":2},"p":{"a":0,"k":[0,0],"ix":2},"r":{"a":0,"k":72,"ix":2}},{"ty":"fl","c":{"a":0,"k":[0,0,0],"ix":2},"o":{"a":0,"k":100,"ix":2},"r":1,"bm":0},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":0,"k":100,"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"tr","p":{"a":0,"k":[56.54167175292969,-2.2762338630855083e-05],"ix":2},"a":{"a":0,"k":[0,0],"ix":2},"s":{"a":0,"k":[99.99999403953552,99.99999403953552],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":80,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]},{"ty":"tr","p":{"a":0,"k":[122.0000003294881,25.00000012138912],"ix":2},"a":{"a":0,"k":[56.54167175292969,-2.288818359375e-05],"ix":2},"s":{"a":0,"k":[34.403572049765366,34.403572049765366],"ix":2},"r":{"a":0,"k":0,"ix":2},"o":{"a":0,"k":100,"ix":2},"sk":{"a":0,"k":0,"ix":2},"sa":{"a":0,"k":0,"ix":2}}]}],"ip":0,"op":801,"st":0,"bm":0},{"ddd":0,"ind":1,"ty":4,"nm":"lottielab.com","sr":1,"ks":{"o":{"a":0,"k":100,"ix":2}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":false,"v":[[0,0],[72.47,71.41],[73.42,67.69],[64.93,44.67],[78.3,72.15],[22.92,63.02]],"i":[[0,0],[-25.825,-20.983],[4.41,7.617],[-11.962,-28.196],[1.123,0.414],[19.044,0]],"o":[[23.46,23.461],[7.588,6.166],[-3.909,-6.753],[1.408,3.32],[-17.983,-6.626],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":1,"k":[{"t":0,"s":[0],"o":{"x":[0.4],"y":[0]},"i":{"x":[0.8],"y":[1]}},{"t":67,"s":[100]}],"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"st","c":{"a":0,"k":[1,0.906,0.761],"ix":2},"o":{"a":0,"k":100,"ix":2},"w":{"a":0,"k":5,"ix":2},"lc":2,"lj":1,"ml":4},{"ty":"tr","p":{"a":0,"k":[398.79,636.12],"ix":2},"a":{"a":0,"k":[39.19,37.48],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":-135,"ix":2},"o":{"a":0,"k":100,"ix":2}}]}],"ip":0,"op":801,"st":0},{"ddd":0,"ind":2,"ty":4,"sr":1,"ks":{"o":{"a":0,"k":100,"ix":2}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":false,"v":[[90.07,0],[29.27,18.14],[7.95,11.46],[6.25,6.58],[22.27,1.91],[1.26,7.75],[21.31,34.38]],"i":[[0,0],[25.502,4.782],[4.968,4.416],[-5.498,2.138],[-4.928,0],[5.361,-1.191],[-3.75,-3.75]],"o":[[-20.762,15.006],[-6.189,-1.16],[-2.822,-2.509],[4.528,-1.761],[1.78,0],[-6.854,1.523],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":1,"k":[{"t":56,"s":[0],"o":{"x":[0.4],"y":[0]},"i":{"x":[0.8],"y":[1]}},{"t":123,"s":[100]}],"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"st","c":{"a":0,"k":[0.455,0.181,0.193],"ix":2},"o":{"a":0,"k":100,"ix":2},"w":{"a":0,"k":5,"ix":2},"lc":2,"lj":1,"ml":4},{"ty":"tr","p":{"a":0,"k":[669.35,431.67],"ix":2},"a":{"a":0,"k":[45.03,17.19],"ix":2},"o":{"a":0,"k":100,"ix":2}}]}],"ip":0,"op":801,"st":0},{"ddd":0,"ind":3,"ty":4,"sr":1,"ks":{"o":{"a":0,"k":100,"ix":2}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":false,"v":[[74.51,161.94],[7.66,111.44],[3.84,50.53],[35.89,16.79],[52.01,7.67],[38.22,0.03],[51.59,3.42],[45.86,30.16]],"i":[[0,0],[14.026,28.441],[-5.954,19.351],[-12.486,9.364],[-3.893,3.892],[2.338,1.169],[-3.284,-0.182],[-3.871,-7.742]],"o":[[-28.698,-10.547],[-9.037,-18.326],[4.982,-16.19],[4.722,-3.541],[1.059,-1.059],[-0.769,-0.385],[17.891,0.994],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":1,"k":[{"t":105,"s":[0],"o":{"x":[0.4],"y":[0]},"i":{"x":[0.8],"y":[1]}},{"t":172,"s":[100]}],"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"st","c":{"a":0,"k":[1,0.906,0.761],"ix":2},"o":{"a":0,"k":100,"ix":2},"w":{"a":0,"k":5,"ix":2},"lc":2,"lj":1,"ml":4},{"ty":"tr","p":{"a":0,"k":[170.94,580],"ix":2},"a":{"a":0,"k":[37.25,80.97],"ix":2},"o":{"a":0,"k":100,"ix":2}}]}],"ip":0,"op":801,"st":0},{"ddd":0,"ind":4,"ty":4,"sr":1,"ks":{"o":{"a":0,"k":100,"ix":2}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":false,"v":[[40.17,0],[25.85,143.13],[68.61,150.88],[82.93,147.06],[69.25,135.6],[85.16,147.48],[55.45,175.71]],"i":[[0,0],[-54.976,-35.468],[-15.351,0],[1.694,1.355],[-17.256,-13.969],[0,-2.464],[5.022,-5.022]],"o":[[-22.992,40.539],[13.467,8.689],[0.663,0],[-4.537,-3.629],[1.826,1.478],[0,6.712],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":1,"k":[{"t":172,"s":[0],"o":{"x":[0.4],"y":[0]},"i":{"x":[0.8],"y":[1]}},{"t":239,"s":[100]}],"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"st","c":{"a":0,"k":[1,0.906,0.761],"ix":2},"o":{"a":0,"k":100,"ix":2},"w":{"a":0,"k":5,"ix":2},"lc":2,"lj":1,"ml":4},{"ty":"tr","p":{"a":0,"k":[121.53,302.15],"ix":2},"a":{"a":0,"k":[42.58,87.85],"ix":2},"o":{"a":0,"k":100,"ix":2}}]}],"ip":0,"op":801,"st":0},{"ddd":0,"ind":5,"ty":4,"sr":1,"ks":{"o":{"a":0,"k":100,"ix":2}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":false,"v":[[0,2.58],[25.6,7.03],[20.8,24.98]],"i":[[0,0],[4.82,-12.191],[0,-7.062]],"o":[[6.259,-0.477],[-2.574,6.512],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":1,"k":[{"t":294,"s":[0],"o":{"x":[0.4],"y":[0]},"i":{"x":[0.8],"y":[1]}},{"t":306,"s":[100]}],"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"st","c":{"a":0,"k":[1,0.906,0.761],"ix":2},"o":{"a":0,"k":100,"ix":2},"w":{"a":0,"k":5,"ix":2},"lc":2,"lj":1,"ml":4},{"ty":"tr","p":{"a":0,"k":[549.9,240.7],"ix":2},"a":{"a":0,"k":[13.12,12.49],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":165,"ix":2},"o":{"a":0,"k":100,"ix":2}}]}],"ip":0,"op":801,"st":0},{"ddd":0,"ind":6,"ty":4,"sr":1,"ks":{"o":{"a":0,"k":100,"ix":2}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":false,"v":[[0,18.26],[58.22,5.64],[48,65.91],[117.51,56.58],[148.71,38.44],[153.6,34.26]],"i":[[0,0],[-8.426,-16.852],[-20.278,-15.208],[-16.978,6.965],[-10.48,5.895],[2.21,0]],"o":[[6.662,-3.549],[8.033,16.066],[17.376,13.032],[11.341,-4.653],[0.763,-0.429],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":1,"k":[{"t":239,"s":[0],"o":{"x":[0.4],"y":[0]},"i":{"x":[0.8],"y":[1]}},{"t":294,"s":[100]}],"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"st","c":{"a":0,"k":[1,0.906,0.761],"ix":2},"o":{"a":0,"k":100,"ix":2},"w":{"a":0,"k":5,"ix":2},"lc":2,"lj":1,"ml":4},{"ty":"tr","p":{"a":0,"k":[621.25,222.29],"ix":2},"a":{"a":0,"k":[77.03,35.49],"ix":2},"s":{"a":0,"k":[100,100],"ix":2},"r":{"a":0,"k":165,"ix":2},"o":{"a":0,"k":100,"ix":2}}]}],"ip":0,"op":801,"st":0},{"ddd":0,"ind":7,"ty":4,"sr":1,"ks":{"o":{"a":0,"k":100,"ix":2}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":false,"v":[[88,53.3],[69.6,3.79],[21.51,19.34],[22.93,87.88],[35.2,105.39],[34.4,75.79],[35.56,90.81],[37.87,106.63],[0,99.7]],"i":[[0,0],[22.613,11.031],[11.821,-16.483],[-9.079,-21.789],[-1.011,1.327],[2.166,6.933],[-0.757,-2.953],[4.021,1.279],[14.379,0]],"o":[[4.831,-22.685],[-18.698,-9.121],[-15.082,21.03],[0.972,2.334],[4.441,-5.829],[-1.973,-6.315],[0.56,2.182],[-13.638,-4.339],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":1,"k":[{"t":306,"s":[0],"o":{"x":[0.4],"y":[0]},"i":{"x":[0.8],"y":[1]}},{"t":373,"s":[100]}],"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"st","c":{"a":0,"k":[0.455,0.181,0.193],"ix":2},"o":{"a":0,"k":100,"ix":2},"w":{"a":0,"k":5,"ix":2},"lc":2,"lj":1,"ml":4},{"ty":"tr","p":{"a":0,"k":[312.62,168.94],"ix":2},"a":{"a":0,"k":[45.22,53.36],"ix":2},"o":{"a":0,"k":100,"ix":2}}]}],"ip":0,"op":801,"st":0},{"ddd":0,"ind":8,"ty":4,"sr":1,"ks":{"o":{"a":0,"k":100,"ix":2}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":false,"v":[[0,106.03],[50.08,56.38],[86.9,91.81],[156.5,21.15],[166.26,4.17],[166.58,18.6],[162.34,0.14],[135.6,18.18]],"i":[[0,0],[-25.503,-0.58],[-11.103,-12.272],[-9.649,17.489],[-1.244,-9.329],[6.481,21.873],[6.184,4.638],[1.452,-2.904]],"o":[[9.927,-18.142],[19.568,0.445],[30.403,33.604],[2.482,-4.498],[1.122,8.418],[-1.855,-6.259],[-2.481,-1.861],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":1,"k":[{"t":373,"s":[0],"o":{"x":[0.4],"y":[0]},"i":{"x":[0.8],"y":[1]}},{"t":440,"s":[100]}],"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"st","c":{"a":0,"k":[0.455,0.181,0.193],"ix":2},"o":{"a":0,"k":100,"ix":2},"w":{"a":0,"k":5,"ix":2},"lc":2,"lj":1,"ml":4},{"ty":"tr","p":{"a":0,"k":[595.06,606.68],"ix":2},"a":{"a":0,"k":[84.82,53.02],"ix":2},"r":{"a":0,"k":-75,"ix":2},"o":{"a":0,"k":100,"ix":2}}]}],"ip":0,"op":801,"st":0},{"ddd":0,"ind":9,"ty":4,"sr":1,"ks":{"o":{"a":0,"k":100,"ix":2}},"ao":0,"shapes":[{"ty":"gr","it":[{"ty":"sh","d":1,"ks":{"a":0,"k":{"c":false,"v":[[145.06,368.79],[407.11,277.78],[445.32,143.64],[395.96,64.6],[297.34,10.04],[83.72,48.37],[1.48,211.51],[80.01,340.05],[260.05,378.38]],"i":[[0,0],[-79.555,95.991],[15.663,63.328],[17.7,16.742],[33.52,8.862],[65.806,-53.535],[-12.533,-89.34],[-30.475,-17.456],[-59.547,-3.79]],"o":[[87.371,0],[20.996,-25.334],[-9.888,-39.979],[-31.286,-29.593],[-68.639,-18.146],[-24.52,19.948],[10.517,74.966],[58.133,33.298],[0,0]]}}},{"ty":"tm","s":{"a":0,"k":0,"ix":2},"e":{"a":1,"k":[{"t":469,"s":[0],"o":{"x":[0.4],"y":[0]},"i":{"x":[0.8],"y":[1]}},{"t":536,"s":[100]}],"ix":2},"o":{"a":0,"k":0,"ix":2},"m":1},{"ty":"st","c":{"a":0,"k":[1,0.906,0.761],"ix":2},"o":{"a":0,"k":100,"ix":2},"w":{"a":0,"k":5,"ix":2},"lc":2,"lj":1,"ml":4},{"ty":"tr","p":{"a":0,"k":[388.82,403.48],"ix":2},"a":{"a":0,"k":[224.71,189.19],"ix":2},"o":{"a":0,"k":100,"ix":2}}]}],"ip":0,"op":801,"st":0}]};
+      lottie.loadAnimation({
+        container: el,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: animData
+      });
+    })();
+  </script>
+
+</body>
+</html>
