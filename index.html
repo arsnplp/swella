@@ -595,11 +595,6 @@
       object-position: center 30%;
       display: block;
     }
-    .video-mobile { display: none; }
-    @media (max-width: 768px) {
-      .video-desktop { display: none; }
-      .video-mobile { display: block; object-position: center center; }
-    }
 
     /* Overlay sombre léger pour contraste du bouton */
     .video-section::before {
@@ -2072,20 +2067,7 @@
     <!-- Vidéo croppée -->
     <div class="video-section" id="videoSection" role="region" aria-label="Vidéo de présentation Swella">
       <video
-        class="video-desktop"
         id="sectionVideo"
-        src="image/section3/video.mp4"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-        aria-label="Vidéo studio Swella Pilates Marseille"
-      ></video>
-      <video
-        class="video-mobile"
-        src="image/video.mp4"
-        autoplay
         muted
         loop
         playsinline
@@ -2918,6 +2900,20 @@
       const playBtn = document.getElementById('videoPlay');
       const section = document.getElementById('videoSection');
       if (!video) return;
+
+      /* Swap source selon mobile/desktop */
+      const SRC_DESKTOP = 'image/section3/video.mp4';
+      const SRC_MOBILE  = 'image/video.mp4';
+      function loadVideo() {
+        const src = window.innerWidth <= 768 ? SRC_MOBILE : SRC_DESKTOP;
+        if (video.getAttribute('src') !== src) {
+          video.src = src;
+          video.load();
+          video.play().catch(() => {});
+        }
+      }
+      loadVideo();
+      window.addEventListener('resize', loadVideo);
 
       /* La vidéo démarre en autoplay — on cache le bouton immédiatement */
       section.classList.add('playing');
