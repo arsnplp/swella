@@ -340,7 +340,10 @@
 
     @media (max-width: 520px) {
       .hero__femme {
-        display: none;
+        right: -28vw;
+        height: 72vh;
+        opacity: 0;
+        animation: femmeRevealMobile 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.45s forwards;
       }
       .hero__name {
         font-size: clamp(4.5rem, 20vw, 6rem);
@@ -460,7 +463,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.6rem 2rem 1.6rem 0.8rem;
+      padding: 1.6rem 1.6rem;
       background: var(--c-cream);
       overflow: visible;
     }
@@ -721,11 +724,18 @@
 
     /* ─── Responsive section 3 ────────────────────────────────────── */
     @media (max-width: 768px) {
+      .rejoindre {
+        padding-top: clamp(2.5rem, 5vh, 4rem);
+      }
       .rejoindre__lower {
         grid-template-columns: 1fr;
       }
       .rejoindre__right-col {
+        order: -1;
         align-items: flex-start;
+      }
+      .rejoindre__brand {
+        margin-right: 0;
       }
     }
 
@@ -978,7 +988,7 @@
     /* ─── Responsive section 4 ────────────────────────────────────── */
     @media (max-width: 900px) {
       .prestations { grid-template-columns: 1fr; min-height: auto; }
-      .prestations__panel { padding: 3rem clamp(2rem, 6vw, 6rem); }
+      .prestations__panel { padding: 2.5rem clamp(2rem, 6vw, 6rem) 0.8rem; }
       .prestations__track { height: 420px; }
       .prestations__scroll { margin-bottom: 2.5rem; }
     }
@@ -1110,6 +1120,15 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--c-sand);
+    }
+    .coachs__photo-label {
+      font-family: var(--f-body);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      margin-top: 0.7rem;
     }
 
     @media (max-width: 768px) {
@@ -1694,7 +1713,21 @@
       .contact__map { aspect-ratio: 16/9; }
     }
 
-    /* ─── Instagram ────────────────────────────────────────────────── */
+    /* ─── Instagram / Elfsight branding masqué ────────────────────── */
+    .elfsight-wrapper {
+      position: relative;
+    }
+    .elfsight-wrapper::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 44px;
+      background: var(--c-cream);
+      pointer-events: none;
+      z-index: 10;
+    }
     .insta {
       background: var(--c-cream);
       padding: clamp(4rem, 8vh, 7rem) clamp(2rem, 6vw, 8rem);
@@ -1773,12 +1806,8 @@
       height: 64px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .navbar__brand { display: flex; flex-direction: column; gap: 2px; text-decoration: none; align-items: flex-start; width: fit-content; }
-    .navbar__logo { height: 36px; width: auto; display: block; flex-shrink: 0; }
-    .navbar__tagline {
-      font-family: var(--f-body); font-size: 0.5rem; letter-spacing: 0.22em;
-      text-transform: uppercase; color: rgba(255,255,255,0.6);
-    }
+    .navbar__brand { display: flex; text-decoration: none; align-items: flex-start; width: fit-content; }
+    .navbar__logo { height: 46px; width: auto; display: block; flex-shrink: 0; }
     .navbar__links {
       display: flex; align-items: center; gap: clamp(1.2rem, 2.5vw, 2.5rem);
       list-style: none;
@@ -1896,7 +1925,6 @@
     <nav class="navbar" aria-label="Navigation principale">
       <a class="navbar__brand" href="#">
         <img class="navbar__logo" src="image/logo.webp" alt="Swella Pilates Club">
-        <span class="navbar__tagline">Club social wellness</span>
       </a>
       <ul class="navbar__links">
         <li><a href="#prestations">Nos cours</a></li>
@@ -2195,7 +2223,7 @@
                 Le reformer est une machine unique qui combine résistance et mobilité.
                 Idéal pour sculpter, renforcer et s'allonger en profondeur.
               </p>
-              <a href="#" class="presta-card__btn">Réserver →</a>
+              <a href="https://www.eversports.fr/sp/swella" target="_blank" rel="noopener" class="presta-card__btn">Réserver →</a>
             </div>
           </article>
 
@@ -2210,7 +2238,7 @@
                 Retour aux bases. Le Mat Pilates travaille le gainage, la posture
                 et la connexion corps-esprit, sans machine, juste toi.
               </p>
-              <a href="#" class="presta-card__btn">Réserver →</a>
+              <a href="https://www.eversports.fr/sp/swella" target="_blank" rel="noopener" class="presta-card__btn">Réserver →</a>
             </div>
           </article>
 
@@ -2225,7 +2253,7 @@
                 La chaleur amplifie chaque mouvement. Transpire, libère,
                 détoxifie : un cours qui pousse les limites.
               </p>
-              <a href="#" class="presta-card__btn">Réserver →</a>
+              <a href="https://www.eversports.fr/sp/swella" target="_blank" rel="noopener" class="presta-card__btn">Réserver →</a>
             </div>
           </article>
 
@@ -2240,7 +2268,7 @@
                 Masterclasses, workshops, journées spéciales —
                 des moments forts pour la communauté Swella.
               </p>
-              <a href="#" class="presta-card__btn">En savoir plus →</a>
+              <a href="https://www.eversports.fr/sp/swella" target="_blank" rel="noopener" class="presta-card__btn">En savoir plus →</a>
             </div>
           </article>
 
@@ -2255,7 +2283,7 @@
                 Tu viens pour la première fois ? On a pensé à toi.
                 Des offres spéciales pour commencer en douceur.
               </p>
-              <a href="#" class="presta-card__btn">Découvrir →</a>
+              <a href="https://www.eversports.fr/sp/swella" target="_blank" rel="noopener" class="presta-card__btn">Découvrir →</a>
             </div>
           </article>
 
@@ -2270,7 +2298,7 @@
                 Cours illimités ou packs, choisis la formule qui
                 correspond à ton rythme et à ta pratique.
               </p>
-              <a href="#" class="presta-card__btn">Voir les formules →</a>
+              <a href="https://www.eversports.fr/sp/swella" target="_blank" rel="noopener" class="presta-card__btn">Voir les formules →</a>
             </div>
           </article>
 
@@ -2285,7 +2313,7 @@
                 Le Pilates pour toutes. Un tarif préférentiel
                 pour que la pratique reste accessible.
               </p>
-              <a href="#" class="presta-card__btn">En profiter →</a>
+              <a href="https://www.eversports.fr/sp/swella" target="_blank" rel="noopener" class="presta-card__btn">En profiter →</a>
             </div>
           </article>
 
@@ -2312,9 +2340,12 @@
 
       <div class="coachs__photos">
 
-        <div class="coachs__photo-wrap">
-          <img src="image/coach1.webp" alt="Coach Swella Pilates Marseille">
-          <span class="coachs__caption">Ta coach</span>
+        <div>
+          <div class="coachs__photo-wrap">
+            <img src="image/coach1.webp" alt="Priscillia, coach Swella Pilates Marseille">
+            <span class="coachs__caption">Priscillia</span>
+          </div>
+          <p class="coachs__photo-label">Ta coach</p>
         </div>
 
 
@@ -2401,7 +2432,9 @@
         </a>
       </div>
       <script src="https://elfsightcdn.com/platform.js" async></script>
-      <div class="elfsight-app-789233c7-9837-432e-82e7-890d7346d775" data-elfsight-app-lazy></div>
+      <div class="elfsight-wrapper">
+        <div class="elfsight-app-789233c7-9837-432e-82e7-890d7346d775" data-elfsight-app-lazy></div>
+      </div>
     </section>
 
     <!-- ─── Témoignages ─────────────────────────────────────────── -->
@@ -2935,7 +2968,7 @@
     })();
 
     /* ═══════════════════════════════════════════════════════════════
-       CAROUSEL — Section 2
+       CAROUSEL — Section 2 (boutons prev/next uniquement)
     ═══════════════════════════════════════════════════════════════ */
     (function () {
       const track   = document.getElementById('carouselTrack');
@@ -2947,7 +2980,6 @@
 
       const total = track.children.length;
       let current = 0;
-      let timer;
 
       function goTo(index) {
         current = (index + total) % total;
@@ -2959,28 +2991,9 @@
         counter.textContent = current + 1;
       }
 
-      function play()  { timer = setInterval(() => goTo(current + 1), 2200); }
-      function pause() { clearInterval(timer); }
-
-      prevBtn.addEventListener('click', () => { pause(); goTo(current - 1); play(); });
-      nextBtn.addEventListener('click', () => { pause(); goTo(current + 1); play(); });
-      dots.forEach((dot, i) => dot.addEventListener('click', () => { pause(); goTo(i); play(); }));
-
-      const carousel = track.closest('.carousel__box');
-      carousel.addEventListener('mouseenter', pause);
-      carousel.addEventListener('mouseleave', play);
-
-      /* Swipe tactile */
-      let touchStartX = null;
-      track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-      track.addEventListener('touchend',   e => {
-        if (touchStartX === null) return;
-        const delta = touchStartX - e.changedTouches[0].clientX;
-        if (Math.abs(delta) > 40) { pause(); goTo(current + (delta > 0 ? 1 : -1)); play(); }
-        touchStartX = null;
-      }, { passive: true });
-
-      play();
+      prevBtn.addEventListener('click', () => goTo(current - 1));
+      nextBtn.addEventListener('click', () => goTo(current + 1));
+      dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
     })();
 
     /* ═══════════════════════════════════════════════════════════════
@@ -3065,24 +3078,17 @@
         startAnim();
       }
 
-      /* ── Molette : un avancement par geste, cooldown pour éviter les doublons ── */
-      let lastAdvance = 0;
-      const COOLDOWN = 750; /* ms — temps minimum entre deux avancements */
-      scroll.addEventListener('wheel', e => {
-        e.preventDefault();
-        const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-        if (Math.abs(d) < 3) return;
-        const now = performance.now();
-        if (now - lastAdvance < COOLDOWN) return;
-        advance(Math.sign(d));
-        lastAdvance = now;
-        resetAutoplay();
-      }, { passive: false });
-
-      /* ── Clic sur une carte → l'amener en position principale ── */
+      /* ── Clic sur une carte inactive → l'amener en position principale ── */
+      /* ── Clic sur la carte active → redirection Eversports ── */
+      const EVERSPORTS_URL = 'https://www.eversports.fr/sp/swella';
       track.addEventListener('click', e => {
         const card = e.target.closest('.presta-card');
-        if (!card || card === $active) return;
+        if (!card) return;
+        if (card === $active) {
+          window.open(EVERSPORTS_URL, '_blank', 'noopener');
+          return;
+        }
+        e.preventDefault();
         const all = [...track.querySelectorAll('.presta-card')];
         const n    = all.length;
         const from = all.indexOf($active);
@@ -3093,34 +3099,6 @@
         if (steps < -n / 2) steps += n;
         const dir = Math.sign(steps);
         for (let i = 0; i < Math.abs(steps); i++) advance(dir);
-        resetAutoplay();
-      });
-
-      /* ── Touch : drag direct + snap au relâcher ── */
-      let txStart = 0, tgtStart = 0;
-      scroll.addEventListener('touchstart', e => {
-        txStart  = e.touches[0].clientX;
-        tgtStart = tgt;
-        if (animId) { cancelAnimationFrame(animId); animId = null; }
-        cur = tgt;
-      }, { passive: true });
-      scroll.addEventListener('touchmove', e => {
-        const dx = txStart - e.touches[0].clientX;
-        cur = tgtStart + dx;
-        applyOffset();
-        recycle();
-      }, { passive: true });
-      scroll.addEventListener('touchend', e => {
-        const dx = txStart - e.changedTouches[0].clientX;
-        if (Math.abs(dx) > STEP * 0.25) {
-          advance(Math.sign(dx));
-          cur = tgtStart + dx;
-        } else {
-          tgt = tgtStart;
-          cur = tgtStart + dx;
-        }
-        startAnim();
-        resetAutoplay();
       });
 
       /* Activation initiale */
