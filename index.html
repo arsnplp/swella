@@ -1808,20 +1808,18 @@
     }
     .navbar__brand {
       display: flex; flex-direction: column; gap: 3px;
-      text-decoration: none;
-      width: 188px;
+      text-decoration: none; align-items: stretch;
+      width: fit-content;
     }
-    .navbar__logo { width: 100%; height: auto; display: block; }
+    .navbar__logo { width: 100%; height: auto; display: block; max-height: 40px; object-fit: contain; object-position: left center; }
     .navbar__tagline {
       font-family: var(--f-body);
-      font-size: 0.46rem;
-      letter-spacing: 0.05em;
+      font-size: 0.5rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--c-peach);
       opacity: 0.85;
-      width: 100%;
-      text-align: justify;
-      text-align-last: justify;
+      white-space: nowrap;
     }
     .navbar__links {
       display: flex; align-items: center; gap: clamp(1.2rem, 2.5vw, 2.5rem);
