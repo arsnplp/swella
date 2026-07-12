@@ -282,10 +282,11 @@
     }
 
     /* ─── Image femme (bas-droite, grossit au scroll) ─────────────── */
-    /* Container fixé à la taille MAXIMALE (90vh).
-       Le JS applique transform: scale() depuis transform-origin: bottom right.
-       Scale initial = 55/90 ≈ 0.6111  → taille de départ ≈ 55vh
-       Scale final  = 1.0              → taille maximale 90vh  */
+    /* Container à la taille MAXIMALE (90vh), scale depuis bottom right.
+       Scale initial = 55/90 ≈ 0.6111 → ~55vh   |   Scale final = 1.0 → 90vh
+       Le grossissement est piloté par le SCROLL :
+       - navigateurs modernes → animation CSS liée au scroll (compositeur = fluide)
+       - sinon → fallback JS (voir plus bas) */
     .hero__femme {
       position: absolute;
       bottom: 0;
@@ -293,6 +294,7 @@
       z-index: 5;
       height: 90vh;
       transform-origin: bottom right;
+      transform: scale(0.61111);   /* état initial (avant scroll) */
       pointer-events: none;
       will-change: transform;
 
@@ -302,6 +304,22 @@
 
     @keyframes femmeReveal {
       to { opacity: 1; }
+    }
+
+    /* Grossissement au scroll (0 → 40vh) directement lié à la position :
+       grandit pile avec le scroll, s'arrête net à l'arrêt, et tourne sur le
+       compositeur donc parfaitement fluide même sur mobile. */
+    @keyframes femmeGrow {
+      from { transform: scale(0.61111); }
+      to   { transform: scale(1); }
+    }
+    @supports (animation-timeline: scroll()) {
+      .hero__femme {
+        animation: femmeReveal 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.45s forwards,
+                   femmeGrow auto linear both;
+        animation-timeline: auto, scroll(root block);
+        animation-range: normal, 0 40vh;
+      }
     }
 
     .hero__femme img {
@@ -325,13 +343,7 @@
 
     /* ─── Responsive ──────────────────────────────────────────────── */
     @media (max-width: 900px) {
-      .hero__femme {
-        opacity: 0;
-        animation: femmeRevealMobile 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.45s forwards;
-      }
-      @keyframes femmeRevealMobile {
-        to { opacity: 1; }
-      }
+      /* fondu du bord gauche plus large sur mobile */
       .hero__femme img {
         mask-image: linear-gradient(to right, transparent 0%, black 35%);
         -webkit-mask-image: linear-gradient(to right, transparent 0%, black 35%);
@@ -340,10 +352,8 @@
 
     @media (max-width: 520px) {
       .hero__femme {
-        right: -22vw;
+        right: -56vw;   /* fesses ~collées au bord droit sur téléphone */
         height: 60vh;
-        opacity: 0;
-        animation: femmeRevealMobile 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.45s forwards;
       }
       .hero__name {
         font-size: clamp(4.5rem, 20vw, 6rem);
@@ -2063,12 +2073,11 @@
       </div>
 
 
-      <!-- Image femme — animée au scroll -->
+      <!-- Image femme — grossit au scroll (CSS scroll-timeline + fallback JS) -->
       <div
         class="hero__femme"
         id="femmeHero"
         aria-hidden="true"
-        style="transform: scale(0.6111);"
       >
         <img
           src="image/femmepourhero.webp"
@@ -2975,38 +2984,34 @@
       const femme = document.getElementById('femmeHero');
       if (!femme) return;
 
-      const MIN  = 55 / 90;   // ~0.6111
-      const MAX  = 1.0;
-      const RANGE_VH = 0.4;   // progression sur les 40 premiers vh de scroll
+      /* Navigateurs modernes : le grossissement est géré par l'animation CSS
+         liée au scroll (compositeur = fluide). On ne fait rien en JS. */
+      if (window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()')) return;
 
-      let rafPending = false;
+      /* Fallback (navigateurs sans scroll-timeline) : mapping DIRECT scrollY→scale,
+         via une boucle rAF continue → fluide pendant le scroll, et s'arrête net
+         dès l'arrêt (pas d'interpolation qui glisse). */
+      const MIN = 55 / 90, MAX = 1.0, RANGE_VH = 0.4;
+      const easeInOut = t => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
 
-      function easeInOut(t) {
-        return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+      let lastY = -1, idle = 0, rafId = null;
+
+      function frame() {
+        const y   = window.scrollY || 0;
+        const raw = Math.min(Math.max(y / (window.innerHeight * RANGE_VH), 0), 1);
+        femme.style.transform = 'scale(' + (MIN + (MAX - MIN) * easeInOut(raw)).toFixed(5) + ')';
+        if (y === lastY) {
+          if (++idle > 8) { rafId = null; return; }   // scroll figé → on arrête la boucle
+        } else { idle = 0; lastY = y; }
+        rafId = requestAnimationFrame(frame);
+      }
+      function kick() {
+        if (!rafId) { idle = 0; lastY = -1; rafId = requestAnimationFrame(frame); }
       }
 
-      /* Le scale suit DIRECTEMENT la position de scroll : elle grandit pile en
-         même temps que le scroll et s'arrête net dès qu'on arrête de scroller. */
-      function applyScale() {
-        const scrollTop   = window.scrollY || 0;
-        const scrollRange = window.innerHeight * RANGE_VH;
-        const raw   = Math.min(Math.max(scrollTop / scrollRange, 0), 1);
-        const scale = MIN + (MAX - MIN) * easeInOut(raw);
-        femme.style.transform = 'scale(' + scale.toFixed(5) + ')';
-        rafPending = false;
-      }
-
-      function onScroll() {
-        if (!rafPending) {
-          rafPending = true;
-          requestAnimationFrame(applyScale);
-        }
-      }
-
-      /* État initial — gère le cas d'un refresh sur une page scrollée */
-      applyScale();
-
-      window.addEventListener('scroll', onScroll, { passive: true });
+      frame();  // état initial
+      window.addEventListener('scroll', kick, { passive: true });
+      window.addEventListener('resize', kick, { passive: true });
     })();
 
     /* ═══════════════════════════════════════════════════════════════
