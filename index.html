@@ -845,6 +845,32 @@
       overflow: hidden;
       padding: 5rem 0 2.5rem 0;
       user-select: none;
+      touch-action: pan-y;      /* drag horizontal géré en JS, scroll vertical natif */
+    }
+
+    /* ─── Points de navigation du carousel prestations ────────────── */
+    .prestations__dots {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.2rem 0 2.4rem;
+    }
+    .presta-dot {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.28);
+      cursor: pointer;
+      transition: background 0.3s ease, width 0.3s ease, border-radius 0.3s ease;
+    }
+    .presta-dot.active {
+      width: 22px;
+      border-radius: 5px;
+      background: var(--c-peach);
     }
 
     .prestations__track {
@@ -887,7 +913,7 @@
     .presta-card__overlay {
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.55);
+      background: rgba(0, 0, 0, 0.68);
       transition: background 0.4s ease;
     }
 
@@ -900,6 +926,10 @@
         rgba(0,0,0,0.88) 100%
       );
     }
+
+    /* Cartes non-principales encore plus foncées/ternes pour faire ressortir l'active */
+    .presta-card:not(.active) .presta-card__bg { filter: brightness(0.6) saturate(0.9); }
+    .presta-card.active .presta-card__bg      { filter: brightness(1.04); }
 
     /* Label centré — visible en état inactif, fade out à l'activation */
     .presta-card__idle-label {
@@ -990,7 +1020,28 @@
       .prestations { grid-template-columns: 1fr; min-height: auto; }
       .prestations__panel { padding: 2.5rem clamp(2rem, 6vw, 6rem) 0.8rem; }
       .prestations__track { height: 420px; }
-      .prestations__scroll { margin-bottom: 2.5rem; }
+      .prestations__scroll { margin-bottom: 0; }
+    }
+
+    /* Format téléphone : cartes plus petites + carte principale centrée
+       (on aperçoit la carte suivante), pas de scale → snap parfait */
+    @media (max-width: 600px) {
+      .prestations__scroll { padding-top: 3rem; }
+      .prestations__track {
+        gap: 1rem;
+        padding-left: 22vw;      /* centre la carte principale (slot 0) */
+        height: 380px;
+      }
+      /* Cartes secondaires plus petites (scale = visuel seulement, le snap reste calé),
+         carte principale un peu agrandie et centrée → on voit bien la carte d'à côté */
+      .presta-card {
+        width: 56vw;
+        border-radius: 18px;
+        transform-origin: center center;
+        transform: scale(0.9);
+      }
+      .presta-card.active { transform: scale(1.06); margin-right: 0; }
+      .presta-card__idle-label { font-size: clamp(1.05rem, 4.8vw, 1.5rem); }
     }
 
     /* ─── Responsive section 2 ────────────────────────────────────── */
@@ -2347,6 +2398,9 @@
         </div>
       </div>
 
+      <!-- Points de navigation (générés en JS d'après les cartes) -->
+      <div class="prestations__dots" id="prestaDots" role="tablist" aria-label="Navigation des cartes"></div>
+
     </section>
 
     <!-- ══════════════════════════════════════════════════════════
@@ -3018,9 +3072,28 @@
         counter.textContent = current + 1;
       }
 
-      prevBtn.addEventListener('click', () => goTo(current - 1));
-      nextBtn.addEventListener('click', () => goTo(current + 1));
-      dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+      /* Défilement automatique toutes les 3 s.
+         Toute interaction manuelle relance le compteur pour éviter
+         un double défilement juste après l'action de l'utilisateur. */
+      const DELAY = 3000;
+      let timer = null;
+
+      function startAuto() {
+        stopAuto();
+        timer = setInterval(() => goTo(current + 1), DELAY);
+      }
+      function stopAuto() {
+        if (timer) { clearInterval(timer); timer = null; }
+      }
+      function resetAuto() {
+        startAuto();
+      }
+
+      prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+      nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+      dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetAuto(); }));
+
+      startAuto();
     })();
 
     /* ═══════════════════════════════════════════════════════════════
@@ -3034,11 +3107,23 @@
       if (!scroll) return;
       const track = scroll.querySelector('.prestations__track');
       if (!track) return;
+      const dotsWrap = document.getElementById('prestaDots');
 
-      const CARD_W = 270;
-      const GAP    = Math.round(2.6 * parseFloat(getComputedStyle(document.documentElement).fontSize));
-      const STEP   = CARD_W + GAP;  /* distance entre deux slots */
-      const EASE   = 0.08;
+      /* Dimensions mesurées au runtime (les cartes rétrécissent sur mobile,
+         il ne faut donc jamais coder la largeur en dur → le snap resterait
+         décalé). Recalculées au resize. */
+      let CARD_W = 270, GAP = 42, STEP = CARD_W + GAP;
+      const EASE = 0.14;
+
+      function measure() {
+        const card = track.querySelector('.presta-card:not(.active)')
+                   || track.querySelector('.presta-card');
+        if (!card) return;
+        CARD_W = card.offsetWidth;               /* largeur de mise en page, hors scale */
+        const cs = getComputedStyle(track);
+        GAP = parseFloat(cs.columnGap || cs.gap) || 0;
+        STEP = CARD_W + GAP;
+      }
 
       let cur = 0;
       let tgt = 0;
@@ -3049,12 +3134,38 @@
         track.style.transform = 'translateX(' + (-cur) + 'px)';
       }
 
+      /* ── Points de navigation (identifiés par data-presta, stables malgré
+            le recyclage du DOM) ── */
+      const order = [...track.querySelectorAll('.presta-card')].map(c => c.dataset.presta);
+      const dots = [];
+      if (dotsWrap) {
+        order.forEach((key, i) => {
+          const b = document.createElement('button');
+          b.className = 'presta-dot';
+          b.type = 'button';
+          b.setAttribute('role', 'tab');
+          b.setAttribute('aria-label', 'Carte ' + (i + 1));
+          b.addEventListener('click', () => goToKey(key));
+          dotsWrap.appendChild(b);
+          dots.push(b);
+        });
+      }
+      function syncDots() {
+        if (!$active) return;
+        const idx = order.indexOf($active.dataset.presta);
+        dots.forEach((d, i) => {
+          d.classList.toggle('active', i === idx);
+          d.setAttribute('aria-selected', String(i === idx));
+        });
+      }
+
       /* Active une carte précise immédiatement (scale + texte partent en même temps) */
       function setActive(card) {
         if (!card || card === $active) return;
         track.querySelectorAll('.presta-card').forEach(c => c.classList.remove('active'));
         card.classList.add('active');
         $active = card;
+        syncDots();
       }
 
       /* Recycle basé sur le bord du SCROLL CONTAINER */
@@ -3105,10 +3216,34 @@
         startAnim();
       }
 
-      /* ── Clic sur une carte inactive → l'amener en position principale ── */
-      /* ── Clic sur la carte active → redirection Eversports ── */
+      /* Nombre de crans (signé, chemin le plus court) pour atteindre une carte */
+      function stepsTo(card) {
+        const all = [...track.querySelectorAll('.presta-card')];
+        const n = all.length;
+        const from = all.indexOf($active);
+        const to   = all.indexOf(card);
+        if (to === -1) return 0;
+        let steps = to - from;
+        if (steps >  n / 2) steps -= n;
+        if (steps < -n / 2) steps += n;
+        return steps;
+      }
+      function goTo(card) {
+        const steps = stepsTo(card);
+        const dir = Math.sign(steps);
+        for (let i = 0; i < Math.abs(steps); i++) advance(dir);
+      }
+      function goToKey(key) {
+        const card = [...track.querySelectorAll('.presta-card')].find(c => c.dataset.presta === key);
+        if (card) goTo(card);
+      }
+
+      /* ── Clic : carte inactive → position principale ; carte active → lien ── */
       const EVERSPORTS_URL = 'https://www.eversports.fr/sp/swella';
+      let didDrag = false;
       track.addEventListener('click', e => {
+        if (didDrag) { didDrag = false; e.preventDefault(); return; }
+        if (e.target.closest('a')) return;         /* laisse les liens fonctionner */
         const card = e.target.closest('.presta-card');
         if (!card) return;
         if (card === $active) {
@@ -3116,20 +3251,96 @@
           return;
         }
         e.preventDefault();
-        const all = [...track.querySelectorAll('.presta-card')];
-        const n    = all.length;
-        const from = all.indexOf($active);
-        const to   = all.indexOf(card);
-        if (to === -1) return;
-        let steps = to - from;
-        if (steps >  n / 2) steps -= n;
-        if (steps < -n / 2) steps += n;
-        const dir = Math.sign(steps);
-        for (let i = 0; i < Math.abs(steps); i++) advance(dir);
+        goTo(card);
       });
 
-      /* Activation initiale */
+      /* ── Drag tactile contrôlé : le doigt suit, au relâchement ça se cale
+            TOUJOURS sur une carte (jamais entre deux) ── */
+      let dragging = false, startX = 0, startY = 0, baseCur = 0, moved = 0, axis = null;
+
+      /* Recyclage pendant le drag : ajuste aussi baseCur pour garder l'écart
+         (cur - baseCur) invariant malgré le déplacement des cartes */
+      function recycleDrag() {
+        const sr = scroll.getBoundingClientRect();
+        const first = track.firstElementChild;
+        if (first && first.getBoundingClientRect().right < sr.left - 2) {
+          track.appendChild(first);
+          cur -= STEP; tgt -= STEP; baseCur -= STEP;
+          applyOffset();
+        }
+        const last = track.lastElementChild;
+        if (last && last.getBoundingClientRect().left > sr.right + 2) {
+          track.prepend(last);
+          cur += STEP; tgt += STEP; baseCur += STEP;
+          applyOffset();
+        }
+      }
+
+      scroll.addEventListener('touchstart', e => {
+        if (e.touches.length !== 1) return;
+        dragging = true;
+        didDrag = false;
+        axis = null;
+        moved = 0;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        if (animId) { cancelAnimationFrame(animId); animId = null; }
+        cur = tgt;                 /* on part d'une position calée */
+        baseCur = cur;
+        applyOffset();
+      }, { passive: true });
+
+      scroll.addEventListener('touchmove', e => {
+        if (!dragging) return;
+        const dx = e.touches[0].clientX - startX;
+        const dy = e.touches[0].clientY - startY;
+        if (axis === null) {
+          if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;   /* on attend l'intention */
+          axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+        }
+        if (axis === 'y') { dragging = false; return; }        /* laisse défiler la page */
+        e.preventDefault();                                    /* horizontal → à nous */
+        moved = dx;
+        cur = baseCur - dx;
+        applyOffset();
+        recycleDrag();
+      }, { passive: false });
+
+      function endDrag() {
+        if (!dragging) return;
+        dragging = false;
+        if (Math.abs(moved) > 8) didDrag = true;
+        /* nombre de crans franchis depuis la position calée de départ */
+        let slots = Math.round((cur - baseCur) / STEP);
+        /* un flick net d'au moins ~28 % d'une carte fait toujours avancer d'un cran */
+        if (slots === 0 && Math.abs(moved) > STEP * 0.28) slots = moved < 0 ? 1 : -1;
+        tgt = baseCur;
+        if (slots !== 0) {
+          const dir = Math.sign(slots);
+          for (let i = 0; i < Math.abs(slots); i++) advance(dir);
+        } else {
+          startAnim();   /* rien franchi → on revient se caler */
+        }
+      }
+      scroll.addEventListener('touchend', endDrag, { passive: true });
+      scroll.addEventListener('touchcancel', endDrag, { passive: true });
+
+      /* ── Init ── */
+      measure();
       setActive(track.firstElementChild);
+      applyOffset();
+
+      /* Recalage propre après changement de taille (rotation, resize) */
+      let rTimer = null;
+      window.addEventListener('resize', () => {
+        clearTimeout(rTimer);
+        rTimer = setTimeout(() => {
+          if (animId) { cancelAnimationFrame(animId); animId = null; }
+          measure();
+          cur = tgt;
+          applyOffset();
+        }, 150);
+      });
     })();
 
     /* ═══════════════════════════════════════════════════════════════
