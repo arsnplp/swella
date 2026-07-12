@@ -658,14 +658,15 @@
       padding: clamp(4.5rem, 9vh, 10rem) clamp(2rem, 6vw, 8rem) clamp(3rem, 6vh, 6.5rem);
     }
 
-    /* "Rejoignez le mouvement" — pleine largeur */
+    /* "Rejoignez le mouvement" — pleine largeur, toujours sur une seule ligne */
     .rejoindre__headline {
       font-family: var(--f-title);
-      font-size: clamp(2.4rem, 5.4vw, 7rem);
+      font-size: clamp(1.15rem, 5.6vw, 7rem);
       line-height: 0.9;
       color: var(--c-peach);
       text-transform: uppercase;
       display: block;
+      white-space: nowrap;      /* jamais de retour à la ligne entre les mots */
       margin-bottom: 0;
     }
 
@@ -2176,7 +2177,9 @@
         id="sectionVideo"
         muted
         loop
+        autoplay
         playsinline
+        webkit-playsinline
         preload="auto"
         aria-label="Vidéo studio Swella Pilates Marseille"
       ></video>
@@ -2975,35 +2978,48 @@
       const MIN  = 55 / 90;   // ~0.6111
       const MAX  = 1.0;
       const RANGE_VH = 0.4;   // progression sur les 40 premiers vh de scroll
-
-      let rafPending = false;
+      const LERP = 0.16;      // douceur de l'interpolation (plus petit = plus doux)
 
       function easeInOut(t) {
         return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
       }
 
-      function applyScale() {
-        const scrollTop  = window.scrollY || 0;
-        const scrollRange = window.innerHeight * RANGE_VH;
-        const raw      = Math.min(Math.max(scrollTop / scrollRange, 0), 1);
-        const eased    = easeInOut(raw);
-        const scale    = MIN + (MAX - MIN) * eased;
+      /* Cible calculée depuis la position de scroll */
+      let target = MIN;
+      let current = MIN;
+      let rafId = null;
 
-        femme.style.transform = 'scale(' + scale.toFixed(5) + ')';
-        rafPending = false;
+      function computeTarget() {
+        const scrollRange = window.innerHeight * RANGE_VH;
+        const raw   = Math.min(Math.max((window.scrollY || 0) / scrollRange, 0), 1);
+        target = MIN + (MAX - MIN) * easeInOut(raw);
       }
 
-      function onScroll() {
-        if (!rafPending) {
-          rafPending = true;
-          requestAnimationFrame(applyScale);
+      /* Boucle continue : le scale glisse vers la cible chaque frame → fluide
+         même quand les événements scroll arrivent par à-coups (mobile). */
+      function loop() {
+        const diff = target - current;
+        current += diff * LERP;
+        if (Math.abs(diff) < 0.0004) current = target;
+        femme.style.transform = 'scale(' + current.toFixed(5) + ')';
+        if (Math.abs(target - current) > 0.0002) {
+          rafId = requestAnimationFrame(loop);
+        } else {
+          rafId = null;   // au repos → on arrête la boucle
         }
       }
+      function kick() {
+        computeTarget();
+        if (!rafId) rafId = requestAnimationFrame(loop);
+      }
 
-      /* État initial — gère le cas d'un refresh sur une page scrollée */
-      applyScale();
+      /* État initial (gère un refresh sur page déjà scrollée) */
+      computeTarget();
+      current = target;
+      femme.style.transform = 'scale(' + current.toFixed(5) + ')';
 
-      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('scroll', kick, { passive: true });
+      window.addEventListener('resize', kick, { passive: true });
     })();
 
     /* ═══════════════════════════════════════════════════════════════
@@ -3018,15 +3034,29 @@
       /* Swap source selon mobile/desktop */
       const SRC_DESKTOP = 'image/section3/video.mp4';
       const SRC_MOBILE  = 'image/video.mp4';
+
+      /* Lance la lecture, et si le navigateur refuse (pas encore prêt),
+         on réessaie dès que la vidéo est jouable → autoplay fiable. */
+      function playSafe() {
+        const pr = video.play();
+        if (pr && typeof pr.catch === 'function') {
+          pr.catch(() => {
+            video.addEventListener('canplay', () => video.play().catch(() => {}), { once: true });
+          });
+        }
+      }
       function loadVideo() {
         const src = window.innerWidth <= 768 ? SRC_MOBILE : SRC_DESKTOP;
         if (video.getAttribute('src') !== src) {
           video.src = src;
           video.load();
-          video.play().catch(() => {});
+          playSafe();
         }
       }
       loadVideo();
+      /* Filets de sécurité : rejoue au chargement des données et au retour d'onglet */
+      video.addEventListener('loadeddata', playSafe, { once: true });
+      document.addEventListener('visibilitychange', () => { if (!document.hidden) playSafe(); });
       window.addEventListener('resize', loadVideo);
 
       /* La vidéo démarre en autoplay — on cache le bouton immédiatement */
