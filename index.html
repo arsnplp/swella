@@ -340,7 +340,7 @@
 
     @media (max-width: 520px) {
       .hero__femme {
-        right: -30vw;
+        right: -22vw;
         height: 60vh;
         opacity: 0;
         animation: femmeRevealMobile 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.45s forwards;
@@ -2978,48 +2978,35 @@
       const MIN  = 55 / 90;   // ~0.6111
       const MAX  = 1.0;
       const RANGE_VH = 0.4;   // progression sur les 40 premiers vh de scroll
-      const LERP = 0.16;      // douceur de l'interpolation (plus petit = plus doux)
+
+      let rafPending = false;
 
       function easeInOut(t) {
         return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
       }
 
-      /* Cible calculée depuis la position de scroll */
-      let target = MIN;
-      let current = MIN;
-      let rafId = null;
-
-      function computeTarget() {
+      /* Le scale suit DIRECTEMENT la position de scroll : elle grandit pile en
+         même temps que le scroll et s'arrête net dès qu'on arrête de scroller. */
+      function applyScale() {
+        const scrollTop   = window.scrollY || 0;
         const scrollRange = window.innerHeight * RANGE_VH;
-        const raw   = Math.min(Math.max((window.scrollY || 0) / scrollRange, 0), 1);
-        target = MIN + (MAX - MIN) * easeInOut(raw);
+        const raw   = Math.min(Math.max(scrollTop / scrollRange, 0), 1);
+        const scale = MIN + (MAX - MIN) * easeInOut(raw);
+        femme.style.transform = 'scale(' + scale.toFixed(5) + ')';
+        rafPending = false;
       }
 
-      /* Boucle continue : le scale glisse vers la cible chaque frame → fluide
-         même quand les événements scroll arrivent par à-coups (mobile). */
-      function loop() {
-        const diff = target - current;
-        current += diff * LERP;
-        if (Math.abs(diff) < 0.0004) current = target;
-        femme.style.transform = 'scale(' + current.toFixed(5) + ')';
-        if (Math.abs(target - current) > 0.0002) {
-          rafId = requestAnimationFrame(loop);
-        } else {
-          rafId = null;   // au repos → on arrête la boucle
+      function onScroll() {
+        if (!rafPending) {
+          rafPending = true;
+          requestAnimationFrame(applyScale);
         }
       }
-      function kick() {
-        computeTarget();
-        if (!rafId) rafId = requestAnimationFrame(loop);
-      }
 
-      /* État initial (gère un refresh sur page déjà scrollée) */
-      computeTarget();
-      current = target;
-      femme.style.transform = 'scale(' + current.toFixed(5) + ')';
+      /* État initial — gère le cas d'un refresh sur une page scrollée */
+      applyScale();
 
-      window.addEventListener('scroll', kick, { passive: true });
-      window.addEventListener('resize', kick, { passive: true });
+      window.addEventListener('scroll', onScroll, { passive: true });
     })();
 
     /* ═══════════════════════════════════════════════════════════════
@@ -3035,9 +3022,15 @@
       const SRC_DESKTOP = 'image/section3/video.mp4';
       const SRC_MOBILE  = 'image/video.mp4';
 
+      /* muted forcé en JS = indispensable pour l'autoplay off-screen sur iOS :
+         la vidéo tourne dès le chargement, avant même d'arriver dessus. */
+      video.muted = true;
+      video.defaultMuted = true;
+
       /* Lance la lecture, et si le navigateur refuse (pas encore prêt),
          on réessaie dès que la vidéo est jouable → autoplay fiable. */
       function playSafe() {
+        video.muted = true;
         const pr = video.play();
         if (pr && typeof pr.catch === 'function') {
           pr.catch(() => {
@@ -3054,9 +3047,13 @@
         }
       }
       loadVideo();
-      /* Filets de sécurité : rejoue au chargement des données et au retour d'onglet */
+      /* Filets de sécurité : rejoue dès que jouable, au chargement des données,
+         et au premier geste utilisateur (déblocage autoplay récalcitrant). */
+      video.addEventListener('canplay', playSafe, { once: true });
       video.addEventListener('loadeddata', playSafe, { once: true });
       document.addEventListener('visibilitychange', () => { if (!document.hidden) playSafe(); });
+      ['touchstart', 'click', 'scroll'].forEach(ev =>
+        window.addEventListener(ev, playSafe, { once: true, passive: true }));
       window.addEventListener('resize', loadVideo);
 
       /* La vidéo démarre en autoplay — on cache le bouton immédiatement */
