@@ -125,11 +125,11 @@
       background:
         linear-gradient(
           108deg,
-          rgba(0, 0, 0, 0.82)  0%,
-          rgba(0, 0, 0, 0.66)  42%,
-          rgba(0, 0, 0, 0.55)  52%,
-          rgba(0, 0, 0, 0.20)  74%,
-          transparent          100%
+          rgba(0, 0, 0, 0.86)  0%,
+          rgba(0, 0, 0, 0.74)  40%,
+          rgba(0, 0, 0, 0.62)  56%,
+          rgba(0, 0, 0, 0.24)  72%,
+          transparent          92%
         ),
         linear-gradient(
           180deg,
@@ -179,7 +179,10 @@
     .hero__name {
       font-family: var(--f-logo);
       font-weight: 400;
-      font-size: clamp(5.5rem, 13.5vw, 13rem);
+      /* Plafonnée à 11rem : au-delà de ~190px, la police (Lamoric Rowen) a un
+         bug de rastérisation sur le glyphe "a" (swash déformé, voire vide).
+         Sous ce seuil, le "A" rend proprement en capitale romaine. */
+      font-size: clamp(5.5rem, 12vw, 11rem);
       line-height: 0.86;
       letter-spacing: -0.015em;
       position: relative;
@@ -197,8 +200,9 @@
       /* Ombre portée : le "A" final (couleur claire) tombe parfois sur une zone
          claire du fond et devient invisible → "Swell". Un halo sombre serré
          (rim) + une ombre douce le rendent lisible sur n'importe quel fond. */
-      filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.6))
-              drop-shadow(0 6px 20px rgba(0, 0, 0, 0.5));
+      filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.85))
+              drop-shadow(0 0 3px rgba(0, 0, 0, 0.85))
+              drop-shadow(0 8px 22px rgba(0, 0, 0, 0.45));
 
       margin-bottom: clamp(1.1rem, 2.2vh, 1.8rem);
 
