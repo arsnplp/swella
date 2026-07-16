@@ -193,6 +193,9 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      /* Ombre portée : garde les lettres claires (le "a" final en sand) lisibles
+         même sur la partie claire du fond, sinon elles se fondent → "Swell". */
+      filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.55));
 
       margin-bottom: clamp(1.1rem, 2.2vh, 1.8rem);
 
@@ -356,7 +359,7 @@
         height: 60vh;
       }
       .hero__name {
-        font-size: clamp(4.5rem, 20vw, 6rem);
+        font-size: clamp(4rem, 18vw, 5.6rem);
       }
     }
 
