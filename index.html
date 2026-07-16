@@ -125,9 +125,10 @@
       background:
         linear-gradient(
           108deg,
-          rgba(0, 0, 0, 0.78)  0%,
-          rgba(0, 0, 0, 0.52)  42%,
-          rgba(0, 0, 0, 0.14)  72%,
+          rgba(0, 0, 0, 0.82)  0%,
+          rgba(0, 0, 0, 0.66)  42%,
+          rgba(0, 0, 0, 0.55)  52%,
+          rgba(0, 0, 0, 0.20)  74%,
           transparent          100%
         ),
         linear-gradient(
@@ -178,7 +179,7 @@
     .hero__name {
       font-family: var(--f-logo);
       font-weight: 400;
-      font-size: clamp(5.5rem, 15.5vw, 15rem);
+      font-size: clamp(5.5rem, 13.5vw, 13rem);
       line-height: 0.86;
       letter-spacing: -0.015em;
       position: relative;
@@ -193,9 +194,11 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      /* Ombre portée : garde les lettres claires (le "a" final en sand) lisibles
-         même sur la partie claire du fond, sinon elles se fondent → "Swell". */
-      filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.55));
+      /* Ombre portée : le "A" final (couleur claire) tombe parfois sur une zone
+         claire du fond et devient invisible → "Swell". Un halo sombre serré
+         (rim) + une ombre douce le rendent lisible sur n'importe quel fond. */
+      filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.6))
+              drop-shadow(0 6px 20px rgba(0, 0, 0, 0.5));
 
       margin-bottom: clamp(1.1rem, 2.2vh, 1.8rem);
 
