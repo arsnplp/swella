@@ -44,15 +44,24 @@
   }
   </script>
 
-  <!-- ═══ Google Fonts : Anton + Lora + Cormorant Garamond (fallback logo) ═ -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
-
+  <!-- ═══ Polices auto-hébergées : Anton + Lora + Cormorant Garamond (RGPD : aucun appel à Google Fonts) ═ -->
   <style>
+    @font-face { font-family: 'Anton'; font-style: normal; font-weight: 400; font-display: swap; src: url('assets/fonts/anton-latin-400-normal.woff2') format('woff2'); }
+    @font-face { font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 300; font-display: swap; src: url('assets/fonts/cormorant-garamond-latin-300-normal.woff2') format('woff2'); }
+    @font-face { font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 400; font-display: swap; src: url('assets/fonts/cormorant-garamond-latin-400-normal.woff2') format('woff2'); }
+    @font-face { font-family: 'Cormorant Garamond'; font-style: normal; font-weight: 500; font-display: swap; src: url('assets/fonts/cormorant-garamond-latin-500-normal.woff2') format('woff2'); }
+    @font-face { font-family: 'Cormorant Garamond'; font-style: italic; font-weight: 300; font-display: swap; src: url('assets/fonts/cormorant-garamond-latin-300-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Cormorant Garamond'; font-style: italic; font-weight: 400; font-display: swap; src: url('assets/fonts/cormorant-garamond-latin-400-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Lora'; font-style: normal; font-weight: 400; font-display: swap; src: url('assets/fonts/lora-latin-400-normal.woff2') format('woff2'); }
+    @font-face { font-family: 'Lora'; font-style: italic; font-weight: 400; font-display: swap; src: url('assets/fonts/lora-latin-400-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Lora'; font-style: normal; font-weight: 500; font-display: swap; src: url('assets/fonts/lora-latin-500-normal.woff2') format('woff2'); }
+    @font-face { font-family: 'Lora'; font-style: italic; font-weight: 500; font-display: swap; src: url('assets/fonts/lora-latin-500-italic.woff2') format('woff2'); }
+    @font-face { font-family: 'Lora'; font-style: normal; font-weight: 700; font-display: swap; src: url('assets/fonts/lora-latin-700-normal.woff2') format('woff2'); }
+    @font-face { font-family: 'Lora'; font-style: italic; font-weight: 700; font-display: swap; src: url('assets/fonts/lora-latin-700-italic.woff2') format('woff2'); }
+
     /* ─── Police logo : LAMORIC ROWEN (fichier local) ──────────────
        Placer le fichier dans /fonts/LamoriRowen.woff2 (ou .ttf)
-       Fallback : Cormorant Garamond (déjà chargé depuis Google Fonts)
+       Fallback : Cormorant Garamond (auto-hébergée dans assets/fonts)
     ─────────────────────────────────────────────────────────────── */
     @font-face {
       font-family: 'Lamoric Rowen';
@@ -819,7 +828,7 @@
       font-size: 0.62rem;
       letter-spacing: 0.42em;
       text-transform: uppercase;
-      color: var(--c-burgundy);
+      color: #bc565a; /* bordeaux éclairci : contraste AA sur fond noir */
     }
     .prestations__title {
       font-family: var(--f-title);
@@ -830,7 +839,7 @@
       margin-bottom: 1.6rem;
     }
     .prestations__title em {
-      color: var(--c-burgundy);
+      color: #9a3d41; /* bordeaux éclairci : contraste AA sur fond noir */
       font-style: normal;
     }
     .prestations__desc {
@@ -1590,7 +1599,7 @@
       font-family: var(--f-title); font-size: clamp(2.2rem, 3.5vw, 4rem);
       text-transform: uppercase; color: var(--c-white); line-height: 0.95;
     }
-    .tarifs__title em { color: var(--c-burgundy); font-style: normal; }
+    .tarifs__title em { color: #9a3d41; /* contraste AA sur fond noir */ font-style: normal; }
 
     /* Tabs */
     .tarifs__tabs {
@@ -1600,7 +1609,7 @@
     .tarifs__tab {
       font-family: var(--f-body); font-size: 0.7rem; letter-spacing: 0.18em;
       text-transform: uppercase; border: 1px solid rgba(255,255,255,0.2);
-      background: none; color: rgba(255,255,255,0.45); padding: 0.6rem 1.6rem;
+      background: none; color: rgba(255,255,255,0.6); padding: 0.6rem 1.6rem;
       border-radius: 100px; cursor: pointer; transition: all 0.25s;
     }
     .tarifs__tab.active {
@@ -1669,7 +1678,7 @@
     }
     .tarifs__cta:hover { background: var(--c-burgundy); border-color: var(--c-burgundy); }
     .tarifs__note {
-      font-family: var(--f-body); font-size: 0.75rem; color: rgba(255,255,255,0.3);
+      font-family: var(--f-body); font-size: 0.75rem; color: rgba(255,255,255,0.6);
       text-align: center; margin-top: 0.5rem;
     }
     @media (max-width: 1024px) {
@@ -1756,7 +1765,7 @@
       text-transform: uppercase; color: var(--c-white); line-height: 0.95;
       margin-bottom: 0;
     }
-    .contact__title em { color: var(--c-burgundy); font-style: normal; }
+    .contact__title em { color: #9a3d41; /* contraste AA sur fond noir */ font-style: normal; }
     .contact__items { display: flex; flex-direction: column; gap: 1.4rem; }
     .contact__item { display: flex; align-items: flex-start; gap: 1rem; }
     .contact__icon {
@@ -1797,6 +1806,25 @@
       .contact { grid-template-columns: 1fr; }
       .contact__map { aspect-ratio: 16/9; }
     }
+
+    /* ─── Contenus tiers chargés au clic (carte, Instagram) ──────────── */
+    .embed-consent {
+      height: 100%; min-height: 220px; padding: 2rem;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 1rem; text-align: center;
+      background: #1a1a1a; color: var(--c-white);
+      font-family: var(--f-body); font-size: 0.9rem; line-height: 1.5;
+      border: 1px solid rgba(255,255,255,0.2); border-radius: 20px;
+    }
+    .embed-consent a { color: var(--c-white); }
+    .embed-consent__btn {
+      font-family: var(--f-title); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--c-black); background: var(--c-peach); border: none; border-radius: 100px;
+      padding: 0.85rem 1.6rem; cursor: pointer; transition: background 0.2s, color 0.2s;
+    }
+    .embed-consent__btn:hover, .embed-consent__btn:focus-visible { background: var(--c-burgundy); color: var(--c-white); }
+    .embed-consent--light { min-height: 0; background: var(--c-white); color: var(--c-black); border-color: rgba(0,0,0,0.12); margin-bottom: 3.5rem; }
+    .embed-consent--light a { color: var(--c-burgundy); }
 
     /* ─── Instagram / Elfsight branding masqué ────────────────────── */
     .elfsight-wrapper {
@@ -1994,19 +2022,21 @@
     .footer__socials { display: flex; gap: 1rem; margin-top: 1.5rem; }
     .footer__social {
       font-family: var(--f-body); font-size: 0.72rem; letter-spacing: 0.1em;
-      text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none;
+      text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none;
       border: 1px solid rgba(255,255,255,0.15); padding: 0.4rem 0.9rem;
       border-radius: 100px; transition: color 0.2s, border-color 0.2s;
     }
     .footer__social:hover { color: var(--c-peach); border-color: var(--c-peach); }
     .footer__bottom {
       border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.2rem;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem 1.5rem;
     }
     .footer__copy {
       font-family: var(--f-body); font-size: 0.72rem;
-      color: rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.6);
     }
+    .footer__legal a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+    .footer__legal a:hover { color: var(--c-peach); }
     @media (max-width: 768px) {
       .footer__grid { grid-template-columns: 1fr 1fr; }
     }
@@ -2015,7 +2045,7 @@
       .footer__bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
   </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+  <script src="assets/js/lottie.min.js"></script><!-- lottie-web 5.12.2 auto-hébergé -->
 </head>
 <body>
 
@@ -2534,7 +2564,12 @@
           ↗ Suivre
         </a>
       </div>
-      <script src="https://elfsightcdn.com/platform.js" async></script>
+      <!-- Flux Instagram (Elfsight) chargé uniquement au clic : aucun traceur tiers sans action du visiteur -->
+      <div class="embed-consent embed-consent--light" id="instaConsent">
+        <p>Le flux est fourni par Elfsight et Instagram (Meta), qui peuvent déposer des cookies et recevoir votre adresse IP.</p>
+        <button type="button" class="embed-consent__btn" id="instaLoad">Afficher le flux Instagram</button>
+        <a href="https://www.instagram.com/swella_pilates" target="_blank" rel="noopener">Ou voir @swella_pilates sur Instagram ↗</a>
+      </div>
       <div class="elfsight-wrapper">
         <div class="elfsight-app-789233c7-9837-432e-82e7-890d7346d775" data-elfsight-app-lazy></div>
       </div>
@@ -2883,13 +2918,12 @@
         </a>
       </div>
       <div class="contact__map">
-        <iframe
-          src="https://maps.google.com/maps?q=4+Rue+Louis+Leprince+Ringuet+13013+Marseille&output=embed&z=16"
-          allowfullscreen
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Localisation Swella Pilates Club Marseille"
-        ></iframe>
+        <!-- Carte Google Maps chargée uniquement au clic (cookies Google) -->
+        <div class="embed-consent" id="mapConsent">
+          <p>La carte interactive est fournie par Google Maps.</p>
+          <button type="button" class="embed-consent__btn" id="mapLoad">Afficher la carte (Google Maps dépose des cookies)</button>
+          <a href="https://maps.google.com/?q=4+Rue+Louis+Leprince+Ringuet+13013+Marseille" target="_blank" rel="noopener">Ouvrir l'adresse dans Google Maps ↗</a>
+        </div>
       </div>
     </section>
 
@@ -2902,7 +2936,7 @@
         <span class="footer__logo" itemprop="name">Swella</span>
         <p class="footer__tagline">Pilates Club à Marseille.<br>Un espace pour célébrer le mouvement, la force et la connexion au corps.</p>
         <div class="footer__socials">
-          <a class="footer__social" href="<!-- Lien Instagram -->" target="_blank" rel="noopener">Instagram</a>
+          <a class="footer__social" href="https://www.instagram.com/swella_pilates" target="_blank" rel="noopener">Instagram</a>
         </div>
       </div>
       <div>
@@ -2934,11 +2968,28 @@
     </div>
     <div class="footer__bottom">
       <span class="footer__copy">© 2026 Swella — Tous droits réservés</span>
+      <span class="footer__copy footer__legal"><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a> · <a href="cgu.html">CGU</a> · <a href="cgv.html">CGV</a></span>
       <span class="footer__copy">Marseille, France</span>
     </div>
   </footer>
 
   <script>
+    // Contenus tiers chargés uniquement après clic (pas de cookies tiers sans action du visiteur)
+    document.getElementById('mapLoad').addEventListener('click', function () {
+      var f = document.createElement('iframe');
+      f.src = 'https://maps.google.com/maps?q=4+Rue+Louis+Leprince+Ringuet+13013+Marseille&output=embed&z=16';
+      f.title = 'Localisation Swella Pilates Club Marseille';
+      f.setAttribute('allowfullscreen', '');
+      f.referrerPolicy = 'no-referrer-when-downgrade';
+      document.getElementById('mapConsent').replaceWith(f);
+    });
+    document.getElementById('instaLoad').addEventListener('click', function () {
+      var s = document.createElement('script');
+      s.src = 'https://elfsightcdn.com/platform.js'; s.async = true;
+      document.body.appendChild(s);
+      document.getElementById('instaConsent').remove();
+    });
+
     // Burger menu
     const burger = document.getElementById('navBurger');
     const mobileNav = document.getElementById('navMobile');
