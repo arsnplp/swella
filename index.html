@@ -2564,12 +2564,8 @@
           ↗ Suivre
         </a>
       </div>
-      <!-- Flux Instagram (Elfsight) chargé uniquement au clic : aucun traceur tiers sans action du visiteur -->
-      <div class="embed-consent embed-consent--light" id="instaConsent">
-        <p>Le flux est fourni par Elfsight et Instagram (Meta), qui peuvent déposer des cookies et recevoir votre adresse IP.</p>
-        <button type="button" class="embed-consent__btn" id="instaLoad">Afficher le flux Instagram</button>
-        <a href="https://www.instagram.com/swella_pilates" target="_blank" rel="noopener">Ou voir @swella_pilates sur Instagram ↗</a>
-      </div>
+      <!-- Flux Instagram (Elfsight) affiché directement -->
+      <script src="https://elfsightcdn.com/platform.js" async></script>
       <div class="elfsight-wrapper">
         <div class="elfsight-app-789233c7-9837-432e-82e7-890d7346d775" data-elfsight-app-lazy></div>
       </div>
@@ -2982,12 +2978,6 @@
       f.setAttribute('allowfullscreen', '');
       f.referrerPolicy = 'no-referrer-when-downgrade';
       document.getElementById('mapConsent').replaceWith(f);
-    });
-    document.getElementById('instaLoad').addEventListener('click', function () {
-      var s = document.createElement('script');
-      s.src = 'https://elfsightcdn.com/platform.js'; s.async = true;
-      document.body.appendChild(s);
-      document.getElementById('instaConsent').remove();
     });
 
     // Burger menu
